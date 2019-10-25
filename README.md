@@ -9,7 +9,7 @@
 npm install
 234234
 # serve with hot reload at localhost:8080
-npm run dev
+npm run dev23234234
 
 # build for production with minification
 npm run build
