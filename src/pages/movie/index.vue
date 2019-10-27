@@ -1,6 +1,7 @@
 <template>
   <div>
 movie
+<el-button type="success">777</el-button>
   </div>
 </template>
 
