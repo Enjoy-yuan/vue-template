@@ -1,11 +1,12 @@
 <template>
-  <div>
+  <div style="padding-bottom:30px;">
     <div style="margin-top:30px;margin-bottom:20px;text-align:center;">
       <el-input
         style="width:80%;"
         v-model="inputSearch"
         placeholder="搜索歌曲/歌手"
         @keyup.enter.native="getSearch"
+        @input="getSearch"
       ></el-input>
     </div>
 
@@ -17,8 +18,8 @@
           v-for="(item,index) in inputSearchData"
           :key="index"
         >
-          <template v-if="index<9">0{{index+1}}.</template>
-          <template v-else>{{index+1}}.</template>
+          <template v-if="(index+1+(currentPage-1)*20)<10">0{{index+1+(currentPage-1)*20}}.</template>
+          <template v-else>{{index+1+(currentPage-1)*20}}.</template>
           <span>{{item.name}}</span>
           <i class="el-icon-video-play" style="color:#F56C6C" @click="mp3Play(index)"></i>
 
@@ -38,12 +39,12 @@
     </div>
     <div v-show="showLrc">
       <div style="text-align:center;margin:40px auto;">
-        <span style="color:#67c23a;" id="lyricContainer"></span>
+        <div style="color:#67c23a;font-size:22px;height:30px;" id="lyricContainer"></div>
       </div>
       <div style="text-align:center;">
         <audio
           id="myAudio"
-          style="width:80%;"
+          style="width:80%;outline: none;"
           :src="mp3Url"
           autoplay
           loop="loop"
@@ -114,7 +115,7 @@ export default {
     },
     getSearch() {
       if (this.inputSearch === "") {
-        this.$alert("搜素内容不能为空！");
+        // this.inputSearch === "邓紫棋"
       } else {
         this.axios
           .post(
