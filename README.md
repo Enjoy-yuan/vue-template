@@ -4,7 +4,7 @@
 
 ## Build Setup
 
-``` bash
+``` ba
 # install dependencies
 npm install
 234234
