@@ -5,7 +5,6 @@
 ## Build Setup
 
 ``` ba
-# install dependencies
 npm install
 234234
 # serve with hot reload at localhost:8080
