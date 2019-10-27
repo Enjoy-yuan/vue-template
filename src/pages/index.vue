@@ -52,7 +52,7 @@
         </div>
         <div class="item button-rainbow" style="--bg-color: #e74c3c;">
           <button>
-            关于我333
+            关于我333444
             <div class="rainbow"></div>
           </button>
           <div class="name">Rainbow</div>
