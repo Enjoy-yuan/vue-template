@@ -37,9 +37,13 @@
         ></el-pagination>
       </div>
     </div>
+    <div style="text-align:center;">
+      <el-button type="success" style="margin-top:20px;" @click="toggleLrc">显示/隐藏歌词</el-button>
+    </div>
+
     <div v-show="showLrc">
-      <div style="text-align:center;margin:40px auto;">
-        <div style="color:#67c23a;font-size:22px;height:30px;" id="lyricContainer"></div>
+      <div style="text-align:center;margin:30px auto;">
+        <div style="color:#67c23a;font-size:20px;height:30px;" id="lyricContainer"></div>
       </div>
       <div style="text-align:center;">
         <audio
@@ -71,32 +75,35 @@ export default {
     this.getSearch();
   },
   methods: {
+    toggleLrc() {
+      this.showLrc = !this.showLrc;
+    },
     handleCurrentChange() {
       this.getSearch();
     },
     parseLyric() {
-      var lyrics = this.mp3Lrc.split("\n");
-      var a = [];
-      var b = [];
-      for (var i = 0; i < lyrics.length; i++) {
-        var lyric = decodeURIComponent(lyrics[i]);
-        var timeReg = /\[\d*:\d*((\.|\:)\d*)*\]/g;
-        var timeRegExpArr = lyric.match(timeReg);
+      let lyrics = this.mp3Lrc.split("\n");
+      let a = [];
+      let b = [];
+      for (let i = 0; i < lyrics.length; i++) {
+        let lyric = decodeURIComponent(lyrics[i]);
+        let timeReg = /\[\d*:\d*((\.|\:)\d*)*\]/g;
+        let timeRegExpArr = lyric.match(timeReg);
         if (!timeRegExpArr) continue;
-        var clause = lyric.replace(timeReg, "");
-        for (var k = 0, h = timeRegExpArr.length; k < h; k++) {
-          var t = timeRegExpArr[k];
-          var min = Number(String(t.match(/\[\d*/i)).slice(1)),
+        let clause = lyric.replace(timeReg, "");
+        for (let k = 0, h = timeRegExpArr.length; k < h; k++) {
+          let t = timeRegExpArr[k];
+          let min = Number(String(t.match(/\[\d*/i)).slice(1)),
             sec = Number(String(t.match(/\:\d*/i)).slice(1));
-          var time = min * 60 + sec;
+          let time = min * 60 + sec;
           a.push(time);
           b.push(clause);
         }
       }
-      var audio = document.getElementById("myAudio");
-      var lyricContainer = document.getElementById("lyricContainer");
+      let audio = document.getElementById("myAudio");
+      let lyricContainer = document.getElementById("lyricContainer");
       audio.ontimeupdate = function(e) {
-        for (var i = 0, l = a.length; i < l; i++) {
+        for (let i = 0, l = a.length; i < l; i++) {
           if (this.currentTime > a[i]) {
             lyricContainer.innerText = b.slice(i, i + 1);
           }
