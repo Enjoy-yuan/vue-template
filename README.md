@@ -7,7 +7,7 @@
 ``` ba
 npm install
 234
-# serve with hot reload at localhost:8080
+# serve w hot reload at localhost:8080
 npm run dev23234234
 
 # build for production with minification
