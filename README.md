@@ -4,10 +4,6 @@
 
 ## Build Setup
 
-``` ba
-npm install hot reload at localhost:8080
-npm run dev23234234
-
 # build for production with minification
 npm run build
 
