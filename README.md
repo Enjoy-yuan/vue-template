@@ -6,5 +6,3 @@
 
 # build for production with minification
 npm run build
-
-# build for production and view th
