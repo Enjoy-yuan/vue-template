@@ -57,7 +57,7 @@
           </button>
           <div class="name">Rainbow</div>
         </div>
-        <div class="item button-typewriter" style="--bg-color: #67C23A;">
+        <!-- <div class="item button-typewriter" style="--bg-color: #67C23A;">
           <div class="button__wrapper">
             <button>
               <a href>add1</a>
@@ -71,7 +71,7 @@
             <div class="hands"></div>
           </button>
           <div class="name">Handsy</div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
