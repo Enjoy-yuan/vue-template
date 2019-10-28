@@ -31,7 +31,7 @@
         </div>
         <div class="item button-100" style="--bg-color:#2ecc71;">
           <button>
-            <a href="">赏图</a>
+            <a href>赏图</a>
             <div class="emoji"></div>
             <div class="emoji"></div>
             <div class="emoji"></div>
@@ -40,7 +40,7 @@
         </div>
         <div class="item button-parrot" style="--bg-color: #3498db;">
           <button>
-            <a href="">博客</a>
+            <a href>博客</a>
             <div class="parrot"></div>
             <div class="parrot"></div>
             <div class="parrot"></div>
@@ -57,21 +57,21 @@
           </button>
           <div class="name">Rainbow</div>
         </div>
-        <!-- <div class="item button-typewriter" style="--bg-color: #e74c3c;">
+        <div class="item button-typewriter" style="--bg-color: #e74c3c;">
           <div class="button__wrapper">
             <button>
-              <p>    <router-link to="/photo">赏图</router-link></p>
+              <a href>add1</a>
             </button>
           </div>
           <div class="name">Typewriter</div>
         </div>
         <div class="item button-hand" style="--bg-color: #3498db;">
           <button>
-                <a href>博客</a>
+            <a href>add2</a>
             <div class="hands"></div>
           </button>
           <div class="name">Handsy</div>
-        </div>-->
+        </div>
       </div>
     </div>
   </div>
