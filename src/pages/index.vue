@@ -83,10 +83,10 @@ export default {
     return {};
   },
   created() {
-    this.axios.get("https://www.fastmock.site/mock/bd4c7350e8ae2e43106434d34cf488ba/api/test")
-    .then(res=>{
-      console.log(res)
-    })
+    // this.axios.get("https://www.fastmock.site/mock/bd4c7350e8ae2e43106434d34cf488ba/api/test")
+    // .then(res=>{
+    //   console.log(res)
+    // })
   },
 };
 </script>
