@@ -2,12 +2,16 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/pages'
 import Music from '@/pages/music'
-import Movie from '@/pages/movie'
+// import Movie from '@/pages/movie'
 import Book from '@/pages/book'
 import Photo from '@/pages/photo'
 
 
+
 Vue.use(Router)
+
+const Movie = () => import(/* webpackChunkName: "group-foo" */ '../pages/movie')
+
 
 export default new Router({
   mode: "history",
@@ -32,7 +36,7 @@ export default new Router({
     {
       path: '/movie',
       name: 'Movie',
-      component:() => import('@/pages/Movie/index.vue')
+      component:Movie
     },
     {
       path: '/book',
