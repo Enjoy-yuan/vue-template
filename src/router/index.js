@@ -32,8 +32,7 @@ export default new Router({
     {
       path: '/movie',
       name: 'Movie',
-      component: Music
-      // () => import(/* webpackChunkName: "movie" */  '@/pages/Movie/index.vue')
+      component:() => import('@/pages/Movie/index.vue')
     },
     {
       path: '/book',
