@@ -1,18 +1,18 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/pages'
+// import Home from '@/pages'
 // import Music from '@/pages/music'
 // import Movie from '@/pages/movie'
-import Book from '@/pages/book'
-import Photo from '@/pages/photo'
+// import Book from '@/pages/book'
+// import Photo from '@/pages/photo'
 
 
 
 Vue.use(Router)
 
-const Music = () => import(/* webpackChunkName: "music" */ '../pages/music')
-const Movie = () => import(/* webpackChunkName: "movie" */ '../pages/movie')
-
+const Home = () => import( /* webpackChunkName: "home" */ '@/pages')
+const Music = () => import( /* webpackChunkName: "music" */ '@/pages/music')
+const Movie = () => import( /* webpackChunkName: "movie" */ '@/pages/movie')
 
 export default new Router({
   mode: "history",
@@ -20,30 +20,26 @@ export default new Router({
       path: '/',
       name: 'Home',
       component: Home
-      // () => import(/* webpackChunkName: "home" */ '@/pages/index.vue')
-    },
-    {
-      path: '/photo',
-      name: 'Photo',
-      component: Photo
-      // () => import(/* webpackChunkName: "photo" */ '@/pages/Photo/index.vue')
     },
     {
       path: '/music',
       name: 'Music',
-      component: Music
-      // () => import(/* webpackChunkName: "music" */  '@/pages/Music/index.vue')
+      component: Movie
     },
     {
       path: '/movie',
       name: 'Movie',
-      component:Movie
+      component: Music
     },
     {
       path: '/book',
       name: 'Book',
       component: Music
-      // () => import(/* webpackChunkName: "book" */  '@/pages/Book/index.vue')
+    },
+    {
+      path: '/photo',
+      name: 'Photo',
+      component: () => import( /* webpackChunkName: "music" */ '@/pages/music')
     }
   ]
 })
