@@ -27,22 +27,22 @@ export default new Router({
     {
       path: '/music',
       name: 'Music',
-      component: Music
+      component: () => import( /* webpackChunkName: "music" */ '@/pages/music')
     },
     {
       path: '/movie',
       name: 'Movie',
-      component: Movie
+      component: () => import( /* webpackChunkName: "movie" */ '@/pages/movie')
     },
     {
       path: '/book',
       name: 'Book',
-      component: Book
+      component: () => import( /* webpackChunkName: "book" */ '@/pages/book')
     },
     {
       path: '/photo',
       name: 'Photo',
-      component: () => import( /* webpackChunkName: "music" */ '@/pages/music')
+      component: () => import( /* webpackChunkName: "photo" */ '@/pages/photo')
     }
   ]
 })
