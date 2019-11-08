@@ -13,6 +13,9 @@ Vue.use(Router)
 const Home = () => import( /* webpackChunkName: "home" */ '@/pages')
 const Music = () => import( /* webpackChunkName: "music" */ '@/pages/music')
 const Movie = () => import( /* webpackChunkName: "movie" */ '@/pages/movie')
+const Book = () => import( /* webpackChunkName: "book" */ '@/pages/book')
+const Photo = () => import( /* webpackChunkName: "photo" */ '@/pages/photo')
+// const Movie = () => import( /* webpackChunkName: "movie" */ '@/pages/movie')
 
 export default new Router({
   mode: "history",
@@ -24,17 +27,17 @@ export default new Router({
     {
       path: '/music',
       name: 'Music',
-      component: Movie
+      component: Music
     },
     {
       path: '/movie',
       name: 'Movie',
-      component: Music
+      component: Movie
     },
     {
       path: '/book',
       name: 'Book',
-      component: Music
+      component: Book
     },
     {
       path: '/photo',

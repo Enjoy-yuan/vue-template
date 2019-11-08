@@ -31,7 +31,7 @@
         </div>
         <div class="item button-100" style="--bg-color:#2ecc71;">
           <button>
-            <a href>赏图</a>
+            <a href="/photo">赏图</a>
             <div class="emoji"></div>
             <div class="emoji"></div>
             <div class="emoji"></div>
@@ -52,7 +52,7 @@
         </div>
         <div class="item button-rainbow" style="--bg-color: #e74c3c;">
           <button>
-            关于
+            <a href>关于</a>
             <div class="rainbow"></div>
           </button>
           <div class="name">Rainbow</div>
