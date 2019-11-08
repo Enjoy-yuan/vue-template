@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/pages'
-import Music from '@/pages/music'
+// import Music from '@/pages/music'
 // import Movie from '@/pages/movie'
 import Book from '@/pages/book'
 import Photo from '@/pages/photo'
@@ -10,7 +10,8 @@ import Photo from '@/pages/photo'
 
 Vue.use(Router)
 
-const Movie = () => import(/* webpackChunkName: "group-foo" */ '../pages/movie')
+const Music = () => import(/* webpackChunkName: "music" */ '../pages/music')
+const Movie = () => import(/* webpackChunkName: "movie" */ '../pages/movie')
 
 
 export default new Router({
