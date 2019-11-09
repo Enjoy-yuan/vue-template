@@ -1,21 +1,14 @@
 <template>
-  <div>
-movie
-<el-button type="success">777</el-button>
-  </div>
+  <div>movie</div>
 </template>
 
 <script>
 export default {
-  data () {
-    return {
-
-    }
+  data() {
+    return {};
   }
-}
+};
 </script>
 
 <style scoped>
-
- 
 </style>
