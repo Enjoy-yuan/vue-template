@@ -8,6 +8,18 @@
           </button>
           <div class="name">Subtlety</div>
         </div>
+        <div class="item button-parrot" style="--bg-color: #3498db;">
+          <button>
+            <a href=“https://enjoy-yuan.github.io/”>博客</a>
+            <div class="parrot"></div>
+            <div class="parrot"></div>
+            <div class="parrot"></div>
+            <div class="parrot"></div>
+            <div class="parrot"></div>
+            <div class="parrot"></div>
+          </button>
+          <div class="name">Encouragement</div>
+        </div>
         <div class="item button-pulse" style="--bg-color: #e67e22;">
           <div class="button__wrapper">
             <div class="pulsing"></div>
@@ -38,18 +50,7 @@
           </button>
           <div class="name">You're 💯</div>
         </div>
-        <div class="item button-parrot" style="--bg-color: #3498db;">
-          <button>
-            <a href>博客</a>
-            <div class="parrot"></div>
-            <div class="parrot"></div>
-            <div class="parrot"></div>
-            <div class="parrot"></div>
-            <div class="parrot"></div>
-            <div class="parrot"></div>
-          </button>
-          <div class="name">Encouragement</div>
-        </div>
+        
         <div class="item button-rainbow" style="--bg-color: #e74c3c;">
           <button>
             <a href>关于</a>
