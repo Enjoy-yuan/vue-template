@@ -10,7 +10,7 @@
         </div>
         <div class="item button-parrot" style="--bg-color: #3498db;">
           <button>
-            <a href=“https://enjoy-yuan.github.io/”>博客</a>
+            <a href="https://enjoy-yuan.github.io/">博客</a>
             <div class="parrot"></div>
             <div class="parrot"></div>
             <div class="parrot"></div>
