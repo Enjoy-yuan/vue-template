@@ -7,4 +7,4 @@ npm run ser
 ### Compi
 
 ### Customize configuration
-See [Configuration Refe
+See [Configuration R
