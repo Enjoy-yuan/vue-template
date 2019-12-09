@@ -7,9 +7,7 @@ npm run ser
 ### Compiles and minifies for production
 ```
 npm run build
-```
-
-### Lints and fixes files
+```es
 ```
 npm run lint
 ```
