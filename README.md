@@ -4,10 +4,7 @@
 ```
 npm run ser
 
-### Compiles and minifies for production
-```
-npm run lint
-```
+### Compi
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
