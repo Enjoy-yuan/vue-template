@@ -18,7 +18,9 @@
           v-for="(item, index) in inputSearchData"
           :key="index"
         >
-          <template v-if="index + 1 + (currentPage - 1) * 20 < 10">0{{ index + 1 + (currentPage - 1) * 20 }}.</template>
+          <template v-if="index + 1 + (currentPage - 1) * 20 < 10"
+            >0{{ index + 1 + (currentPage - 1) * 20 }}.</template
+          >
           <template v-else>{{ index + 1 + (currentPage - 1) * 20 }}.</template>
           <span>{{ item.name }}</span>
           <i
