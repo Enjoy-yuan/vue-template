@@ -4,13 +4,13 @@ module.exports = {
   productionSourceMap: false, // build时不生成.map文件
   configureWebpack: config => {
     // 配置CDN加速
-    config.externals = {
-      vue: "Vue",
-      "vue-router": "VueRouter",
-      axios: "axios",
-      "element-ui": "ELEMENT",
-      Vuex: "Vuex"
-    };
+    // config.externals = {
+    //   vue: "Vue",
+    //   "vue-router": "VueRouter",
+    //   axios: "axios",
+    //   "element-ui": "ELEMENT",
+    //   Vuex: "Vuex"
+    // };
     // 生产环境才生效
     if (process.env.NODE_ENV === "production") {
       // 配置gzip压缩
