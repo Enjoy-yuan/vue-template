@@ -19,9 +19,9 @@ module.exports = {
           // 正在匹配需要压缩的文件后缀
           test: /\.(js|css|svg|woff|ttf|json|html)$/,
           // 大于10kb的会压缩
-          threshold: 10240,
+          threshold: 10240
           // 删除原文件
-          deleteOriginalAssets: true
+          // deleteOriginalAssets: true
         })
       );
     }
@@ -29,11 +29,11 @@ module.exports = {
   devServer: {
     // 设置api跨域代理
     proxy: {
-      '/api': {
-        target: 'http://music.163.com/api',
+      "/api": {
+        target: "http://music.163.com/api",
         changeOrigin: true,
         pathRewrite: {
-          '^/api': '/'
+          "^/api": "/"
         }
       }
     }
