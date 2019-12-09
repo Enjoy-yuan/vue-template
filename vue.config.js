@@ -14,16 +14,16 @@ module.exports = {
     // 生产环境才生效
     if (process.env.NODE_ENV === "production") {
       // 配置gzip压缩
-      config.plugins.push(
-        new CompressionWebpackPlugin({
-          // 正在匹配需要压缩的文件后缀
-          test: /\.(js|css|svg|woff|ttf|json|html)$/,
+      // config.plugins.push(
+      //   new CompressionWebpackPlugin({
+      //     // 正在匹配需要压缩的文件后缀
+      //     test: /\.(js|css|svg|woff|ttf|json|html)$/,
           // 大于10kb的会压缩
           // threshold: 10240
           // 删除原文件
           // deleteOriginalAssets: true
-        })
-      );
+        // })
+      // );
     }
   },
   devServer: {
