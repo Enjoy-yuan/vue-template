@@ -23,7 +23,11 @@
           >
           <template v-else>{{ index + 1 + (currentPage - 1) * 20 }}.</template>
           <span>{{ item.name }}</span>
-          <i class="el-icon-video-play" style="color:#F56C6C" @click="mp3Play(index)"></i>
+          <i
+            class="el-icon-video-play"
+            style="color:#F56C6C"
+            @click="mp3Play(index)"
+          ></i>
 
           <span style="float:right;">{{ item.artists[0].name }}</span>
         </li>
@@ -48,7 +52,10 @@
 
     <div v-show="showLrc">
       <div style="text-align:center;margin:30px auto;">
-        <div style="color:#67c23a;font-size:20px;height:30px;" id="lyricContainer"></div>
+        <div
+          style="color:#67c23a;font-size:20px;height:30px;"
+          id="lyricContainer"
+        ></div>
       </div>
       <div style="text-align:center;">
         <audio
@@ -132,9 +139,8 @@ export default {
       } else {
         this.axios
           .post(
-            `/api/search/pc?type=1&offset=${(this.currentPage - 1) * 20}&limit=20&s=${
-              this.inputSearch
-            }`
+            `/api/search/pc?type=1&offset=${(this.currentPage - 1) *
+              20}&limit=20&s=${this.inputSearch}`
           )
           .then(res => {
             this.mp3Id = [];

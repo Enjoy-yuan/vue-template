@@ -3,14 +3,13 @@ import VueRouter from "vue-router";
 
 Vue.use(VueRouter);
 
-const Home = () => import(/* webpackChunkName: "home" */ "../views/Home.vue");
-const Music = () => import(/* webpackChunkName: "music" */ "../views/Music.vue");
-const Movie = () => import(/* webpackChunkName: "movie" */ "../views/Movie.vue");
-const Book = () => import(/* webpackChunkName: "book" */ "../views/Book.vue");
-const Photo = () => import(/* webpackChunkName: "photo" */ "../views/Photo.vue");
+const Home = () => import( /* webpackChunkName: "home" */ "@/views/Home.vue");
+const Music = () => import( /* webpackChunkName: "music" */ "@/views/Music.vue");
+const Movie = () => import( /* webpackChunkName: "movie" */ "@/views/Movie.vue");
+const Book = () => import( /* webpackChunkName: "book" */ "@/views/Book.vue");
+const Photo = () => import( /* webpackChunkName: "photo" */ "@/views/Photo.vue");
 
-const routes = [
-  {
+const routes = [{
     path: "/",
     name: "home",
     component: Home
