@@ -21,7 +21,7 @@ module.exports = {
           // 大于10kb的会压缩
           threshold: 10240,
           // 删除原文件
-          //   deleteOriginalAssets: true
+          deleteOriginalAssets: true
         })
       );
     }
