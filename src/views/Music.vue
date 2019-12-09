@@ -15,17 +15,20 @@
         <li
           class="hover-color"
           style="padding:10px;"
-          v-for="(item,index) in inputSearchData"
+          v-for="(item, index) in inputSearchData"
           :key="index"
         >
-          <template v-if="(index+1+(currentPage-1)*20)<10">0{{index+1+(currentPage-1)*20}}.</template>
-          <template v-else>{{index+1+(currentPage-1)*20}}.</template>
-          <span>{{item.name}}</span>
+          <template v-if="index + 1 + (currentPage - 1) * 20 < 10"
+            >0{{ index + 1 + (currentPage - 1) * 20 }}.</template
+          >
+          <template v-else>{{ index + 1 + (currentPage - 1) * 20 }}.</template>
+          <span>{{ item.name }}</span>
           <i class="el-icon-video-play" style="color:#F56C6C" @click="mp3Play(index)"></i>
 
-          <span style="float:right;">{{item.artists[0].name}}</span>
+          <span style="float:right;">{{ item.artists[0].name }}</span>
         </li>
       </ul>
+
       <div style="text-align:center;margin-top:10px;">
         <el-pagination
           background
@@ -38,7 +41,9 @@
       </div>
     </div>
     <div style="text-align:center;">
-      <el-button type="success" style="margin-top:20px;" @click="toggleLrc">显示/隐藏歌词</el-button>
+      <el-button type="success" style="margin-top:20px;" @click="toggleLrc"
+        >显示/隐藏歌词</el-button
+      >
     </div>
 
     <div v-show="showLrc">
@@ -58,6 +63,7 @@
     </div>
   </div>
 </template>
+
 <script>
 export default {
   data() {
@@ -126,8 +132,9 @@ export default {
       } else {
         this.axios
           .post(
-            `/api/search/pc?type=1&offset=${(this.currentPage - 1) *
-              20}&limit=20&s=${this.inputSearch}`
+            `/api/search/pc?type=1&offset=${(this.currentPage - 1) * 20}&limit=20&s=${
+              this.inputSearch
+            }`
           )
           .then(res => {
             this.mp3Id = [];

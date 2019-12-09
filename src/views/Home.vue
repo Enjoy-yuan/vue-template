@@ -50,7 +50,7 @@
           </button>
           <div class="name">You're 💯</div>
         </div>
-        
+
         <div class="item button-rainbow" style="--bg-color: #e74c3c;">
           <button>
             <a href>关于</a>
@@ -88,7 +88,7 @@ export default {
     // .then(res=>{
     //   console.log(res)
     // })
-  },
+  }
 };
 </script>
 

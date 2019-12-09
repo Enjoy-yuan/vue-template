@@ -6,10 +6,8 @@
 
 <script>
 export default {
-  name: "App",
-  created(){
-    console.log(process.env.BASE_API)
+  created() {
+    console.log(process.env.BASE_API);
   }
 };
-
 </script>
