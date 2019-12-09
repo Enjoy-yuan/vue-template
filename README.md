@@ -6,4 +6,4 @@ npm run ser
 
 ### Compi
 
-### Customize config
+### Customize confi
