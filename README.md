@@ -2,8 +2,7 @@
 
 ## Project setup
 ```
-npm run serve
-```
+npm run ser
 
 ### Compiles and minifies for production
 ```
