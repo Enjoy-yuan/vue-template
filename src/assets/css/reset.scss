@@ -1,0 +1,259 @@
+/* 重置css样式 */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* 重置字体大小及背景色 */
+html {
+  background-color: #f0f2f5;
+  font-size: 14px;
+  height: 100%;
+  font-family: cursive;
+}
+
+/* 重置line-height为1.5 */
+body {
+  line-height: 1.5;
+  height: 100%;
+}
+
+/* 重置h1-h6文字大小 */
+h1 {
+  font-size: 30px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 20px;
+  text-align: center;
+}
+
+h3 {
+  font-size: 18px;
+  text-align: center;
+}
+
+h4 {
+  font-size: 16px;
+  text-align: center;
+}
+
+h5 {
+  font-size: 14px;
+  text-align: center;
+}
+
+h6 {
+  font-size: 12px;
+  text-align: center;
+}
+
+/* 将所有元素设置成边框盒 */
+* {
+  box-sizing: border-box;
+}
+
+/* a链接去除默认样式 */
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+/* li去掉小圆点 */
+li {
+  list-style: none;
+}
+
+/* 宽度1200px */
+.width-1200 {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+/* flex布局 */
+.flex {
+  display: flex;
+}
+
+/* 垂直居中 */
+.align-item-center {
+  align-items: center;
+}
+
+/* 水平居中 */
+.justify-content-center {
+  justify-content: center;
+}
+
+/* 默认换行 */
+.flex-wrap-wrap {
+  flex-wrap: wrap;
+}
+
+/* 文字水平居中 */
+.text-align-center {
+  text-align: center;
+}
+
+/* 块级元素水平居中 */
+.margin-0-auto {
+  display: block;
+  margin: 0 auto
+}
+
+/* 清除浮动 */
+.clearfloat::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/* 文字下划线延展动画(只能是a或span标签) */
+.text-underline {
+  position: relative;
+  text-decoration: none;
+}
+
+.text-underline:before {
+  transition: all 0.3s ease-in-out;
+  position: absolute;
+  right: 50%;
+  left: 50%;
+  bottom: -3px;
+  display: block;
+  height: 1px;
+  background-color: #fff;
+  content: '';
+}
+
+.text-underline:hover:before {
+  right: 0;
+  left: 0;
+}
