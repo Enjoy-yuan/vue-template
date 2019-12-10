@@ -1,6 +1,5 @@
 <template>
   <div>
-    666
     <div class="htmleaf-container">
       <div class="main-content">
         <div class="item button-jittery" style="--bg-color: #f1c40f;">

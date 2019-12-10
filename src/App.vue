@@ -6,8 +6,8 @@
 
 <script>
 export default {
-  // created() {
-  //   console.log(999);
-  // }
+  created() {
+    console.log(666);
+  }
 };
 </script>
