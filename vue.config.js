@@ -19,9 +19,9 @@ module.exports = {
           // 正在匹配需要压缩的文件后缀
           test: /\.(js|css|svg|woff|ttf|json|html)$/,
           // 大于10kb的会压缩
-          threshold: 10240,
-          // 删除原文件
-          deleteOriginalAssets: true
+          threshold: 10240
+          // 删除原文件，加此行报错 Unexpected token '<'
+          // deleteOriginalAssets: true
         })
       );
     }
