@@ -6,8 +6,10 @@
 
 <script>
 export default {
-  // created() {
-  //   console.log(999);
-  // }
+  created() {
+    setTimeout(() => {
+      console.log(666)
+    }, 3000);
+  }
 };
 </script>
