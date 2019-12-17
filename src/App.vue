@@ -6,10 +6,17 @@
 
 <script>
 export default {
+  beforeCreate() {
+    console.log(333)
+  },
   created() {
-    setTimeout(() => {
-      console.log(666)
-    }, 3000);
-  }
+    console.log(444)
+  },
+  beforeMount() {
+    console.log(555)
+  },
+  mounted() {
+    console.log(666)
+  },
 };
 </script>
