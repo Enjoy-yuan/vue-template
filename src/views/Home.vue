@@ -83,11 +83,21 @@ export default {
   data() {
     return {};
   },
-  created() {
+  mounted() {
+    // let aaa = document.createElement("script");
+    // aaa.type = "text/javascript";
+    // aaa.src = 'https://recaptcha.net/recaptcha/api.js?onload=+window.fn';
+    // document.body.appendChild(aaa);
+    // this.fn();
     // this.axios.get("https://www.fastmock.site/mock/bd4c7350e8ae2e43106434d34cf488ba/api/test")
     // .then(res=>{
     //   console.log(res)
     // })
+  },
+  methods: {
+    // fn() {
+    //   console.log("kkkk");
+    // }
   }
 };
 </script>
