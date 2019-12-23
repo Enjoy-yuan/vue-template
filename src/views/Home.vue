@@ -52,9 +52,13 @@
         </div>
 
         <div class="item button-rainbow" style="--bg-color: #e74c3c;">
-          <button>
-            <a href>关于</a>
+          <!-- <button>
+            <router-link to="/about">关于</router-link>
             <div class="rainbow"></div>
+          </button>
+          <div class="name">Rainbow</div> -->
+          <button>
+            <a href="/about">关于</a>
           </button>
           <div class="name">Rainbow</div>
         </div>

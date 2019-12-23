@@ -8,6 +8,7 @@ const Music = () => import(/* webpackChunkName: "music" */ "@/views/Music.vue");
 const Movie = () => import(/* webpackChunkName: "movie" */ "@/views/Movie.vue");
 const Book = () => import(/* webpackChunkName: "book" */ "@/views/Book.vue");
 const Photo = () => import(/* webpackChunkName: "photo" */ "@/views/Photo.vue");
+const About = () => import(/* webpackChunkName: "about" */ "@/views/About.vue");
 
 const routes = [
   {
@@ -34,6 +35,11 @@ const routes = [
     path: "/photo",
     name: "photo",
     component: Photo
+  },
+  {
+    path: "/about",
+    name: "about",
+    component: About
   }
 ];
 
