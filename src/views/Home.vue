@@ -20,18 +20,29 @@
           </button>
           <div class="name">Encouragement</div>
         </div>
+        <div class="item button-rainbow" style="--bg-color: #e74c3c;">
+          <!-- <button>
+            <router-link to="/about">关于</router-link>
+            <div class="rainbow"></div>
+          </button>
+          <div class="name">Rainbow</div> -->
+          <button>
+            <a href="/about">介绍</a>
+          </button>
+          <div class="name">Rainbow</div>
+        </div>
         <div class="item button-pulse" style="--bg-color: #e67e22;">
           <div class="button__wrapper">
             <div class="pulsing"></div>
             <button>
-              <router-link to="/movie">观影</router-link>
+              <router-link to="/shop1">商城前台</router-link>
             </button>
           </div>
           <div class="name">Dubstep</div>
         </div>
         <div class="item button-pressure" style="--bg-color: #9b59b6;">
           <button>
-            <router-link to="/book">看书</router-link>
+            <router-link to="/shop2">商城管理</router-link>
             <marquee scrollamount="12">
               <span>Your friends would do it.</span>
               <span>Your mum would be proud.</span>
@@ -43,7 +54,7 @@
         </div>
         <div class="item button-100" style="--bg-color:#2ecc71;">
           <button>
-            <a href="/photo">赏图</a>
+            <a href="/shop3">商城API</a>
             <div class="emoji"></div>
             <div class="emoji"></div>
             <div class="emoji"></div>
@@ -51,17 +62,6 @@
           <div class="name">You're 💯</div>
         </div>
 
-        <div class="item button-rainbow" style="--bg-color: #e74c3c;">
-          <!-- <button>
-            <router-link to="/about">关于</router-link>
-            <div class="rainbow"></div>
-          </button>
-          <div class="name">Rainbow</div> -->
-          <button>
-            <a href="/about">关于</a>
-          </button>
-          <div class="name">Rainbow</div>
-        </div>
         <!-- <div class="item button-typewriter" style="--bg-color: #67C23A;">
           <div class="button__wrapper">
             <button>
