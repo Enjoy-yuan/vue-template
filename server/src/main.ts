@@ -12,8 +12,10 @@ async function bootstrap() {
     .setVersion('1.0')
     .build();
   const document = SwaggerModule.createDocument(app, options);
-  SwaggerModule.setup('api-docs', app, document);
+  SwaggerModule.setup('api', app, document);
 
-  await app.listen(3000);
+  await app.listen(3000,()=>{
+    console.log("文档地址：http://localhost:3000/api/")
+  });
 }
 bootstrap();
