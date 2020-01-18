@@ -35,14 +35,14 @@
           <div class="button__wrapper">
             <div class="pulsing"></div>
             <button>
-              <router-link to="/shop1">商城前台</router-link>
+              <router-link to="">商城前台</router-link>
             </button>
           </div>
           <div class="name">Dubstep</div>
         </div>
         <div class="item button-pressure" style="--bg-color: #9b59b6;">
           <button>
-            <router-link to="/shop2">商城管理</router-link>
+            <router-link to="">商城管理</router-link>
             <marquee scrollamount="12">
               <span>Your friends would do it.</span>
               <span>Your mum would be proud.</span>
@@ -54,7 +54,7 @@
         </div>
         <div class="item button-100" style="--bg-color:#2ecc71;">
           <button>
-            <a href="/shop3">商城API</a>
+            <router-link to="">商城API</router-link>
             <div class="emoji"></div>
             <div class="emoji"></div>
             <div class="emoji"></div>

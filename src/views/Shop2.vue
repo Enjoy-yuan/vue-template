@@ -1,7 +1,11 @@
 <template>
   <div>
     <div id="shop">
-      <p style="font-size: 20px;color:#67C23A;margin-top: 20px;margin-bottom: 20px;">全部商品如下：</p> 
+      <p
+        style="font-size: 20px;color:#67C23A;margin-top: 20px;margin-bottom: 20px;"
+      >
+        全部商品如下：
+      </p>
       <el-table :data="tableData" border style="width: 100%">
         <el-table-column prop="date" label="日期" width="180">
         </el-table-column>
@@ -28,7 +32,6 @@
         @click="add"
         >添加商品</el-button
       >
-
     </div>
   </div>
 </template>
@@ -73,7 +76,7 @@ export default {
 </script>
 
 <style scoped>
-#shop{
+#shop {
   text-align: center;
 }
 </style>
