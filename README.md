@@ -1,9 +1,6 @@
-# aaa
+# try-elementui
 
-## Project setup
-```
-npm run ser
+## 启动项目
 
-### Compi
-
-### Customize confi
+- 安装依赖：cnpm/npm i
+- 本地启动：npm run serve
