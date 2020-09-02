@@ -1,52 +1,72 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
-
-Vue.use(VueRouter);
-
-const Home = () => import(/* webpackChunkName: "home" */ "@/views/Home.vue");
-const Music = () => import(/* webpackChunkName: "music" */ "@/views/Music.vue");
-const Shop1 = () => import(/* webpackChunkName: "Shop1" */ "@/views/Shop1.vue");
-const Shop2 = () => import(/* webpackChunkName: "Shop2" */ "@/views/Shop2.vue");
-const Shop3 = () => import(/* webpackChunkName: "Shop3" */ "@/views/Shop3.vue");
-const About = () => import(/* webpackChunkName: "about" */ "@/views/About.vue");
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+Vue.use(VueRouter)
 
 const routes = [
+  { path: '/', redirect: '/login' },
+  { path: '/login', name: 'login', component: () => import(/* webpackChunkName: "Login" */ '@/views/Login') },
+  { path: '*', name: 'NotFound', component: () => import(/* webpackChunkName: "NotFound" */ '@/views/Error') },
   {
-    path: "/",
-    name: "home",
-    component: Home
-  },
-  {
-    path: "/music",
-    name: "music",
-    component: Music
-  },
-  {
-    path: "/Shop1",
-    name: "Shop1",
-    component: Shop1
-  },
-  {
-    path: "/Shop2",
-    name: "Shop2",
-    component: Shop2
-  },
-  {
-    path: "/Shop3",
-    name: "Shop3",
-    component: Shop3
-  },
-  {
-    path: "/about",
-    name: "about",
-    component: About
+    path: '/layout',
+    component: () => import(/* webpackChunkName: "Layout" */ '@/views/Layout'),
+    meta: {
+      requiresAuth: true
+    },
+    children: [
+      { path: '/', redirect: '/Home' },
+      { path: '/Home', name: 'Home', component: () => import(/* webpackChunkName: "Home" */ '@/views/Home') },
+      {
+        path: '/Test',
+        name: 'Test',
+        component: () => import(/* webpackChunkName: "Test" */ '@/views/Test')
+      },
+      {
+        path: '/example/table',
+        name: 'Table',
+        component: () => import(/* webpackChunkName: "Table" */ '@/views/Example/Table')
+      },
+      {
+        path: '/example/echart',
+        name: 'Echart',
+        component: () => import(/* webpackChunkName: "Echart" */ '@/views/Example/Echart')
+      },
+      {
+        path: '/example/clipboard',
+        name: 'Clipboard',
+        component: () => import(/* webpackChunkName: "Clipboard" */ '@/views/Example/Clipboard')
+      },
+      {
+        path: '/example/moment',
+        name: 'Moment',
+        component: () => import(/* webpackChunkName: "Moment" */ '@/views/Example/Moment')
+      },
+      {
+        path: '/example/tinymce',
+        name: 'Tinymce',
+        component: () => import(/* webpackChunkName: "Tinymce" */ '@/views/Example/Tinymce')
+      },
+      {
+        path: '/example/backtop',
+        name: 'Backtop',
+        component: () => import(/* webpackChunkName: "Backtop" */ '@/views/Example/Backtop')
+      },
+      {
+        path: '/menu1/menu3/menu4',
+        name: 'Menu4',
+        component: () => import(/* webpackChunkName: "Menu4" */ '@/views/Menu/Menu1/Menu3/Menu4')
+      },
+      {
+        path: '/Menu2',
+        name: 'Menu2',
+        component: () => import(/* webpackChunkName: "Menu2" */ '@/views/Menu/Menu2')
+      }
+    ]
   }
-];
-
+]
 const router = new VueRouter({
-  mode: "history",
+  mode: 'history',
   base: process.env.BASE_URL,
   routes
-});
+})
 
-export default router;
+export default router

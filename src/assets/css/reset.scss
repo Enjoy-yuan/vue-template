@@ -130,12 +130,11 @@ table {
   border-spacing: 0;
 }
 
-/* 重置字体大小及背景色 */
+/* 重置字体大小及颜色 */
 html {
-  background-color: #f0f2f5;
   font-size: 14px;
   height: 100%;
-  font-family: cursive;
+  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
 }
 
 /* 重置line-height为1.5 */
@@ -186,53 +185,9 @@ a {
   color: #000;
 }
 
-/* li去掉小圆点 */
-li {
-  list-style: none;
-}
-
-/* 宽度1200px */
-.width-1200 {
-  width: 1200px;
-  margin: 0 auto;
-}
-
 /* flex布局 */
 .flex {
   display: flex;
-}
-
-/* 垂直居中 */
-.align-item-center {
-  align-items: center;
-}
-
-/* 水平居中 */
-.justify-content-center {
-  justify-content: center;
-}
-
-/* 默认换行 */
-.flex-wrap-wrap {
-  flex-wrap: wrap;
-}
-
-/* 文字水平居中 */
-.text-align-center {
-  text-align: center;
-}
-
-/* 块级元素水平居中 */
-.margin-0-auto {
-  display: block;
-  margin: 0 auto
-}
-
-/* 清除浮动 */
-.clearfloat::after {
-  content: "";
-  display: block;
-  clear: both;
 }
 
 /* 文字下划线延展动画(只能是a或span标签) */

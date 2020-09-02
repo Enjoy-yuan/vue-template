@@ -1,6 +1,95 @@
-$--color-primary: #67C23A;
+$--color-primary: #67c23a;
 
 /* 改变 icon 字体路径变量，必需 */
 $--font-path: '~element-ui/lib/theme-chalk/fonts';
+@import '~element-ui/packages/theme-chalk/src/index';
 
-@import "~element-ui/packages/theme-chalk/src/index";
+// 修改进度条颜色
+#nprogress .bar {
+  background: #67c23a; //自定义颜色
+}
+
+#nprogress .spinner-icon {
+  border-top-color: #67c23a;
+  border-left-color: #67c23a;
+}
+
+// 菜单去间隙
+.el-menu-item-group__title {
+  padding: 0;
+}
+
+// 穿梭框宽度
+.el-transfer-panel {
+  width: 300px;
+}
+
+// 登录盒
+.login {
+  .el-input__inner {
+    line-height: 50px;
+    height: 50px;
+  }
+  .el-form-item__error {
+    margin-left: 200px;
+    font-size: 14px;
+  }
+}
+
+// layout菜单
+.el-menu-vertical-demo:not(.el-menu--collapse) {
+  width: 200px;
+  min-height: 600px;
+}
+
+// table 文字居中
+.el-table th.is-leaf,
+.el-table td {
+  text-align: center;
+}
+
+.el-table th > .cell {
+  text-align: center;
+}
+
+// 表头背景色及文字颜色
+.el-table thead.is-group th {
+  background-color: $--color-primary;
+  color: #fff;
+}
+
+// 头像上传
+.avatar-uploader .el-upload {
+  border: 1px dashed #d9d9d9;
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.avatar-uploader .el-upload:hover {
+  border-color: #67c23a;
+}
+.avatar-uploader-icon {
+  font-size: 28px;
+  color: #8c939d;
+  width: 178px;
+  height: 178px;
+  line-height: 178px;
+  text-align: center;
+}
+.avatar {
+  width: 318px;
+  height: 210px;
+  display: block;
+}
+
+// 设置默认宽度
+.el-input,
+.el-select {
+  width: 200px;
+}
+
+// 设置tag标签背景色
+.el-tag.el-tag--info {
+  background-color: #fff;
+}

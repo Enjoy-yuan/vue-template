@@ -1,19 +1,28 @@
-import Vue from "vue";
-import ElementUI from "element-ui";
-import store from "./store";
-import axios from "axios";
-import router from "./router";
-import App from "./App.vue";
-import "./assets/css/index.scss";
+import Vue from 'vue'
+import App from '@/App.vue'
+import router from '@/router'
+import store from '@/store'
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+import i18n from '@/lang'
+import api from '@/api'
+import '@/utils/mock'
+import '@/utils/permission'
+import '@/assets/css/index.scss'
+import '@/assets/icon/iconfont'
 
-Vue.prototype.axios = axios;
+Vue.prototype.$api = api
 
-Vue.use(ElementUI);
+// 设置国际化
+Vue.use(ElementUI, {
+  i18n: (key, value) => i18n.t(key, value)
+})
 
-Vue.config.productionTip = false;
+Vue.config.productionTip = false
 
 new Vue({
   router,
   store,
-  render: h => h(App)
-}).$mount("#app");
+  i18n,
+  render: (h) => h(App)
+}).$mount('#app')
