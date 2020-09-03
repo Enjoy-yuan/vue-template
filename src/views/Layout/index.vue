@@ -46,7 +46,6 @@ export default {
 .content {
   width: 100%;
   overflow: auto;
-  border: 1px solid #000;
   .router {
     padding: 10px 10px 0 10px;
   }
