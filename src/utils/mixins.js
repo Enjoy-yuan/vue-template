@@ -12,6 +12,9 @@ export let table = {
   },
   mounted() {
     this.$nextTick(() => {
+      // console.log(document.body.offsetHeight)
+      // console.log(document.body.clientHeight)
+      // console.log(document.body.scrollWidth)
       this.tableHeight = document.body.offsetHeight - this.$refs.table.offsetTop - 60
       // 监听窗口大小变化
       window.onresize = () => {

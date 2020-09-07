@@ -16,11 +16,6 @@ const routes = [
       { path: '/', redirect: '/Home' },
       { path: '/Home', name: 'Home', component: () => import(/* webpackChunkName: "Home" */ '@/views/Home') },
       {
-        path: '/Test',
-        name: 'Test',
-        component: () => import(/* webpackChunkName: "Test" */ '@/views/Test')
-      },
-      {
         path: '/example/table',
         name: 'Table',
         component: () => import(/* webpackChunkName: "Table" */ '@/views/Example/Table')
@@ -49,6 +44,16 @@ const routes = [
         path: '/example/backtop',
         name: 'Backtop',
         component: () => import(/* webpackChunkName: "Backtop" */ '@/views/Example/Backtop')
+      },
+      {
+        path: '/example/three',
+        name: 'Three',
+        component: () => import(/* webpackChunkName: "Three" */ '@/views/Example/Three')
+      },
+      {
+        path: '/example/test',
+        name: 'Test',
+        component: () => import(/* webpackChunkName: "Test" */ '@/views/Example/Test')
       },
       {
         path: '/menu1/menu3/menu4',

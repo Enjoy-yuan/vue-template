@@ -8,6 +8,8 @@ export default {
   moment: '时间格式化',
   tinymce: '富文本编辑器',
   backtop: '返回顶部',
+  three: 'web3D',
+  test: '测试',
 
   // 菜单动态路由
   menu: '菜单',
