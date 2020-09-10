@@ -41,7 +41,7 @@
         </el-dropdown>
       </div>
     </div>
-    <el-dialog v-el-drag-dialog title="歌曲播放" width="60%" center :visible.sync="dialogVisible">
+    <el-dialog title="歌曲播放" width="60%" center :visible.sync="dialogVisible">
       <Music></Music>
     </el-dialog>
   </div>

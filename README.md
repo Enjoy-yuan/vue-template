@@ -316,4 +316,12 @@ this.oContent.scrollTop
 
 ## 11.菜单点击报错
 
-- vue-router3.0 及以上版本，点击菜单可能报错
+- vue-router3.0 及以上版本，点击菜单可能报错，可更换为"^2.8.0"版本
+
+## 12.three 的使用
+
+- jsm 下的文件可直接使用 import 来进行引入
+
+```js
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+```
