@@ -30,6 +30,14 @@
         <el-menu-item index="/example/test">{{ $t('test') }}</el-menu-item>
         <el-menu-item index="/example/three">{{ $t('three') }}</el-menu-item>
       </el-submenu>
+      <el-submenu index="/three">
+        <template slot="title">
+          <i class="el-icon-menu"></i>
+          <span slot="title">{{ $t('three') }}</span>
+        </template>
+        <el-menu-item index="/three/music">{{ $t('music') }}</el-menu-item>
+        <el-menu-item index="/three/car">{{ $t('car') }}</el-menu-item>
+      </el-submenu>
       <Menutree :data="treeData" :isCollapse="isCollapse"></Menutree>
     </el-menu>
   </div>

@@ -4,7 +4,9 @@ Vue.use(VueRouter)
 
 const routes = [
   { path: '/', redirect: '/login' },
-  { path: '/login', name: 'login', component: () => import(/* webpackChunkName: "Login" */ '@/views/Login') },
+  { path: '/login', name: 'Login', component: () => import(/* webpackChunkName: "Login" */ '@/views/Login') },
+  { path: '/three/music', name: 'Music', component: () => import(/* webpackChunkName: "Music" */ '@/views/Three/Music') },
+  { path: '/three/car', name: 'Car', component: () => import(/* webpackChunkName: "Car" */ '@/views/Three/Car') },
   { path: '*', name: 'NotFound', component: () => import(/* webpackChunkName: "NotFound" */ '@/views/Error') },
   {
     path: '/layout',

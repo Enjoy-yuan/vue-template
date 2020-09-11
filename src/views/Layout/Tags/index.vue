@@ -85,11 +85,13 @@ export default {
         this.tags.map((item) => {
           item.type = 'info'
         })
-        this.tags.push({
-          name: key.split('/').pop(),
-          type: 'success',
-          url: key
-        })
+        if (!key.includes('/three/')) {
+          this.tags.push({
+            name: key.split('/').pop(),
+            type: 'success',
+            url: key
+          })
+        }
       } else {
         this.tags.map((item) => {
           item.type = 'info'
