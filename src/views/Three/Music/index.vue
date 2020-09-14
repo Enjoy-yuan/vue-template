@@ -69,7 +69,7 @@ export default {
 
     render()
     let controls = new OrbitControls(this.camera, renderer.domElement)
-    controls.addEventListener('change', render)
+    // controls.addEventListener('change', render)
   },
   methods: {
     playMusic() {

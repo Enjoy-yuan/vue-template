@@ -37,6 +37,8 @@
         <el-menu-item index="/three/car">小车</el-menu-item>
         <el-menu-item index="/three/feature">基本功能</el-menu-item>
         <el-menu-item index="/three/music">音频可视化</el-menu-item>
+        <el-menu-item index="/three/sprite">精灵粒子</el-menu-item>
+        <el-menu-item index="/three/panoramic">3D全景</el-menu-item>
         <el-menu-item index="/three/test">测试</el-menu-item>
       </el-submenu>
       <Menutree :data="treeData" :isCollapse="isCollapse"></Menutree>

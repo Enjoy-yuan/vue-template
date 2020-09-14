@@ -58,7 +58,8 @@ export default {
     init() {
       // 创建场景，相机
       this.scene = new THREE.Scene()
-      this.scene.background = new Color()
+      this.scene.background = new Color(0xb3cefb)
+    //   this.scene.background = new Color()
       this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight)
       this.camera.position.set(-70, 30, 0)
       // 添加光源

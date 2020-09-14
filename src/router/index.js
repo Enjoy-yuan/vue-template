@@ -8,6 +8,8 @@ const routes = [
   { path: '/three/music', name: 'Music', component: () => import(/* webpackChunkName: "Music" */ '@/views/Three/Music') },
   { path: '/three/car', name: 'Car', component: () => import(/* webpackChunkName: "Car" */ '@/views/Three/Car') },
   { path: '/three/feature', name: 'Feature', component: () => import(/* webpackChunkName: "Feature" */ '@/views/Three/Feature') },
+  { path: '/three/sprite', name: 'Sprite', component: () => import(/* webpackChunkName: "Sprite" */ '@/views/Three/Sprite') },
+  { path: '/three/panoramic', name: 'Panoramic', component: () => import(/* webpackChunkName: "Panoramic" */ '@/views/Three/Panoramic') },
   { path: '/three/test', name: 'Test', component: () => import(/* webpackChunkName: "Test" */ '@/views/Three/Test') },
   { path: '/stock/beijingchaojia', name: 'Beijingchaojia', component: () => import(/* webpackChunkName: "Beijingchaojia" */ '@/views/Stock/Beijingchaojia') },
   { path: '*', name: 'NotFound', component: () => import(/* webpackChunkName: "NotFound" */ '@/views/Error') },
@@ -52,7 +54,7 @@ const routes = [
       },
       {
         path: '/example/test',
-        name: 'Test',
+        name: 'ExampleTest',
         component: () => import(/* webpackChunkName: "Test" */ '@/views/Example/Test')
       },
       {
