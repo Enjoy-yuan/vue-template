@@ -28,15 +28,16 @@
         <el-menu-item index="/example/tinymce">{{ $t('tinymce') }}</el-menu-item>
         <el-menu-item index="/example/backtop">{{ $t('backtop') }}</el-menu-item>
         <el-menu-item index="/example/test">{{ $t('test') }}</el-menu-item>
-        <el-menu-item index="/example/three">{{ $t('three') }}</el-menu-item>
       </el-submenu>
       <el-submenu index="/three">
         <template slot="title">
           <i class="el-icon-menu"></i>
-          <span slot="title">{{ $t('three') }}</span>
+          <span slot="title">Threejs</span>
         </template>
-        <el-menu-item index="/three/music">{{ $t('music') }}</el-menu-item>
-        <el-menu-item index="/three/car">{{ $t('car') }}</el-menu-item>
+        <el-menu-item index="/three/car">小车</el-menu-item>
+        <el-menu-item index="/three/feature">基本功能</el-menu-item>
+        <el-menu-item index="/three/music">音频可视化</el-menu-item>
+        <el-menu-item index="/three/test">测试</el-menu-item>
       </el-submenu>
       <Menutree :data="treeData" :isCollapse="isCollapse"></Menutree>
     </el-menu>
@@ -62,12 +63,14 @@ export default {
     }
   },
   mounted() {
-    axios.post('/mock/api/getMenu', {
-      role: getCookie('username')
-    }).then((res) => {
-      this.treeData = dataToTree(res.data.catalog)
-      sessionStorage.setItem('menuData', JSON.stringify(this.treeData))
-    })
+    axios
+      .post('/mock/api/getMenu', {
+        role: getCookie('username')
+      })
+      .then((res) => {
+        this.treeData = dataToTree(res.data.catalog)
+        sessionStorage.setItem('menuData', JSON.stringify(this.treeData))
+      })
     // this.$api.getCatalog(getCookie('username')).then((res) => {
     //   this.treeData = dataToTree(res.data.catalogVMs)
     //   sessionStorage.setItem('menuData', JSON.stringify(this.treeData))
