@@ -12,25 +12,25 @@ export default {
   },
   mounted() {
     let scene = new THREE.Scene()
-    let texture = new THREE.TextureLoader().load(require('@img/logo.png') )
-    let group=new THREE.Group()
-    for (let i=0;i<400;i++){
-let spriteMaterial = new THREE.SpriteMaterial({
-    //   color: 0xff00ff,
-    //   rotation: Math.PI/4,
-      map: texture
-    })
-    let sprite = new THREE.Sprite(spriteMaterial)
-    group.add(sprite)
-    
-    sprite.scale.set(0.8, 1)
-    let k1=Math.random()-0.5
-    let k2=Math.random()
-    let k3=Math.random()-0.5
-    sprite.position.set(40*k1,20*k2,20*k3)
+    let texture = new THREE.TextureLoader().load(require('@img/logo.png'))
+    let group = new THREE.Group()
+    for (let i = 0; i < 400; i++) {
+      let spriteMaterial = new THREE.SpriteMaterial({
+        //   color: 0xff00ff,
+        //   rotation: Math.PI/4,
+        map: texture
+      })
+      let sprite = new THREE.Sprite(spriteMaterial)
+      group.add(sprite)
+
+      sprite.scale.set(0.8, 1)
+      let k1 = Math.random() - 0.5
+      let k2 = Math.random()
+      let k3 = Math.random() - 0.5
+      sprite.position.set(40 * k1, 20 * k2, 20 * k3)
     }
     scene.add(group)
-    
+
     // 添加点光源，参数分别是颜色和强度
     let point = new THREE.PointLight(0xffffff)
     point.position.set(400, 200, 300)
@@ -51,12 +51,12 @@ let spriteMaterial = new THREE.SpriteMaterial({
     oThree.appendChild(renderer.domElement)
 
     function render() {
-        group.children.map(item=>{
-            item.position.y-=0.1
-            if(item.position.y<0){
-                item.position.y=20
-            }
-        })
+      group.children.map((item) => {
+        item.position.y -= 0.1
+        if (item.position.y < 0) {
+          item.position.y = 20
+        }
+      })
       requestAnimationFrame(render)
       renderer.render(scene, camera)
     }

@@ -65,10 +65,10 @@ export default {
       this.floor = new THREE.Mesh(floorGeometry, floorMaterial)
       this.floor.rotation.x = -0.5 * Math.PI
       this.floor.position.y = -2
+      this.scene.add(this.floor)
     },
     // 添加参考坐标系
     addHelper() {
-      this.scene.add(this.floor)
       // 添加辅助坐标系
       this.scene.add(new THREE.AxesHelper(50))
       // 增加一个参照系网格
