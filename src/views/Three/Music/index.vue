@@ -31,7 +31,8 @@ export default {
     for (let i = 0; i < this.N / 2; i++) {
       var box = new THREE.BoxGeometry(2, 10, 2)
       var material = new THREE.MeshBasicMaterial({
-        color: 0xffff00
+        color: 0xffff00,
+        // emissive: 0xff0000
       })
       var mesh = new THREE.Mesh(box, material)
       mesh.position.set((i - this.N / 4) * 4, 0, 0)

@@ -27,7 +27,7 @@ export default {
       //   color: 0xff00ff
       // });
       let geometry = new THREE.BoxGeometry(20, 20, 20);
-        let material = new THREE.MeshNormalMaterial();
+      let material = new THREE.MeshNormalMaterial();
       var mesh2 = new THREE.Mesh(geometry, material); //网格模型对象Mesh
       // mesh2.translateX(120); //球体网格模型沿Y轴正方向平移120
       scene.add(mesh2);

@@ -6,8 +6,10 @@
 
 <script>
 import * as THREE from 'three'
+import Stats from 'three/examples/jsm/libs/stats.module'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import * as dat from 'dat.gui'
 
 export default {
   data() {
@@ -18,7 +20,9 @@ export default {
       renderer: null, // 渲染器
       mesh: null, // 网格模型
       floor: null, // 地板
-      point: null // 光源
+      point: null, // 光源
+      controlsGUI: {}, // 可视化调节属性
+      stats: null // 性能监控
     }
   },
 
@@ -37,14 +41,56 @@ export default {
     init() {
       // 创建场景
       this.scene = new THREE.Scene()
+      this.scene.fog = new THREE.Fog(0x409eff, 300, 1000)
+      this.initGUI()
+      this.addStats()
       this.addLight()
       this.addFloor()
-      this.addHelper()
       this.createCamera()
       this.createRender()
       this.addShadow()
       this.windowResize()
       this.creatControl()
+      this.addHelper()
+    },
+    // 可视化配置属性参数
+    initGUI() {
+      this.controlsGUI = {
+        rotationSpeedX: 0,
+        rotationSpeedY: 0,
+        rotationSpeedZ: 0,
+        floorColor: '#77f28f',
+        cameraX: 300,
+        cameraY: 300,
+        cameraZ: 300
+      }
+      let gui = new dat.GUI()
+      let f1 = gui.addFolder('旋转')
+      f1.add(this.controlsGUI, 'rotationSpeedX', 0, 5).name('绕X轴旋转')
+      f1.add(this.controlsGUI, 'rotationSpeedY', 0, 5).name('绕Y轴旋转')
+      f1.add(this.controlsGUI, 'rotationSpeedZ', 0, 5).name('绕Z轴旋转')
+      let f2 = gui.addFolder('颜色')
+      f2.addColor(this.controlsGUI, 'floorColor').name('地板颜色')
+      let f3 = gui.addFolder('摄像机')
+      let changeCameraX = f3.add(this.controlsGUI, 'cameraX', -1000, 1000).name('摄像机X坐标')
+      let changeCameraY = f3.add(this.controlsGUI, 'cameraY', -1000, 1000).name('摄像机Y坐标')
+      let changeCameraZ = f3.add(this.controlsGUI, 'cameraZ', -1000, 1000).name('摄像机Z坐标')
+      changeCameraX.onChange(() => {
+        this.camera.position.set(this.controlsGUI.cameraX, this.controlsGUI.cameraY, this.controlsGUI.cameraZ)
+        this.camera.lookAt(this.scene.position)
+      })
+      changeCameraY.onChange(() => {
+        this.camera.position.set(this.controlsGUI.cameraX, this.controlsGUI.cameraY, this.controlsGUI.cameraZ)
+        this.camera.lookAt(this.scene.position)
+      })
+      changeCameraZ.onChange(() => {
+        this.camera.position.set(this.controlsGUI.cameraX, this.controlsGUI.cameraY, this.controlsGUI.cameraZ)
+        this.camera.lookAt(this.scene.position)
+      })
+
+      // f1.open()
+      // f2.open()
+      // f3.open()
     },
     // 添加光源
     addLight() {
@@ -59,8 +105,10 @@ export default {
     // 添加一个地板的网格模型，参数分别是沿X轴和Y轴的宽度
     addFloor() {
       let floorGeometry = new THREE.PlaneGeometry(80, 80)
+      let that = this
+      // console.log(this.controlsGUI.floorColor)
       let floorMaterial = new THREE.MeshPhongMaterial({
-        color: 0x77f28f
+        color: that.controlsGUI.floorColor
       })
       this.floor = new THREE.Mesh(floorGeometry, floorMaterial)
       this.floor.rotation.x = -0.5 * Math.PI
@@ -76,13 +124,16 @@ export default {
       grid.material.opacity = 0.2
       grid.material.transparent = true
       this.scene.add(grid)
+      // 添加相机参考线
+      let cameraHelper = new THREE.CameraHelper(this.camera)
+      this.scene.add(cameraHelper)
     },
     // 创建相机对象
     createCamera() {
       let k = window.innerWidth / window.innerHeight
       let s = 20
       this.camera = new THREE.OrthographicCamera(-s * k, s * k, s, -s, 1, 1000)
-      this.camera.position.set(200, 300, 200)
+      this.camera.position.set(this.controlsGUI.cameraX, this.controlsGUI.cameraY, this.controlsGUI.cameraZ)
       this.camera.lookAt(this.scene.position)
     },
     // 创建渲染器
@@ -115,7 +166,7 @@ export default {
     windowResize() {
       window.onresize = () => {
         this.renderer.setSize(window.innerWidth, window.innerHeight)
-        k = window.innerWidth / window.innerHeight //窗口宽高比
+        let k = window.innerWidth / window.innerHeight //窗口宽高比
         this.camera.left = -s * k
         this.camera.right = s * k
         this.camera.top = s
@@ -126,10 +177,14 @@ export default {
     // 渲染场景
     render() {
       console.log('render')
+      this.stats.update()
+      this.floor.material.color.set(this.controlsGUI.floorColor)
+      // this.camera.position.set(this.controlsGUI.cameraX, this.controlsGUI.cameraY, this.controlsGUI.cameraZ)
+      // this.camera.lookAt(this.scene.position)
       requestAnimationFrame(this.render)
-      this.model.rotation.x += 0.02
-      this.model.rotation.y += 0.02
-      this.model.rotation.z += 0.02
+      this.model.rotation.x += this.controlsGUI.rotationSpeedX
+      this.model.rotation.y += this.controlsGUI.rotationSpeedY
+      this.model.rotation.z += this.controlsGUI.rotationSpeedZ
       this.renderer.render(this.scene, this.camera)
     },
     // 鼠标控制
@@ -137,6 +192,13 @@ export default {
       let controls = new OrbitControls(this.camera, this.renderer.domElement)
       // 存在requestAnimationFrame时不需要
       // controls.addEventListener('change', this.render)
+    },
+    addStats() {
+      this.stats = new Stats()
+      this.stats.domElement.style.position = 'absolute'
+      this.stats.domElement.left = '0px'
+      this.stats.domElement.top = '0px'
+      document.body.appendChild(this.stats.domElement)
     }
   }
 }

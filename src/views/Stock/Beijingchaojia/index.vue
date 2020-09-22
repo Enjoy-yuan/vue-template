@@ -89,6 +89,46 @@ export default {
           totalProfit: '5.5%',
           shareholdingYesterdat: '太平洋173，温氏股份812',
           shareholdingToday: '天顺风能187，温氏股份426，通威股份187，森麒麟1'
+        },
+        {
+          date: '2020/09/14',
+          todayMoney: 1506,
+          todayProfit: '0.6%',
+          totalProfit: '6.13%',
+          shareholdingYesterdat: '天顺风能187，温氏股份426，通威股份187，森麒麟1',
+          shareholdingToday: '科力远184，晶澳科技186，鹏鼎控股189，圣邦股份495'
+        },
+        {
+          date: '2020/09/15',
+          todayMoney: 1508,
+          todayProfit: '0.13%',
+          totalProfit: '6.27%',
+          shareholdingYesterdat: '科力远184，金澳科技186，鹏鼎控股189，圣邦股份495',
+          shareholdingToday: '杉杉股份187，集友股份188，圣邦股份182，比亚迪2'
+        },
+        {
+          date: '2020/09/16',
+          todayMoney: 1497,
+          todayProfit: '-0.73%',
+          totalProfit: '5.5%',
+          shareholdingYesterdat: '杉杉股份187，集友股份188，圣邦股份182，比亚迪2',
+          shareholdingToday: '同花顺604'
+        },
+        {
+          date: '2020/09/17',
+          todayMoney: 1491,
+          todayProfit: '-0.4%',
+          totalProfit: '5.07%',
+          shareholdingYesterdat: '同花顺604',
+          shareholdingToday: '华贸物流186，同花顺685'
+        },
+        {
+          date: '2020/09/18',
+          todayMoney: 1548,
+          todayProfit: '3.82%',
+          totalProfit: '9.09%',
+          shareholdingYesterdat: '华贸物流186，同花顺685',
+          shareholdingToday: '新力金融192，均胜电子187，新疆交建123，云南铜业93，同花顺379'
         }
       ]
     }

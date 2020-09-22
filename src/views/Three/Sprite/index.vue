@@ -1,67 +1,54 @@
 <template>
-  <div>
-    <div id="three" style="font-size: 0;"></div>
-  </div>
+    <div>
+        <div id="three" style="font-size: 0;"></div>
+    </div>
 </template>
 
 <script>
 import * as THREE from 'three'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import SceneLoader from '../Utils/sceneLoader'
+import { test } from '../Utils/threeMixins'
 export default {
-  data() {
-    return {}
-  },
-  mounted() {
-    let scene = new THREE.Scene()
-    let texture = new THREE.TextureLoader().load(require('@img/logo.png'))
-    let group = new THREE.Group()
-    for (let i = 0; i < 400; i++) {
-      let spriteMaterial = new THREE.SpriteMaterial({
-        //   color: 0xff00ff,
-        //   rotation: Math.PI/4,
-        map: texture
-      })
-      let sprite = new THREE.Sprite(spriteMaterial)
-      group.add(sprite)
+    mixins: [test],
+    data() {
+        return {}
+    },
+    mounted() {
+        // console.log(this.aaa)
+        // var geometry = new THREE.SphereGeometry(100, 40, 40) //创建一个球体几何对象
+        // var material = new THREE.MeshPhongMaterial({
+        //     color: '#ffae23',
+        //     specular: 0x4488ee,
+        //     shininess: 12
+        // })
+        // var mesh = new THREE.Mesh(geometry, material)
+        // loader.scene.add(mesh)
 
-      sprite.scale.set(0.8, 1)
-      let k1 = Math.random() - 0.5
-      let k2 = Math.random()
-      let k3 = Math.random() - 0.5
-      sprite.position.set(40 * k1, 20 * k2, 20 * k3)
+        // var starsGeometry = new THREE.Geometry()
+        // for (var i = 0; i < 10000; i++) {
+        //     var star = new THREE.Vector3()
+        //     star.x = THREE.Math.randFloatSpread(200)
+        //     star.y = THREE.Math.randFloatSpread(200)
+        //     star.z = THREE.Math.randFloatSpread(200)
+        //     starsGeometry.vertices.push(star)
+        // }
+        // var starsMaterial = new THREE.PointsMaterial({ color: 0x67C23A })
+        // var starField = new THREE.Points(starsGeometry, starsMaterial)
+
+
+         
+               
+
+                // scene.add(points)
+            
+
+         
+        const loader = SceneLoader()
+        loader.scene.background = new THREE.Color(0xb9d3ff)
+        
     }
-    scene.add(group)
-
-    // 添加点光源，参数分别是颜色和强度
-    let point = new THREE.PointLight(0xffffff)
-    point.position.set(400, 200, 300)
-    scene.add(point)
-    // 添加环境光
-    let ambient = new THREE.AmbientLight(0x444444)
-    scene.add(ambient)
-    let k = window.innerWidth / window.innerHeight
-    let s = 20
-    let camera = new THREE.OrthographicCamera(-s * k, s * k, s, -s, 1, 1000)
-    camera.position.set(10, 10, 10)
-    camera.lookAt(scene.position)
-
-    let renderer = new THREE.WebGLRenderer()
-    renderer.setSize(window.innerWidth, window.innerHeight)
-    renderer.setClearColor(0xb9d3ff, 1)
-    let oThree = document.getElementById('three')
-    oThree.appendChild(renderer.domElement)
-
-    function render() {
-      group.children.map((item) => {
-        item.position.y -= 0.1
-        if (item.position.y < 0) {
-          item.position.y = 20
-        }
-      })
-      requestAnimationFrame(render)
-      renderer.render(scene, camera)
-    }
-    render()
-  }
 }
 </script>
 
