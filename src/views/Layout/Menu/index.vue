@@ -27,6 +27,7 @@
         <el-menu-item index="/example/moment">{{ $t('moment') }}</el-menu-item>
         <el-menu-item index="/example/tinymce">{{ $t('tinymce') }}</el-menu-item>
         <el-menu-item index="/example/backtop">{{ $t('backtop') }}</el-menu-item>
+        <el-menu-item index="/example/Excel">{{ $t('Excel') }}</el-menu-item>
         <el-menu-item index="/example/test">{{ $t('test') }}</el-menu-item>
       </el-submenu>
       <el-submenu index="/three">

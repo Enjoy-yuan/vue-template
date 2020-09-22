@@ -53,6 +53,11 @@ const routes = [
         component: () => import(/* webpackChunkName: "Backtop" */ '@/views/Example/Backtop')
       },
       {
+        path: '/example/excel',
+        name: 'Excel',
+        component: () => import(/* webpackChunkName: "Excel" */ '@/views/Example/Excel')
+      },
+      {
         path: '/example/test',
         name: 'ExampleTest',
         component: () => import(/* webpackChunkName: "Test" */ '@/views/Example/Test')

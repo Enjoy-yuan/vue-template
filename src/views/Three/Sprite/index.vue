@@ -1,54 +1,71 @@
 <template>
-    <div>
-        <div id="three" style="font-size: 0;"></div>
-    </div>
+  <div>
+    <div id="three" style="font-size: 0;"></div>
+  </div>
 </template>
 
 <script>
 import * as THREE from 'three'
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-import SceneLoader from '../Utils/sceneLoader'
-import { test } from '../Utils/threeMixins'
+import { scene, camera, renderer, addControls } from '../Utils/sceneLoader'
 export default {
-    mixins: [test],
-    data() {
-        return {}
-    },
-    mounted() {
-        // console.log(this.aaa)
-        // var geometry = new THREE.SphereGeometry(100, 40, 40) //创建一个球体几何对象
-        // var material = new THREE.MeshPhongMaterial({
-        //     color: '#ffae23',
-        //     specular: 0x4488ee,
-        //     shininess: 12
-        // })
-        // var mesh = new THREE.Mesh(geometry, material)
-        // loader.scene.add(mesh)
+  data() {
+    return {}
+  },
+  mounted() {
+    addControls()
+    /* 500000个点 */
+    let particles = 20000
+    /* 存放粒子数据的网格 */
+    let geometry = new THREE.BufferGeometry()
+    let positions = []
+    let colors = []
 
-        // var starsGeometry = new THREE.Geometry()
-        // for (var i = 0; i < 10000; i++) {
-        //     var star = new THREE.Vector3()
-        //     star.x = THREE.Math.randFloatSpread(200)
-        //     star.y = THREE.Math.randFloatSpread(200)
-        //     star.z = THREE.Math.randFloatSpread(200)
-        //     starsGeometry.vertices.push(star)
-        // }
-        // var starsMaterial = new THREE.PointsMaterial({ color: 0x67C23A })
-        // var starField = new THREE.Points(starsGeometry, starsMaterial)
+    let color = new THREE.Color()
 
+    /* 使粒子在立方体范围内扩散 */
+    let n = 100,
+      n2 = n / 2
 
-         
-               
+    for (let i = 0; i < particles; i++) {
+      // 点
+      let x = Math.random() * n - n2
+      let y = Math.random() * n - n2
+      let z = Math.random() * n - n2
 
-                // scene.add(points)
-            
+      positions.push(x, y, z)
 
-         
-        const loader = SceneLoader()
-        loader.scene.background = new THREE.Color(0xb9d3ff)
-        
+      // 颜色
+      let vx = x / n + 0.5
+      let vy = y / n + 0.5
+      let vz = z / n + 0.5
+
+      color.setRGB(vx, vy, vz)
+
+      colors.push(color.r, color.g, color.b)
     }
+    // 添加点和颜色
+    geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3))
+    geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3))
+
+    let material = new THREE.PointsMaterial({
+      size: 3,
+      vertexColors: THREE.VertexColors,
+      transparent: true,
+      opacity: 0.7
+    })
+    /* 批量管理点 */
+    let points = new THREE.Points(geometry, material)
+    scene.add(points)
+
+    // 动态渲染
+    const loop = () => {
+      console.log('render')
+      //   points.rotation.x += 0.02
+      renderer.render(scene, camera)
+      requestAnimationFrame(loop)
+    }
+    loop()
+  }
 }
 </script>
 
