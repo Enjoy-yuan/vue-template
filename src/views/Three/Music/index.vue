@@ -26,15 +26,15 @@ export default {
     }
   },
   mounted() {
-    var scene = new THREE.Scene()
-    var group = new THREE.Group()
+    let scene = new THREE.Scene()
+    let group = new THREE.Group()
     for (let i = 0; i < this.N / 2; i++) {
-      var box = new THREE.BoxGeometry(2, 10, 2)
-      var material = new THREE.MeshBasicMaterial({
+      let box = new THREE.BoxGeometry(2, 10, 2)
+      let material = new THREE.MeshBasicMaterial({
         color: 0xffff00,
         // emissive: 0xff0000
       })
-      var mesh = new THREE.Mesh(box, material)
+      let mesh = new THREE.Mesh(box, material)
       mesh.position.set((i - this.N / 4) * 4, 0, 0)
       group.add(mesh)
     }
@@ -57,24 +57,24 @@ export default {
     // grid.material.transparent = true
     // scene.add(grid)
 
-    var point = new THREE.PointLight(0xffffff, 0.5)
+    let point = new THREE.PointLight(0xffffff, 0.5)
     point.position.set(0, 120, -20)
     scene.add(point)
 
-    var ambient = new THREE.AmbientLight(0x444444)
+    let ambient = new THREE.AmbientLight(0x444444)
     scene.add(ambient)
 
-    var width = window.innerWidth //窗口宽度
-    var height = window.innerHeight //窗口高度
-    // var k = width / height //窗口宽高比
-    // var s = 200
+    let width = window.innerWidth //窗口宽度
+    let height = window.innerHeight //窗口高度
+    // let k = width / height //窗口宽高比
+    // let s = 200
     // this.camera = new THREE.OrthographicCamera(-s * k, s * k, s, -s, 1, 1000)
     this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight)
     // camera.position.set(0,0, 80)
     this.camera.position.set(0, 0, 240) //设置相机位置
     this.camera.lookAt(scene.position) //设置相机方向(指向的场景对象)
 
-    var renderer = new THREE.WebGLRenderer()
+    let renderer = new THREE.WebGLRenderer()
     renderer.setSize(width, height) //设置渲染区域尺寸
     renderer.setClearColor(0xb9d3ff, 1) //设置背景颜色
     document.getElementById('three').appendChild(renderer.domElement) //body元素中插入canvas对象
@@ -100,7 +100,7 @@ export default {
       renderer.render(scene, that.camera)
       requestAnimationFrame(render)
       if (that.analyser) {
-        var arr = that.analyser.getFrequencyData()
+        let arr = that.analyser.getFrequencyData()
         group.children.map((item, index) => {
           item.position.y = (arr[index] / 100) * 10
           item.scale.y = arr[index] / 100
@@ -116,10 +116,10 @@ export default {
   },
   methods: {
     playMusic() {
-      var listener = new THREE.AudioListener()
+      let listener = new THREE.AudioListener()
       this.camera.add(listener)
-      var audio = new THREE.Audio(listener)
-      var audioLoader = new THREE.AudioLoader()
+      let audio = new THREE.Audio(listener)
+      let audioLoader = new THREE.AudioLoader()
       audioLoader.load('/music/1.mp3', (AudioBuffer) => {
         audio.setBuffer(AudioBuffer)
         audio.setLoop(true)
