@@ -6,7 +6,8 @@
 
 <script>
 import * as THREE from 'three'
-import { scene, camera, renderer, addControls } from '../Utils/sceneLoader'
+import ThreeApp from '../Utils/sceneLoader'
+
 export default {
   data() {
     return {
@@ -14,13 +15,10 @@ export default {
     }
   },
   beforeDestroy() {
-    // console.log(scene,"scene")
-    // cancelAnimationFrame(this.animationFrame)
-    // scene.dispose()
-    // renderer.dispose()
-    // scene = null
+    cancelAnimationFrame(this.animationFrame)
   },
   mounted() {
+    let app = new ThreeApp()
     let particles = 2000
     let geometry = new THREE.BufferGeometry()
     let positions = []
@@ -49,16 +47,16 @@ export default {
       opacity: 0.7
     })
     let points = new THREE.Points(geometry, material)
-    scene.add(points)
+    app.scene.add(points)
 
     const loop = () => {
       console.log('render')
       points.rotation.x += 0.02
-      renderer.render(scene, camera)
-      const animationFrame = requestAnimationFrame(loop)
+      app.renderer.render(app.scene, app.camera)
+      this.animationFrame = requestAnimationFrame(loop)
     }
     loop()
-    addControls()
+    app.addControls()
   }
 }
 </script>
