@@ -8,6 +8,7 @@ module.exports = {
   productionSourceMap: false,
   chainWebpack: (config) => {
     config.resolve.alias.set('@img', resolve('src/assets/img'))
+    config.resolve.alias.set('@three', resolve('src/views/Three'))
   },
   configureWebpack: (config) => {
     // 配置CDN加速

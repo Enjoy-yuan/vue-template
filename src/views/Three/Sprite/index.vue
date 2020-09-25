@@ -11,6 +11,7 @@ import ThreeApp from '../Utils/sceneLoader'
 export default {
   data() {
     return {
+      app: null,
       animationFrame: null
     }
   },
@@ -18,7 +19,7 @@ export default {
     cancelAnimationFrame(this.animationFrame)
   },
   mounted() {
-    let app = new ThreeApp()
+    this.app = new ThreeApp()
     let particles = 2000
     let geometry = new THREE.BufferGeometry()
     let positions = []

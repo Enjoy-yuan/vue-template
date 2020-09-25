@@ -27,6 +27,9 @@ export default {
   },
   beforeDestroy() {
     cancelAnimationFrame(this.animationFrame)
+    this.app.removeStats()
+    this.app.removeGUI()
+    // console.log(this.app.stats)
   },
   methods: {
     init() {
@@ -35,11 +38,22 @@ export default {
       this.app.addAmbientLight()
       this.app.scene.add(this.app.floor)
       this.app.addStats()
-      this.app.initGUI()
+      this.app.addGUI()
       this.app.addResize()
       this.app.addControls()
       this.loop()
     },
+    // initControls() {
+
+    //     /* 飞行控件 */
+    //     controls = new THREE.FlyControls(camera, renderer.domElement);
+
+    //     /* 属性参数默认 */
+    //     controls.rollSpeed = Math.PI / 24; // 翻滚速度
+    //     controls.autoForward = true; //自动向前移动
+    //     controls.dragToLook = false;
+    //     controls.movementSpeed = 25; //移动速度
+    // },
     // 显示阴影
     addShadow() {
       // 渲染器开启阴影
@@ -67,6 +81,10 @@ export default {
       this.app.floor.material.color.set(window.datGUI.floorColor)
       this.app.renderer.render(this.app.scene, this.app.camera)
       this.animationFrame = requestAnimationFrame(this.loop)
+      var T = this.app.clock.getDelta() //返回时间单位：秒
+      // 可以在控制打印查看你的渲染时间间隔
+      console.log('两帧渲染时间间隔', T * 1000 + '毫秒')
+      console.log('查看每秒渲染频率', 1 / T)
     }
   }
 }
