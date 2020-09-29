@@ -8,12 +8,15 @@
 <script>
 import ThreeApp from '@three/Utils/sceneLoader'
 
+let gltf = null
+let animationFrame = null
+let app = null
 export default {
   data() {
     return {
-      gltf: null,
-      animationFrame: null,
-      app: null
+      // gltf: null,
+      // animationFrame: null,
+      // app: null
     }
   },
   mounted() {
@@ -21,29 +24,29 @@ export default {
     this.installModel()
   },
   beforeDestroy() {
-    cancelAnimationFrame(this.animationFrame)
+    cancelAnimationFrame(animationFrame)
   },
   methods: {
     init() {
-      this.app = new ThreeApp({ width: 1000, height: 500 })
-      this.app.addDirectionalLight()
-      this.app.addHemisphereLight()
-      this.app.addControls()
+      app = new ThreeApp({ width: 1000, height: 500 })
+      app.addDirectionalLight()
+      app.addHemisphereLight()
+      app.addControls()
       this.loop()
     },
     installModel() {
       console.log(process.env.BASE_URL)
-      this.app.gltfLoader.load(`${process.env.BASE_URL}Model/yeyazhijia.gltf`, (res) => {
-        console.log("res")
+      app.gltfLoader.load(`${process.env.BASE_URL}Model/yeyazhijia.gltf`, (res) => {
+        console.log('res')
         console.log(res)
-        this.gltf = res.scene
-        this.app.scene.add(res.scene)
+        gltf = res.scene
+        app.scene.add(res.scene)
       })
     },
     loop() {
       console.log('render')
-      this.animationFrame = requestAnimationFrame(this.loop)
-      this.app.renderer.render(this.app.scene, this.app.camera)
+      animationFrame = requestAnimationFrame(this.loop)
+      app.renderer.render(app.scene, app.camera)
     }
   }
 }

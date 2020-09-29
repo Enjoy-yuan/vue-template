@@ -7,40 +7,43 @@
 <script>
 import * as THREE from 'three'
 import ThreeApp from '../Utils/sceneLoader'
+let model = null
+let animationFrame = null
+let app = null
 
 export default {
   data() {
     return {
-      model: null, // 模型
-      animationFrame: null,
-      app: null
+      // model: null, // 模型
+      // animationFrame: null,
+      // app: null
     }
   },
 
   mounted() {
     this.init()
-    this.app.gltfLoader.load('/model/xiaoche.gltf', (res) => {
-      this.model = res.scene
-      this.app.scene.add(this.model)
+    app.gltfLoader.load('/model/xiaoche.gltf', (res) => {
+      model = res.scene
+      app.scene.add(model)
       this.addShadow()
     })
   },
   beforeDestroy() {
-    cancelAnimationFrame(this.animationFrame)
-    this.app.removeStats()
-    this.app.removeGUI()
+    cancelAnimationFrame(animationFrame)
+    app.removeStats()
+    app.removeGUI()
     // console.log(this.app.stats)
   },
   methods: {
     init() {
-      this.app = new ThreeApp()
-      this.app.addPointLight()
-      this.app.addAmbientLight()
-      this.app.scene.add(this.app.floor)
-      this.app.addStats()
-      this.app.addGUI()
-      this.app.addResize()
-      this.app.addControls()
+      app = new ThreeApp()
+      app.addPointLight()
+      app.addAmbientLight()
+      app.scene.add(app.floor)
+      app.addStats()
+      app.addGUI()
+      app.addResize()
+      app.addControls()
       this.loop()
     },
     // initControls() {
@@ -57,13 +60,13 @@ export default {
     // 显示阴影
     addShadow() {
       // 渲染器开启阴影
-      this.app.renderer.shadowMap.enabled = true
+      app.renderer.shadowMap.enabled = true
       // 光源开启阴影
-      this.app.pointLight.castShadow = true
+      app.pointLight.castShadow = true
       // 地板接受阴影开启
-      this.app.floor.receiveShadow = true
+      app.floor.receiveShadow = true
       // 模型Mesh开启阴影
-      this.model.traverse((obj) => {
+      model.traverse((obj) => {
         if (obj.isMesh) {
           obj.castShadow = true
         }
@@ -72,19 +75,19 @@ export default {
     // 渲染场景
     loop() {
       console.log('render')
-      this.app.stats.update()
-      if (this.model) {
-        this.model.rotation.x += window.datGUI.rotationSpeedX
-        this.model.rotation.y += window.datGUI.rotationSpeedY
-        this.model.rotation.z += window.datGUI.rotationSpeedZ
+      app.stats.update()
+      if (model) {
+        model.rotation.x += window.datGUI.rotationSpeedX
+        model.rotation.y += window.datGUI.rotationSpeedY
+        model.rotation.z += window.datGUI.rotationSpeedZ
       }
-      this.app.floor.material.color.set(window.datGUI.floorColor)
-      this.app.renderer.render(this.app.scene, this.app.camera)
-      this.animationFrame = requestAnimationFrame(this.loop)
-      var T = this.app.clock.getDelta() //返回时间单位：秒
+      app.floor.material.color.set(window.datGUI.floorColor)
+      app.renderer.render(app.scene, app.camera)
+      animationFrame = requestAnimationFrame(this.loop)
+      var T = app.clock.getDelta() //返回时间单位：秒
       // 可以在控制打印查看你的渲染时间间隔
-      console.log('两帧渲染时间间隔', T * 1000 + '毫秒')
-      console.log('查看每秒渲染频率', 1 / T)
+      // console.log('两帧渲染时间间隔', T * 1000 + '毫秒')
+      // console.log('查看每秒渲染频率', 1 / T)
     }
   }
 }
