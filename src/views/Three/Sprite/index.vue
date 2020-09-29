@@ -48,16 +48,16 @@ export default {
       opacity: 0.7
     })
     let points = new THREE.Points(geometry, material)
-    app.scene.add(points)
+    this.app.scene.add(points)
 
     const loop = () => {
       console.log('render')
       points.rotation.x += 0.02
-      app.renderer.render(app.scene, app.camera)
+      this.app.renderer.render(this.app.scene, this.app.camera)
       this.animationFrame = requestAnimationFrame(loop)
     }
     loop()
-    app.addControls()
+    this.app.addControls()
   }
 }
 </script>
