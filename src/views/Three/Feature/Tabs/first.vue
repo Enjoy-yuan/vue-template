@@ -6,19 +6,17 @@
       <el-button @click="uninstallModel">卸载模型</el-button>
       <el-button @click="showModel">显示模型</el-button>
       <el-button @click="hideModel">隐藏模型</el-button>
-      <el-button @click="explosionLiner">线性爆炸</el-button>
     </div>
   </div>
 </template>
 
 <script>
-import * as THREE from 'three'
 import ThreeApp from '@three/Utils/sceneLoader'
 
 export default {
   data() {
     return {
-      gltf: null, // 加载的模型
+      gltf: null,
       animationFrame: null,
       app: null
     }
@@ -41,7 +39,7 @@ export default {
       this.app.gltfLoader.load('/Model/yeyazhijia.gltf', (res) => {
         this.gltf = res.scene
         this.app.scene.add(res.scene)
-        document.body.addEventListener('click', this.selectHandler, false)
+        this.app.renderer.domElement.addEventListener('click', this.selectHandler, false)
       })
     },
     uninstallModel() {
@@ -55,33 +53,22 @@ export default {
     },
     // 点击部件高亮
     selectHandler(ev) {
-      // 射线
-      let mouse = new THREE.Vector2()
-      mouse.x = (ev.clientX / window.innerWidth) * 2 - 1
-      mouse.y = -(ev.clientY / window.innerHeight) * 2 + 1
-      let raycaster = new THREE.Raycaster()
-      raycaster.setFromCamera(mouse, this.app.camera)
+      this.app.mouse.x = (event.layerX / this.app.renderer.domElement.offsetWidth) * 2 - 1
+      this.app.mouse.y = -(event.layerY / this.app.renderer.domElement.offsetHeight) * 2 + 1
+      this.app.raycaster.setFromCamera(this.app.mouse, this.app.camera)
       // 捕获点击的部件
-      let intersects = raycaster.intersectObjects(this.gltf.children, true)
+      let intersects = this.app.raycaster.intersectObjects(this.gltf.children, true)
       if (intersects.length > 0) {
         let selectedObjects = intersects[0].object
-        // let newMaterial = selectedObjects.material.clone()
-        // newMaterial.color = new THREE.Color('#D3C542')
-        // selectedObjects.material = newMaterial
+        // 修改材质颜色
+        let newMaterial = selectedObjects.material.clone()
+        newMaterial.color = this.app.setColor('#D3C542')
+        selectedObjects.material = newMaterial
+        // 高亮
         let arr = []
         arr.push(selectedObjects)
         this.app.outlinePass.selectedObjects = arr
       }
-    },
-    explosionLiner() {
-      // const params = {
-      //   intensity: 2,
-      //   duration: 1500,
-      //   animateType: 'liner',
-      //   step: 10
-      // }
-      // // 动画名称需要与Animate的成员名完全一致
-      // this.gltf.getCenter(params)
     },
     loop() {
       console.log('render')

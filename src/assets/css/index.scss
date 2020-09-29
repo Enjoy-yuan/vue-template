@@ -17,4 +17,7 @@
   text-align: center;
 }
 
-
+// threejs消除outline
+* {
+  outline: none;
+}

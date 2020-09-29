@@ -36,11 +36,11 @@
           <span slot="title">Threejs</span>
         </template>
         <el-menu-item index="/three/feature">功能演示</el-menu-item>
-        <el-menu-item index="/three/car">小车模型加载</el-menu-item>
+        <el-menu-item index="/three/car">小车</el-menu-item>
         <el-menu-item index="/three/music">音频可视化</el-menu-item>
         <el-menu-item index="/three/sprite">精灵粒子</el-menu-item>
-        <!-- <el-menu-item index="/three/panoramic">3D全景</el-menu-item> -->
-        <el-menu-item index="/three/test">测试</el-menu-item>
+        <!-- <el-menu-item index="/three/panoramic">开发指南demo</el-menu-item> -->
+        <!-- <el-menu-item index="/three/test">测试</el-menu-item> -->
       </el-submenu>
       <Menutree :data="treeData" :isCollapse="isCollapse"></Menutree>
     </el-menu>

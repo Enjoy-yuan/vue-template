@@ -1,11 +1,11 @@
 <template>
   <div style="padding-left: 30px;padding-right: 30px;">
     <el-tabs v-model="activeName" @tab-click="handleClick">
-      <el-tab-pane label="模型加载" name="first">
+      <el-tab-pane label="点击高亮" name="first">
         <First v-if="activeName==='first'"></First>
       </el-tab-pane>
-      <el-tab-pane label="使用CSS2DWdiget" name="second"><Second v-if="activeName==='second'"></Second></el-tab-pane>
-      <el-tab-pane label="使用CSS3DWdiget" name="third"><Third v-if="activeName==='third'"></Third></el-tab-pane>
+      <el-tab-pane label="轨迹动画" name="second"><Second v-if="activeName==='second'"></Second></el-tab-pane>
+      <el-tab-pane label="添加标签" name="third"><Third v-if="activeName==='third'"></Third></el-tab-pane>
       <el-tab-pane label="控制摄像机" name="fourth"><Fourth v-if="activeName==='fourth'"></Fourth></el-tab-pane>
       <el-tab-pane label="加载关卡" name="fifth"><Fifth v-if="activeName==='fifth'"></Fifth></el-tab-pane>
       <el-tab-pane label="事件触发" name="sixth"><Sixth v-if="activeName==='sixth'"></Sixth></el-tab-pane>
@@ -30,7 +30,7 @@ export default {
   components: { First, Second, Third, Fourth, Fifth, Sixth, Seventh,Eighth, Ninth },
   data() {
     return {
-      activeName: 'ninth'
+      activeName: 'third'
     }
   },
   methods: {

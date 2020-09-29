@@ -40,11 +40,13 @@ export default {
       this.app.scene.add(mesh)
       var curve = new THREE.CatmullRomCurve3([
         new THREE.Vector3(0, 0, 0),
-        new THREE.Vector3(-10, 0, 10),
-        new THREE.Vector3(-5, 5, 5),
-        new THREE.Vector3(0, 0, 0),
-        new THREE.Vector3(5, -5, 5),
-        new THREE.Vector3(10, 0, 10)
+        new THREE.Vector3(0, 0, 50),
+        new THREE.Vector3(-50, 0, 50),
+        new THREE.Vector3(-50, 0, 100),
+        new THREE.Vector3(-100, 0, 100),
+        new THREE.Vector3(-100, 0, 0),
+        new THREE.Vector3(-1, 0, 0)
+
       ])
       // 样条曲线均匀分割100分，返回51个顶点坐标
       var points = curve.getPoints(100)

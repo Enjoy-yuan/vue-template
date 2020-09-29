@@ -6,6 +6,8 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer'
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass'
 import { OutlinePass } from 'three/examples/jsm/postprocessing/OutlinePass'
+import { CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer.js'
+import { CSS2DRenderer } from 'three/examples/jsm/renderers/CSS2DRenderer.js'
 
 import './object3DExtention'
 
@@ -23,20 +25,32 @@ export default class ThreeApp {
   constructor(params) {
     // 场景
     this.scene = new THREE.Scene()
+    // 性能监控
     this.stats = new Stats()
+    // 文件加载
     this.gltfLoader = new GLTFLoader()
+    // 光源
     this.pointLight = new THREE.PointLight(0xffffff, 0.5)
     this.ambientLight = new THREE.AmbientLight(0x444444)
     this.directionalLight = new THREE.DirectionalLight(0xffffff)
     this.hemisphereLight = new THREE.HemisphereLight(0xffffff, 0xffffff)
+    // 可视化
     this.gui = null
+    // 时钟
     this.clock = new THREE.Clock()
+    // canvas宽高
     this.width = window.innerWidth
     this.height = window.innerHeight
     if (params) {
       this.width = params.width
       this.height = params.height
     }
+
+    // 射线
+    this.raycaster = new THREE.Raycaster()
+    // 二维向量
+    this.mouse = new THREE.Vector2()
+
     // 地板
     this.floor = (() => {
       let floorGeometry = new THREE.PlaneGeometry(80, 80)
@@ -60,6 +74,13 @@ export default class ThreeApp {
     document.getElementById('three').appendChild(this.renderer.domElement)
     this.renderer.setClearColor('#b9d3ff')
 
+    // 标签
+    this.labelRenderer = new CSS2DRenderer()
+    this.labelRenderer.setSize(this.width, this.height)
+    this.labelRenderer.domElement.style.fontSize = '12px'
+    this.labelRenderer.domElement.className = 'labelRenderer'
+    this.labelRenderer.domElement.style.position = 'absolute'
+    this.labelRenderer.domElement.style.display = 'block'
     // 混合器
     this.renderPass = new RenderPass(this.scene, this.camera)
     this.outlinePass = new OutlinePass(new THREE.Vector2(this.width, this.height), this.scene, this.camera)
@@ -70,27 +91,30 @@ export default class ThreeApp {
   }
 
   // 球体几何
-  addGeometry() {
-    // let geometry = new THREE.SphereGeometry(10, 40, 40)
-    // let material = new THREE.MeshPhongMaterial({
-    //   color: '#ffae23',
-    //   specular: 0x4488ee,
-    //   shininess: 12
-    // })
-    let geometry = new THREE.BoxGeometry(10, 10, 10)
-    let material = new THREE.MeshBasicMaterial({ color: 0x00ff00 })
-    let mesh = new THREE.Mesh(geometry, material)
+  addSphereGeometry() {
+    let sphereGeometry = new THREE.SphereGeometry(10, 40, 40)
+    let material = new THREE.MeshBasicMaterial({
+      color: '#ffae23'
+    })
+    let mesh = new THREE.Mesh(sphereGeometry, material)
     this.scene.add(mesh)
   }
-
+  // 立方体
+  addBoxGeometry() {
+    let boxGeometry = new THREE.BoxGeometry(10, 10, 10)
+    let material = new THREE.MeshBasicMaterial({ color: 0x00ff00 })
+    let mesh = new THREE.Mesh(boxGeometry, material)
+    mesh.position.x = 40
+    this.scene.add(mesh)
+  }
   // 辅助线
   addHelper() {
     const axesHelper = new THREE.AxesHelper(100)
     const cameraHelper = new THREE.CameraHelper(this.camera)
     const gridHelper = new THREE.GridHelper(100, 10)
     this.scene.add(axesHelper)
-    //   this.scene.add(cameraHelper)
-    //   this.scene.add(gridHelper)
+    this.scene.add(cameraHelper)
+    this.scene.add(gridHelper)
   }
 
   // 点光源
@@ -128,6 +152,7 @@ export default class ThreeApp {
   // 控制器
   addControls() {
     new OrbitControls(this.camera, this.renderer.domElement)
+    new OrbitControls(this.camera, this.labelRenderer.domElement)
   }
 
   // 重复渲染
@@ -177,6 +202,28 @@ export default class ThreeApp {
     f1.open()
     f2.open()
     f3.open()
+  }
+
+  // 设置颜色
+  setColor(color) {
+    return new THREE.Color(color)
+  }
+  // 元素添加标签
+  addLabel(mesh, labelText) {
+    // this.marginLeft = this.renderer.domElement.getBoundingClientRect().left
+    // this.marginTop = this.renderer.domElement.getBoundingClientRect().top
+    document.getElementById("three").appendChild(this.labelRenderer.domElement)
+    let labelDiv = document.createElement('div')
+    labelDiv.textContent = labelText
+    labelDiv.className = 'labelText'
+    // labelDiv.style.marginLeft = '40px'
+    labelDiv.style.color = 'red'
+    labelDiv.style.border = '1px solid red'
+    labelDiv.style.borderRadius = '4px'
+    labelDiv.style.padding = '2px'
+    let labelBox = new CSS2DObject(labelDiv)
+    labelBox.name = 'labelText'
+    mesh.add(labelBox)
   }
 
   // 移除可视化
