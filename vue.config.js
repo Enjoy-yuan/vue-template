@@ -5,6 +5,7 @@ function resolve(dir) {
 }
 
 module.exports = {
+  publicPath: '/',
   productionSourceMap: false,
   chainWebpack: (config) => {
     config.resolve.alias.set('@img', resolve('src/assets/img'))

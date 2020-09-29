@@ -33,6 +33,8 @@ export default {
     },
     installModel() {
       this.app.gltfLoader.load('/Model/yeyazhijia.gltf', (res) => {
+        console.log("res")
+        console.log(res)
         this.gltf = res.scene
         this.app.scene.add(res.scene)
       })
