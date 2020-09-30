@@ -12,6 +12,7 @@
 
 <script>
 import ThreeApp from '@three/Utils/sceneLoader'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 
 export default {
   data() {
@@ -36,7 +37,8 @@ export default {
       this.loop()
     },
     installModel() {
-      this.app.gltfLoader.load('/Model/yeyazhijia.gltf', (res) => {
+      let gltfLoader = new GLTFLoader()
+      gltfLoader.load('/Model/yeyazhijia.gltf', (res) => {
         this.gltf = res.scene
         this.app.scene.add(res.scene)
         this.app.renderer.domElement.addEventListener('click', this.selectHandler, false)
