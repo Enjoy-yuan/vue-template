@@ -22,7 +22,10 @@ export default {
 
   mounted() {
     this.init()
+    console.log('car')
     app.gltfLoader.load('/model/xiaoche.gltf', (res) => {
+      console.log(111)
+      console.log(res)
       model = res.scene
       app.scene.add(model)
       this.addShadow()

@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
+import ThreeApp from '../Utils/sceneLoader'
 export default {
   data() {
     return {
@@ -15,10 +15,10 @@ export default {
     }
   },
   mounted() {
-    let gltfLoader = new GLTFLoader()
-    console.log(444)
-    gltfLoader.load(`${process.env.BASE_URL}Model/yeyazhijia.gltf`, (res) => {
-      console.log(222)
+    let app = new ThreeApp()
+    console.log(2323)
+    app.gltfLoader.load('/model/xiaoche.gltf', (res) => {
+      console.log(111)
       console.log(res)
     })
   }
