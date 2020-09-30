@@ -44,30 +44,31 @@ export default {
       function(formName) {
         {
           this.$refs[formName].validate((valid) => {
+            this.$router.push('/home')
             if (valid) {
-              axios
-                .post('/mock/api/login', {
-                  username: this.form.username,
-                  password: this.form.password
-                })
-                .then((res) => {
-                  // console.log(res)
-                  if (res.data.code === 200) {
-                    setCookie('username', this.form.username)
-                    this.$router.push('/home')
-                    this.$message({
-                      type: 'success',
-                      message: '登录成功',
-                      showClose: true
-                    })
-                  } else {
-                    this.$message({
-                      type: 'error',
-                      message: '用户名或密码错误',
-                      showClose: true
-                    })
-                  }
-                })
+              // axios
+              //   .post('/mock/api/login', {
+              //     username: this.form.username,
+              //     password: this.form.password
+              //   })
+              //   .then((res) => {
+              //     // console.log(res)
+              //     if (res.data.code === 200) {
+              //       setCookie('username', this.form.username)
+              //       this.$router.push('/home')
+              //       this.$message({
+              //         type: 'success',
+              //         message: '登录成功',
+              //         showClose: true
+              //       })
+              //     } else {
+              //       this.$message({
+              //         type: 'error',
+              //         message: '用户名或密码错误',
+              //         showClose: true
+              //       })
+              //     }
+              //   })
             }
           })
         }
