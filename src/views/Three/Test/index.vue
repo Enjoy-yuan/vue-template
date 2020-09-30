@@ -1,26 +1,42 @@
 <template>
-  <div>
-    <div id="three" style="font-size: 0;">
-      
-    </div>
-  </div>
+  <div></div>
 </template>
 
 <script>
-import ThreeApp from '../Utils/sceneLoader'
+import * as THREE from 'three'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 export default {
   data() {
-    return {
-      app: null
-    }
+    return {}
   },
   mounted() {
-    let app = new ThreeApp()
-    console.log(2323)
-    app.gltfLoader.load('/model/xiaoche.gltf', (res) => {
-      console.log(111)
+    this.loadModel()
+    let gltfLoader = new GLTFLoader()
+    gltfLoader.load('/Model/xiaoche.gltf', (res) => {
+      console.log(999)
       console.log(res)
     })
+  },
+
+  methods: {
+    loadModel() {
+      let loader = new GLTFLoader()
+      // return new Promise(function(resolve, reject) {
+      loader.load(
+        'Model/xiaoche.gltf',
+        (gltf) => {
+          console.log(111)
+          console.log(gltf)
+        },
+        (xhr) => {
+          console.log(222)
+        },
+        (error) => {
+          console.log(333)
+        }
+      )
+      // })
+    }
   }
 }
 </script>
