@@ -1,9 +1,13 @@
 <template>
-  <div><div id="three" style="font-size: 0;"></div></div>
+  <div>
+    <div id="three" style="font-size: 0;">
+      
+    </div>
+  </div>
 </template>
 
 <script>
-import ThreeApp from '../Utils/sceneLoader'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 export default {
   data() {
     return {
@@ -11,9 +15,9 @@ export default {
     }
   },
   mounted() {
-    this.app = new ThreeApp()
-    console.log(111)
-    this.app.gltfLoader.load('/model/xiaoche.gltf', (res) => {
+    let gltfLoader = new GLTFLoader()
+    console.log(333)
+    gltfLoader.load('/Model/yeyazhijia.gltf', (res) => {
       console.log(222)
       console.log(res)
     })
