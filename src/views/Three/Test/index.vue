@@ -16,8 +16,8 @@ export default {
   },
   mounted() {
     let gltfLoader = new GLTFLoader()
-    console.log(333)
-    gltfLoader.load('/Model/yeyazhijia.gltf', (res) => {
+    console.log(444)
+    gltfLoader.load(`${process.env.BASE_URL}Model/yeyazhijia.gltf`, (res) => {
       console.log(222)
       console.log(res)
     })
