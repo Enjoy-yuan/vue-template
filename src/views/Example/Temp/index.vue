@@ -21,7 +21,7 @@ export default {
      * 创建网格模型
      */
     const loader = new GLTFLoader()
-    loader.load('/Model/xiaoche.gltf', function(res) {
+    loader.load('/model/xiaoche.gltf', function(res) {
       // var geometry2 = new THREE.SphereGeometry(20, 20, 20);
       // var material2 = new THREE.MeshLambertMaterial({
       //   color: 0xff00ff

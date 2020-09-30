@@ -36,7 +36,7 @@ export default {
     },
     installModel() {
       console.log(process.env.BASE_URL)
-      app.gltfLoader.load(`${process.env.BASE_URL}Model/yeyazhijia.gltf`, (res) => {
+      app.gltfLoader.load(`${process.env.BASE_URL}model/yeyazhijia.gltf`, (res) => {
         console.log('res')
         console.log(res)
         gltf = res.scene

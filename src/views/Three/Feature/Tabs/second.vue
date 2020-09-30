@@ -19,7 +19,7 @@ export default {
   },
   mounted() {
     this.init()
-    this.app.gltfLoader.load('/Model/kuangshan.gltf', (res) => {
+    this.app.gltfLoader.load('/model/kuangshan.gltf', (res) => {
       console.log(res)
     })
   },

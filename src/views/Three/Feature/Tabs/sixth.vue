@@ -36,7 +36,7 @@ export default {
       this.loop()
     },
     installModel() {
-      this.app.gltfLoader.load('/Model/yeyazhijia.gltf', (res) => {
+      this.app.gltfLoader.load('/model/yeyazhijia.gltf', (res) => {
         this.gltf = res.scene
         this.app.scene.add(res.scene)
         this.app.renderer.domElement.addEventListener('click', this.selectHandler, false)
