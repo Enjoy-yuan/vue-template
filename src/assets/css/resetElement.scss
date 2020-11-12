@@ -24,18 +24,6 @@ $--font-path: '~element-ui/lib/theme-chalk/fonts';
   width: 300px;
 }
 
-// 登录盒
-.login {
-  .el-input__inner {
-    line-height: 50px;
-    height: 50px;
-  }
-  .el-form-item__error {
-    margin-left: 200px;
-    font-size: 14px;
-  }
-}
-
 // layout菜单
 .el-menu-vertical-demo:not(.el-menu--collapse) {
   width: 200px;

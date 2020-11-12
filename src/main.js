@@ -6,12 +6,19 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import i18n from '@/lang'
 import api from '@/api'
-import '@/utils/mock'
+import echarts from 'echarts'
+import axios from 'axios'
+// import '@/utils/mock'
 import '@/utils/permission'
 import '@/assets/css/index.scss'
 import '@/assets/icon/iconfont'
+// 全局引入echarts主题
+import  'echarts/theme/macarons.js'
+// import  'echarts/theme/chalk.js'
 
 Vue.prototype.$api = api
+Vue.prototype.$axios = axios
+Vue.prototype.$echarts = echarts
 
 // 设置国际化
 Vue.use(ElementUI, {
