@@ -1,3 +1,4 @@
+/* eslint-disable no-new */
 import * as THREE from 'three'
 import * as dat from 'dat.gui'
 import Stats from 'three/examples/jsm/libs/stats.module'
@@ -6,8 +7,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer'
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass'
 import { OutlinePass } from 'three/examples/jsm/postprocessing/OutlinePass'
-import { CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer.js'
-import { CSS2DRenderer } from 'three/examples/jsm/renderers/CSS2DRenderer.js'
+import { CSS2DObject, CSS2DRenderer } from 'three/examples/jsm/renderers/CSS2DRenderer.js'
 
 import './object3DExtention'
 
@@ -22,7 +22,7 @@ window.datGUI = {
 }
 
 export default class ThreeApp {
-  constructor(params) {
+  constructor (params) {
     // 场景
     this.scene = new THREE.Scene()
     // 性能监控
@@ -53,20 +53,29 @@ export default class ThreeApp {
 
     // 地板
     this.floor = (() => {
-      let floorGeometry = new THREE.PlaneGeometry(80, 80)
+      const floorGeometry = new THREE.PlaneGeometry(80, 80)
       // console.log(window.datGUI.floorColor)
-      let floorMaterial = new THREE.MeshPhongMaterial({
+      const floorMaterial = new THREE.MeshPhongMaterial({
         color: window.datGUI.floorColor
       })
-      let floor = new THREE.Mesh(floorGeometry, floorMaterial)
+      const floor = new THREE.Mesh(floorGeometry, floorMaterial)
       floor.rotation.x = -0.5 * Math.PI
       floor.position.y = -2
       return floor
     })()
 
     // 摄像机
-    this.camera = new THREE.PerspectiveCamera(45, this.width / this.height, 1, 1000)
-    this.camera.position.set(window.datGUI.cameraX, window.datGUI.cameraY, window.datGUI.cameraZ)
+    this.camera = new THREE.PerspectiveCamera(
+      45,
+      this.width / this.height,
+      1,
+      1000
+    )
+    this.camera.position.set(
+      window.datGUI.cameraX,
+      window.datGUI.cameraY,
+      window.datGUI.cameraZ
+    )
 
     // 渲染器
     this.renderer = new THREE.WebGLRenderer({ antialias: true })
@@ -83,7 +92,11 @@ export default class ThreeApp {
     this.labelRenderer.domElement.style.display = 'block'
     // 混合器
     this.renderPass = new RenderPass(this.scene, this.camera)
-    this.outlinePass = new OutlinePass(new THREE.Vector2(this.width, this.height), this.scene, this.camera)
+    this.outlinePass = new OutlinePass(
+      new THREE.Vector2(this.width, this.height),
+      this.scene,
+      this.camera
+    )
     this.outlinePass.visibleEdgeColor.set('#ffffff')
     this.composer = new EffectComposer(this.renderer)
     this.composer.addPass(this.renderPass)
@@ -91,24 +104,26 @@ export default class ThreeApp {
   }
 
   // 球体几何
-  addSphereGeometry() {
-    let sphereGeometry = new THREE.SphereGeometry(10, 40, 40)
-    let material = new THREE.MeshBasicMaterial({
+  addSphereGeometry () {
+    const sphereGeometry = new THREE.SphereGeometry(10, 40, 40)
+    const material = new THREE.MeshBasicMaterial({
       color: '#ffae23'
     })
-    let mesh = new THREE.Mesh(sphereGeometry, material)
+    const mesh = new THREE.Mesh(sphereGeometry, material)
     this.scene.add(mesh)
   }
+
   // 立方体
-  addBoxGeometry() {
-    let boxGeometry = new THREE.BoxGeometry(10, 10, 10)
-    let material = new THREE.MeshBasicMaterial({ color: 0x00ff00 })
-    let mesh = new THREE.Mesh(boxGeometry, material)
+  addBoxGeometry () {
+    const boxGeometry = new THREE.BoxGeometry(10, 10, 10)
+    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 })
+    const mesh = new THREE.Mesh(boxGeometry, material)
     mesh.position.x = 40
     this.scene.add(mesh)
   }
+
   // 辅助线
-  addHelper() {
+  addHelper () {
     const axesHelper = new THREE.AxesHelper(100)
     const cameraHelper = new THREE.CameraHelper(this.camera)
     const gridHelper = new THREE.GridHelper(100, 10)
@@ -118,29 +133,30 @@ export default class ThreeApp {
   }
 
   // 点光源
-  addPointLight() {
+  addPointLight () {
     this.pointLight.position.set(0, 10, 5)
     this.scene.add(this.pointLight)
   }
+
   // 环境光
-  addAmbientLight() {
+  addAmbientLight () {
     this.scene.add(this.ambientLight)
   }
 
   // 平行光
-  addDirectionalLight() {
+  addDirectionalLight () {
     this.directionalLight.position.set(-4, 8, 4)
     this.scene.add(this.directionalLight)
   }
 
   // 半球光
-  addHemisphereLight() {
+  addHemisphereLight () {
     this.hemisphereLight.position.set(0, 8, 0)
     this.scene.add(this.hemisphereLight)
   }
 
   // 重置页面
-  addResize() {
+  addResize () {
     window.addEventListener('resize', () => {
       const { innerWidth, innerHeight } = window
       this.renderer.setSize(innerWidth, innerHeight)
@@ -150,53 +166,72 @@ export default class ThreeApp {
   }
 
   // 控制器
-  addControls() {
+  addControls () {
     new OrbitControls(this.camera, this.renderer.domElement)
     new OrbitControls(this.camera, this.labelRenderer.domElement)
   }
 
   // 重复渲染
-  loop() {
+  loop () {
     console.log('render')
     this.renderer.render(this.scene, this.camera)
     requestAnimationFrame(this.loop)
   }
 
   // 性能监控
-  addStats() {
+  addStats () {
     this.stats.domElement.style.position = 'absolute'
     this.stats.domElement.left = '0px'
     this.stats.domElement.top = '0px'
     document.body.appendChild(this.stats.domElement)
   }
+
   // 移除性能监控
-  removeStats() {
+  removeStats () {
     document.body.removeChild(this.stats.dom)
   }
 
   // 可视化
-  addGUI() {
+  addGUI () {
     this.gui = new dat.GUI()
-    let f1 = this.gui.addFolder('旋转')
+    const f1 = this.gui.addFolder('旋转')
     f1.add(window.datGUI, 'rotationSpeedX', 0, 5).name('绕X轴旋转')
     f1.add(window.datGUI, 'rotationSpeedY', 0, 5).name('绕Y轴旋转')
     f1.add(window.datGUI, 'rotationSpeedZ', 0, 5).name('绕Z轴旋转')
-    let f2 = this.gui.addFolder('颜色')
+    const f2 = this.gui.addFolder('颜色')
     f2.addColor(window.datGUI, 'floorColor').name('地板颜色')
-    let f3 = this.gui.addFolder('摄像机')
-    let changeCameraX = f3.add(window.datGUI, 'cameraX', -1000, 1000).name('摄像机X坐标')
-    let changeCameraY = f3.add(window.datGUI, 'cameraY', -1000, 1000).name('摄像机Y坐标')
-    let changeCameraZ = f3.add(window.datGUI, 'cameraZ', -1000, 1000).name('摄像机Z坐标')
+    const f3 = this.gui.addFolder('摄像机')
+    const changeCameraX = f3
+      .add(window.datGUI, 'cameraX', -1000, 1000)
+      .name('摄像机X坐标')
+    const changeCameraY = f3
+      .add(window.datGUI, 'cameraY', -1000, 1000)
+      .name('摄像机Y坐标')
+    const changeCameraZ = f3
+      .add(window.datGUI, 'cameraZ', -1000, 1000)
+      .name('摄像机Z坐标')
     changeCameraX.onChange(() => {
-      this.camera.position.set(window.datGUI.cameraX, window.datGUI.cameraY, window.datGUI.cameraZ)
+      this.camera.position.set(
+        window.datGUI.cameraX,
+        window.datGUI.cameraY,
+        window.datGUI.cameraZ
+      )
       this.camera.lookAt(this.scene.position)
     })
     changeCameraY.onChange(() => {
-      this.camera.position.set(window.datGUI.cameraX, window.datGUI.cameraY, window.datGUI.cameraZ)
+      this.camera.position.set(
+        window.datGUI.cameraX,
+        window.datGUI.cameraY,
+        window.datGUI.cameraZ
+      )
       this.camera.lookAt(this.scene.position)
     })
     changeCameraZ.onChange(() => {
-      this.camera.position.set(window.datGUI.cameraX, window.datGUI.cameraY, window.datGUI.cameraZ)
+      this.camera.position.set(
+        window.datGUI.cameraX,
+        window.datGUI.cameraY,
+        window.datGUI.cameraZ
+      )
       this.camera.lookAt(this.scene.position)
     })
     f1.open()
@@ -205,15 +240,16 @@ export default class ThreeApp {
   }
 
   // 设置颜色
-  setColor(color) {
+  setColor (color) {
     return new THREE.Color(color)
   }
+
   // 元素添加标签
-  addLabel(mesh, labelText) {
+  addLabel (mesh, labelText) {
     // this.marginLeft = this.renderer.domElement.getBoundingClientRect().left
     // this.marginTop = this.renderer.domElement.getBoundingClientRect().top
-    document.getElementById("three").appendChild(this.labelRenderer.domElement)
-    let labelDiv = document.createElement('div')
+    document.getElementById('three').appendChild(this.labelRenderer.domElement)
+    const labelDiv = document.createElement('div')
     labelDiv.textContent = labelText
     labelDiv.className = 'labelText'
     // labelDiv.style.marginLeft = '40px'
@@ -221,13 +257,13 @@ export default class ThreeApp {
     labelDiv.style.border = '1px solid red'
     labelDiv.style.borderRadius = '4px'
     labelDiv.style.padding = '2px'
-    let labelBox = new CSS2DObject(labelDiv)
+    const labelBox = new CSS2DObject(labelDiv)
     labelBox.name = 'labelText'
     mesh.add(labelBox)
   }
 
   // 移除可视化
-  removeGUI() {
+  removeGUI () {
     this.gui.destroy()
   }
 }

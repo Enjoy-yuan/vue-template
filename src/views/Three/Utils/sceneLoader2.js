@@ -18,23 +18,23 @@ window.datGUI = {
 }
 
 // 场景
-export let scene = new THREE.Scene()
+export const scene = new THREE.Scene()
 
-export let stats = new Stats()
-export let gltfLoader = new GLTFLoader()
-export let pointLight = new THREE.PointLight(0xffffff, 0.5)
-export let ambientLight = new THREE.AmbientLight(0x444444)
-export let directionalLight = new THREE.DirectionalLight(0xffffff)
-export let hemisphereLight = new THREE.HemisphereLight(0xffffff, 0xffffff)
+export const stats = new Stats()
+export const gltfLoader = new GLTFLoader()
+export const pointLight = new THREE.PointLight(0xffffff, 0.5)
+export const ambientLight = new THREE.AmbientLight(0x444444)
+export const directionalLight = new THREE.DirectionalLight(0xffffff)
+export const hemisphereLight = new THREE.HemisphereLight(0xffffff, 0xffffff)
 
 // 地板
 export const floor = (() => {
-  let floorGeometry = new THREE.PlaneGeometry(80, 80)
+  const floorGeometry = new THREE.PlaneGeometry(80, 80)
   // console.log(window.datGUI.floorColor)
-  let floorMaterial = new THREE.MeshPhongMaterial({
+  const floorMaterial = new THREE.MeshPhongMaterial({
     color: window.datGUI.floorColor
   })
-  let floor = new THREE.Mesh(floorGeometry, floorMaterial)
+  const floor = new THREE.Mesh(floorGeometry, floorMaterial)
   floor.rotation.x = -0.5 * Math.PI
   floor.position.y = -2
   return floor
@@ -42,14 +42,23 @@ export const floor = (() => {
 
 // 摄像机
 export const camera = (() => {
-  const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1000)
-  camera.position.set(window.datGUI.cameraX, window.datGUI.cameraY, window.datGUI.cameraZ)
+  const camera = new THREE.PerspectiveCamera(
+    45,
+    window.innerWidth / window.innerHeight,
+    1,
+    1000
+  )
+  camera.position.set(
+    window.datGUI.cameraX,
+    window.datGUI.cameraY,
+    window.datGUI.cameraZ
+  )
   return camera
 })()
 
 // 渲染器
 export const renderer = (() => {
-  let renderer = new THREE.WebGLRenderer({ antialias: true })
+  const renderer = new THREE.WebGLRenderer({ antialias: true })
   renderer.setSize(window.innerWidth, window.innerHeight)
   setTimeout(() => {
     document.getElementById('three').appendChild(renderer.domElement)
@@ -60,7 +69,11 @@ export const renderer = (() => {
 
 // 混合器
 export const renderPass = new RenderPass(scene, camera)
-export const outlinePass = new OutlinePass(new THREE.Vector2(window.innerWidth, window.innerHeight), scene, camera)
+export const outlinePass = new OutlinePass(
+  new THREE.Vector2(window.innerWidth, window.innerHeight),
+  scene,
+  camera
+)
 outlinePass.visibleEdgeColor.set('#ffffff')
 export const composer = new EffectComposer(renderer)
 composer.addPass(renderPass)
@@ -68,13 +81,13 @@ composer.addPass(outlinePass)
 
 // 球体几何
 export const addGeometry = () => {
-  let geometry = new THREE.SphereGeometry(100, 40, 40)
-  let material = new THREE.MeshPhongMaterial({
+  const geometry = new THREE.SphereGeometry(100, 40, 40)
+  const material = new THREE.MeshPhongMaterial({
     color: '#ffae23',
     specular: 0x4488ee,
     shininess: 12
   })
-  let mesh = new THREE.Mesh(geometry, material)
+  const mesh = new THREE.Mesh(geometry, material)
   scene.add(mesh)
 }
 
@@ -122,6 +135,7 @@ export const addResize = () => {
 
 // 控制器
 export const addControls = () => {
+  // eslint-disable-next-line no-new
   new OrbitControls(camera, renderer.domElement)
 }
 
@@ -142,27 +156,45 @@ export const addStats = () => {
 
 // 可视化
 export const initGUI = () => {
-  let gui = new dat.GUI()
-  let f1 = gui.addFolder('旋转')
+  const gui = new dat.GUI()
+  const f1 = gui.addFolder('旋转')
   f1.add(window.datGUI, 'rotationSpeedX', 0, 5).name('绕X轴旋转')
   f1.add(window.datGUI, 'rotationSpeedY', 0, 5).name('绕Y轴旋转')
   f1.add(window.datGUI, 'rotationSpeedZ', 0, 5).name('绕Z轴旋转')
-  let f2 = gui.addFolder('颜色')
+  const f2 = gui.addFolder('颜色')
   f2.addColor(window.datGUI, 'floorColor').name('地板颜色')
-  let f3 = gui.addFolder('摄像机')
-  let changeCameraX = f3.add(window.datGUI, 'cameraX', -1000, 1000).name('摄像机X坐标')
-  let changeCameraY = f3.add(window.datGUI, 'cameraY', -1000, 1000).name('摄像机Y坐标')
-  let changeCameraZ = f3.add(window.datGUI, 'cameraZ', -1000, 1000).name('摄像机Z坐标')
+  const f3 = gui.addFolder('摄像机')
+  const changeCameraX = f3
+    .add(window.datGUI, 'cameraX', -1000, 1000)
+    .name('摄像机X坐标')
+  const changeCameraY = f3
+    .add(window.datGUI, 'cameraY', -1000, 1000)
+    .name('摄像机Y坐标')
+  const changeCameraZ = f3
+    .add(window.datGUI, 'cameraZ', -1000, 1000)
+    .name('摄像机Z坐标')
   changeCameraX.onChange(() => {
-    camera.position.set(window.datGUI.cameraX, window.datGUI.cameraY, window.datGUI.cameraZ)
+    camera.position.set(
+      window.datGUI.cameraX,
+      window.datGUI.cameraY,
+      window.datGUI.cameraZ
+    )
     camera.lookAt(scene.position)
   })
   changeCameraY.onChange(() => {
-    camera.position.set(window.datGUI.cameraX, window.datGUI.cameraY, window.datGUI.cameraZ)
+    camera.position.set(
+      window.datGUI.cameraX,
+      window.datGUI.cameraY,
+      window.datGUI.cameraZ
+    )
     camera.lookAt(scene.position)
   })
   changeCameraZ.onChange(() => {
-    camera.position.set(window.datGUI.cameraX, window.datGUI.cameraY, window.datGUI.cameraZ)
+    camera.position.set(
+      window.datGUI.cameraX,
+      window.datGUI.cameraY,
+      window.datGUI.cameraZ
+    )
     camera.lookAt(scene.position)
   })
 
@@ -170,4 +202,3 @@ export const initGUI = () => {
   // f2.open()
   // f3.open()
 }
-
