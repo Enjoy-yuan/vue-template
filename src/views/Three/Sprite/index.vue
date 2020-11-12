@@ -20,34 +20,34 @@ export default {
   },
   mounted() {
     this.app = new ThreeApp()
-    let particles = 2000
-    let geometry = new THREE.BufferGeometry()
-    let positions = []
-    let colors = []
-    let color = new THREE.Color()
-    let n = 10
+    const particles = 2000
+    const geometry = new THREE.BufferGeometry()
+    const positions = []
+    const colors = []
+    const color = new THREE.Color()
+    const n = 10
     for (let i = 0; i < particles; i++) {
-      let x = Math.random() * n - n / 2
-      let y = Math.random() * n - n / 2
-      let z = Math.random() * n - n / 2
+      const x = Math.random() * n - n / 2
+      const y = Math.random() * n - n / 2
+      const z = Math.random() * n - n / 2
       positions.push(x, y, z)
 
       // 颜色
-      let vx = x / n + 0.5
-      let vy = y / n + 0.5
-      let vz = z / n + 0.5
+      const vx = x / n + 0.5
+      const vy = y / n + 0.5
+      const vz = z / n + 0.5
       color.setRGB(vx, vy, vz)
       colors.push(color.r, color.g, color.b)
     }
     geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3))
     geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3))
-    let material = new THREE.PointsMaterial({
+    const material = new THREE.PointsMaterial({
       size: 1,
       vertexColors: THREE.VertexColors,
       transparent: true,
       opacity: 0.7
     })
-    let points = new THREE.Points(geometry, material)
+    const points = new THREE.Points(geometry, material)
     this.app.scene.add(points)
 
     const loop = () => {

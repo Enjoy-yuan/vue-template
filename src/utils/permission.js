@@ -1,5 +1,4 @@
 import router from '../router'
-import { getCookie } from '@/utils/cookie'
 
 router.beforeEach((to, from, next) => {
   // next()
@@ -14,6 +13,6 @@ router.beforeEach((to, from, next) => {
   //     next()
   //   }
   // } else {
-    next()
+  next()
   // }
 })

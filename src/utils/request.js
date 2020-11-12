@@ -1,16 +1,16 @@
 import axios from 'axios'
-import { Message } from 'element-ui'
+// import { Message } from 'element-ui'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
-import { getCookie, setCookie } from '@/utils/cookie'
-import { checkToken } from '@/utils/myFun'
-import router from '@/router/index'
-import api from '@/api'
+// import { getCookie, setCookie } from '@/utils/cookie'
+// import { checkToken } from '@/utils/myFun'
+// import router from '@/router/index'
+// import api from '@/api'
 
 const service = axios.create({
   timeout: 16000
 })
-let isRefreshing = true
+// const isRefreshing = true
 // 请求拦截器
 service.interceptors.request.use(
   function(config) {

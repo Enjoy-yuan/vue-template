@@ -1,4 +1,3 @@
 export default {
-    // 菜单路由
-    
+  // 菜单路由
 }

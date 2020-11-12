@@ -16,10 +16,10 @@ export default {
   },
   mounted() {
     let base = +new Date(1968, 9, 3)
-    let oneDay = 24 * 3600 * 1000
+    const oneDay = 24 * 3600 * 1000
     this.echartData = [Math.random() * 300]
     for (let i = 1; i < 20000; i++) {
-      let now = new Date((base += oneDay))
+      const now = new Date((base += oneDay))
       this.date.push([now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/'))
       this.echartData.push(Math.round((Math.random() - 0.5) * 20 + this.echartData[i - 1]))
     }
@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     drawEchart() {
-      let option = {
+      const option = {
         tooltip: {
           trigger: 'axis',
           position: function(pt) {

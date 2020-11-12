@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import * as THREE from 'three'
+// import * as THREE from 'three'
 import ThreeApp from '../Utils/sceneLoader'
 let model = null
 let animationFrame = null
@@ -84,7 +84,7 @@ export default {
       app.floor.material.color.set(window.datGUI.floorColor)
       app.renderer.render(app.scene, app.camera)
       animationFrame = requestAnimationFrame(this.loop)
-      var T = app.clock.getDelta() //返回时间单位：秒
+      // var T = app.clock.getDelta() // 返回时间单位：秒
       // 可以在控制打印查看你的渲染时间间隔
       // console.log('两帧渲染时间间隔', T * 1000 + '毫秒')
       // console.log('查看每秒渲染频率', 1 / T)

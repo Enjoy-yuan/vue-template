@@ -108,13 +108,13 @@ export default {
   computed: {
     // 只能选择起始时间一个月内的时间
     pickerOptions() {
-      let _this = this
+      const _this = this
       return {
         disabledDate(time) {
           const times = 86400000 * 30
-          let curSelectTime = new Date(_this.minDate).getTime()
-          let before = curSelectTime - times
-          let after = curSelectTime + times
+          const curSelectTime = new Date(_this.minDate).getTime()
+          const before = curSelectTime - times
+          const after = curSelectTime + times
           return time.getTime() > after || time.getTime() < before
         },
         onPick({ maxDate, minDate }) {
