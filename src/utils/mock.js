@@ -1,8 +1,8 @@
 import Mock from 'mockjs'
-let Random = Mock.Random
+const Random = Mock.Random
 
-Mock.mock('/mock/api/login', 'post', (req) => {
-  let { username, password } = JSON.parse(req.body)
+Mock.mock('/mock/api/login', 'post', req => {
+  const { username, password } = JSON.parse(req.body)
   if (username === 'admin' && password === '123456') {
     return {
       code: 200,
@@ -13,7 +13,7 @@ Mock.mock('/mock/api/login', 'post', (req) => {
       code: 200,
       role: 'user'
     }
-  }else{
+  } else {
     return {
       code: 400
     }
@@ -21,10 +21,10 @@ Mock.mock('/mock/api/login', 'post', (req) => {
 })
 
 // table数据
-let list = []
-let total = Random.natural(10, 20)
+const list = []
+const total = Random.natural(10, 20)
 for (let i = 0; i < total; i++) {
-  let item = {}
+  const item = {}
   item.name = Random.cname()
   item.age = Random.integer(1, 100)
   item.birthday = Random.date()
@@ -32,32 +32,57 @@ for (let i = 0; i < total; i++) {
   item.color = Random.color()
   list.push(item)
 }
-Mock.mock('/mock/api/users', 'post', (req) => {
-  let { currentPage, pageSize } = JSON.parse(req.body)
+Mock.mock('/mock/api/users', 'post', req => {
+  const { currentPage, pageSize } = JSON.parse(req.body)
   return {
     data: list.slice(pageSize * (currentPage - 1), pageSize * currentPage),
     total: total
   }
 })
 
-Mock.mock('/mock/api/getMenu', 'post', (req) => {
-  let { role } = JSON.parse(req.body)
+Mock.mock('/mock/api/getMenu', 'post', req => {
+  const { role } = JSON.parse(req.body)
   let catalog = {}
   if (role === 'admin') {
     catalog = {
       catalog: [
-        { catalogEngName: 'menu1', icon: 'el-icon-menu', rowId: 1, url: '/menu1' },
-        { catalogEngName: 'menu2', icon: 'el-icon-menu', rowId: 2, url: '/menu2' },
+        {
+          catalogEngName: 'menu1',
+          icon: 'el-icon-menu',
+          rowId: 1,
+          url: '/menu1'
+        },
+        {
+          catalogEngName: 'menu2',
+          icon: 'el-icon-menu',
+          rowId: 2,
+          url: '/menu2'
+        },
         { catalogEngName: 'menu3', parentId: 1, rowId: 3, url: '/menu1/menu3' },
-        { catalogEngName: 'menu4', parentId: 3, rowId: 4, url: '/menu1/menu3/menu4' }
+        {
+          catalogEngName: 'menu4',
+          parentId: 3,
+          rowId: 4,
+          url: '/menu1/menu3/menu4'
+        }
       ]
     }
   } else if (role === 'user') {
     catalog = {
       catalog: [
-        { catalogEngName: 'menu1', icon: 'el-icon-menu', rowId: 1, url: '/menu1' },
+        {
+          catalogEngName: 'menu1',
+          icon: 'el-icon-menu',
+          rowId: 1,
+          url: '/menu1'
+        },
         { catalogEngName: 'menu3', parentId: 1, rowId: 3, url: '/menu1/menu3' },
-        { catalogEngName: 'menu4', parentId: 3, rowId: 4, url: '/menu1/menu3/menu4' }
+        {
+          catalogEngName: 'menu4',
+          parentId: 3,
+          rowId: 4,
+          url: '/menu1/menu3/menu4'
+        }
       ]
     }
   }

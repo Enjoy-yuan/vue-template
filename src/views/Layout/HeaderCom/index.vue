@@ -7,8 +7,8 @@
     <div class="header-right flex">
       <div class="music" @click="dialogVisible = !dialogVisible">
         <svg class="icon" aria-hidden="true">
-              <use xlink:href="#iconMusicfiles"></use>
-            </svg>
+          <use xlink:href="#iconMusicfiles"></use>
+        </svg>
       </div>
       <div class="language">
         <el-dropdown @command="changeLanguage">
@@ -27,7 +27,11 @@
       <div class="person flex">
         <el-dropdown class="drop-title">
           <span class="el-dropdown-link ">
-            <img class="img" src="https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif?imageView2/1/w/80/h/80" alt="" />
+            <img
+              class="img"
+              src="https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif?imageView2/1/w/80/h/80"
+              alt=""
+            />
           </span>
           <el-dropdown-menu slot="dropdown" style="margin-top:-10px;width: 160px;text-align:center;">
             <el-dropdown-item><i class="el-icon-s-custom"></i> 个人资料</el-dropdown-item>
@@ -78,7 +82,7 @@ export default {
         this.$i18n.locale = 'zh'
         setCookie('language', 'zh')
         this.language = '中文'
-      } else if ((language = 'en')) {
+      } else if ((language === 'en')) {
         this.$i18n.locale = 'en'
         setCookie('language', 'en')
         this.language = 'English'

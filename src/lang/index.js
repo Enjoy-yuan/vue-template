@@ -8,7 +8,7 @@ import { getCookie } from '@/utils/cookie'
 Vue.use(VueI18n)
 
 const i18n = new VueI18n({
-  locale: getCookie("language"),
+  locale: getCookie('language'),
   messages: {
     en: {
       ...en,

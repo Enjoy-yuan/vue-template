@@ -2,7 +2,15 @@
   <div class="tags" v-show="this.tags.length > 0">
     <el-scrollbar>
       <div style="display: flex;">
-        <el-tag style="margin-right: 6px" v-for="tag in tags" :key="tag.name" closable :type="tag.type" @close="handleClose(tag)" @click="handleClick(tag)">
+        <el-tag
+          style="margin-right: 6px"
+          v-for="tag in tags"
+          :key="tag.name"
+          closable
+          :type="tag.type"
+          @close="handleClose(tag)"
+          @click="handleClick(tag)"
+        >
           <router-link :to="tag.url">{{ $t(tag.name) }}</router-link>
         </el-tag>
       </div>
@@ -86,11 +94,11 @@ export default {
           item.type = 'info'
         })
         // if (!key.includes('/three/')) {
-          this.tags.push({
-            name: key.split('/').pop(),
-            type: 'success',
-            url: key
-          })
+        this.tags.push({
+          name: key.split('/').pop(),
+          type: 'success',
+          url: key
+        })
         // }
       } else {
         this.tags.map((item) => {

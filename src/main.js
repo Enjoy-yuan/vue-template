@@ -13,7 +13,7 @@ import '@/utils/permission'
 import '@/assets/css/index.scss'
 import '@/assets/icon/iconfont'
 // 全局引入echarts主题
-import  'echarts/theme/macarons.js'
+import 'echarts/theme/macarons.js'
 // import  'echarts/theme/chalk.js'
 
 Vue.prototype.$api = api
@@ -31,5 +31,5 @@ new Vue({
   router,
   store,
   i18n,
-  render: (h) => h(App)
+  render: h => h(App)
 }).$mount('#app')

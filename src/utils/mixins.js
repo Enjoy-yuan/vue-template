@@ -1,4 +1,4 @@
-export let table = {
+export const table = {
   data() {
     return {
       // 表格数据
@@ -15,10 +15,12 @@ export let table = {
       // console.log(document.body.offsetHeight)
       // console.log(document.body.clientHeight)
       // console.log(document.body.scrollWidth)
-      this.tableHeight = document.body.offsetHeight - this.$refs.table.offsetTop - 60
+      this.tableHeight =
+        document.body.offsetHeight - this.$refs.table.offsetTop - 60
       // 监听窗口大小变化
       window.onresize = () => {
-        this.tableHeight = document.body.offsetHeight - this.$refs.table.offsetTop - 60
+        this.tableHeight =
+          document.body.offsetHeight - this.$refs.table.offsetTop - 60
       }
     })
   },

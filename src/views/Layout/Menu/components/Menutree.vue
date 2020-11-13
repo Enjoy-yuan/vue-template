@@ -22,7 +22,6 @@ import Menutree from '@/views/Layout/Menu/components/Menutree'
 export default {
   name: 'Menutree',
   components: { Menutree },
-  props: ['data','isCollapse'],
-
+  props: ['data', 'isCollapse']
 }
 </script>
