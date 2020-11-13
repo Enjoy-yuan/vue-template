@@ -297,6 +297,7 @@ resizeHeight() {
 - 新建并修改.eslintrc.js 文件
 - 修改.eslintrc.js 文件后需要重启项目
 - 在项目根目录下新建文件夹.vscode，新建文件 settings.json，主要用来格式化 vue 文件
+- 项目下的 settings.json 会对工作区下的 vscode.code-workspace 下的 settings.json 进行覆盖
 
 ```js
 "@vue/cli-plugin-babel": "~4.5.0",
