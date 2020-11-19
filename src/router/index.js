@@ -28,30 +28,6 @@ const routes = [
         component: () => import(/* webpackChunkName: "Home" */ '@/views/Home')
       },
       {
-        path: '/three/music',
-        name: 'Music',
-        component: () =>
-          import(/* webpackChunkName: "Music" */ '@/views/Three/Music')
-      },
-      {
-        path: '/three/car',
-        name: 'Car',
-        component: () =>
-          import(/* webpackChunkName: "Car" */ '@/views/Three/Car')
-      },
-      {
-        path: '/three/feature',
-        name: 'Feature',
-        component: () =>
-          import(/* webpackChunkName: "Feature" */ '@/views/Three/Feature')
-      },
-      {
-        path: '/three/sprite',
-        name: 'Sprite',
-        component: () =>
-          import(/* webpackChunkName: "Sprite" */ '@/views/Three/Sprite')
-      },
-      {
         path: '/stock/beijingchaojia',
         name: 'Beijingchaojia',
         component: () =>

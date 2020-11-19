@@ -1,8 +1,9 @@
 ## 1.安装脚手架
 
-- 代码格式化在 vscode 的 setting.json 中设置
-- eslint 直接使用 vscode 扩展
+- 代码格式化通过在项目根目录下新建.vscode 文件夹，在 setting.json 中设置
+- 安装 vscode 扩展 ESLint 和 Prettier
 - 不使用 typescript
+- command+shift+p：prettier创建文件
 
 ```
 ? Please pick a preset: Manually select features
@@ -39,6 +40,7 @@
 - 文字复制
 - 时间格式化
 - 高度自适应
+- vuex 封装 promise 请求
 
 ## 4.package.json 依赖
 
@@ -265,13 +267,7 @@ this.oContent.scrollTop
 
 - vue-router3.0 及以上版本，点击菜单可能报错，可更换为"^2.8.0"版本
 
-## 12.threejs 的使用
-
-- jsm 下的文件可直接使用 import 来进行引入
-
-```js
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
-```
+## 12.
 
 ## 13.echarts 图表高度的自适应
 
@@ -347,5 +343,70 @@ module.exports = {
   "prettier.trailingComma": "none",
   // 设置prettier扩展代码宽度130
   "prettier.printWidth": 130
+}
+```
+
+## 15.vuex 封装 promise 请求
+
+- vuex 数据共享，当数据存在时，不用重复执行请求
+- promise 封装保证可以在请求完成后再对数据进行操作，此时也可以获取到请求的返回值
+
+```js
+// store
+import { getRecord } from '@/api/data-base/dict'
+//系统数据字典
+const state = {
+  iems2_energy_type: [] // 能源类型
+}
+
+const mutations = {
+  getDicData(state, data) {
+    state[data.dicCodes] = data.res
+  }
+}
+const actions = {
+  // 使用promise包装，方便使用then获取返回值
+  getDicData(context, dicCodes) {
+    let promiseArr = []
+    for (let i = 0; i < dicCodes.length; i++) {
+      let p = new Promise((resolve) => {
+        if (state[dicCodes[i]].length == 0) {
+          getRecord(dicCodes[i]).then((res) => {
+            resolve(res.data.dictItemDTOs)
+            res = res.data.dictItemDTOs
+            context.commit('getDicData', {
+              dicCodes: dicCodes[i],
+              res: res
+            })
+          })
+        } else {
+          resolve(state[dicCodes[i]])
+        }
+      })
+      promiseArr.push(p)
+    }
+    return Promise.all(promiseArr)
+  }
+}
+
+export default {
+  namespaced: true,
+  state,
+  mutations,
+  actions
+}
+//
+import { mapState } from 'vuex'
+computed: {
+    ...mapState({
+        iems2_account_level: (state) => state.dict.iems2_account_level,
+        iems2_account_type: (state) => state.dict.iems2_account_type,
+        iems2_energy_type: (state) => state.dict.iems2_energy_type
+    })
+},
+created() {
+  this.$store.dispatch('dict/getDicData', ['iems2_account_level', 'iems2_account_type', 'iems2_energy_type']).then((res) => {
+
+    })
 }
 ```
