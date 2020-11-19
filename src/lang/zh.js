@@ -7,7 +7,6 @@ export default {
   moment: '时间格式化',
   tinymce: '富文本编辑器',
   backtop: '返回顶部',
-  excel: '表格',
 
   echarts: '图表',
   bar: '柱状图',
@@ -15,7 +14,6 @@ export default {
   pie: '饼图',
   map: '地图',
 
-  three: '三维',
   music: '音频可视化',
   car: '小车',
   feature: '演示',

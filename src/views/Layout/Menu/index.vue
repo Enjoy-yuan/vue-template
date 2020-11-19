@@ -26,16 +26,6 @@
         <el-menu-item index="/echarts/pie">{{ $t('pie') }}</el-menu-item>
         <el-menu-item index="/echarts/map">{{ $t('map') }}</el-menu-item>
       </el-submenu>
-      <el-submenu index="/three">
-        <template slot="title">
-          <i class="el-icon-menu"></i>
-          <span slot="title">{{ $t('three') }}</span>
-        </template>
-        <el-menu-item index="/three/feature">{{ $t('feature') }}</el-menu-item>
-        <el-menu-item index="/three/car">{{ $t('car') }}</el-menu-item>
-        <el-menu-item index="/three/music">{{ $t('music') }}</el-menu-item>
-        <el-menu-item index="/three/sprite">{{ $t('sprite') }}</el-menu-item>
-      </el-submenu>
       <el-submenu index="/example">
         <template slot="title">
           <i class="el-icon-menu"></i>
@@ -47,21 +37,7 @@
         <el-menu-item index="/example/moment">{{ $t('moment') }}</el-menu-item>
         <el-menu-item index="/example/tinymce">{{ $t('tinymce') }}</el-menu-item>
         <el-menu-item index="/example/backtop">{{ $t('backtop') }}</el-menu-item>
-        <el-menu-item index="/example/Excel">{{ $t('excel') }}</el-menu-item>
-        <el-menu-item index="/example/test">{{ $t('test') }}</el-menu-item>
       </el-submenu>
-      <!-- <el-submenu index="/three">
-                <template slot="title">
-                    <i class="el-icon-menu"></i>
-                    <span slot="title">三维</span>
-                </template>
-                <el-menu-item index="/three/feature">功能演示</el-menu-item>
-                <el-menu-item index="/three/car">小车</el-menu-item>
-                <el-menu-item index="/three/music">音频可视化</el-menu-item>
-                <el-menu-item index="/three/sprite">精灵粒子</el-menu-item>
-                <el-menu-item index="/three/panoramic">开发指南demo</el-menu-item>
-                <el-menu-item index="/three/test">测试</el-menu-item>
-            </el-submenu> -->
       <Menutree :data="treeData" :isCollapse="isCollapse"></Menutree>
     </el-menu>
   </div>

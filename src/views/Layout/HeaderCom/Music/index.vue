@@ -56,26 +56,28 @@ export default {
       this.getSearch()
     },
     parseLyric() {
-      let lyrics = this.mp3Lrc.split('\n')
-      let a = []
-      let b = []
+      const lyrics = this.mp3Lrc.split('\n')
+      const a = []
+      const b = []
       for (let i = 0; i < lyrics.length; i++) {
-        let lyric = decodeURIComponent(lyrics[i])
-        let timeReg = /\[\d*:\d*((\.|\:)\d*)*\]/g
-        let timeRegExpArr = lyric.match(timeReg)
+        const lyric = decodeURIComponent(lyrics[i])
+        // eslint-disable-next-line no-useless-escape
+        const timeReg = /\[\d*:\d*((\.|\:)\d*)*\]/g
+        const timeRegExpArr = lyric.match(timeReg)
         if (!timeRegExpArr) continue
-        let clause = lyric.replace(timeReg, '')
+        const clause = lyric.replace(timeReg, '')
         for (let k = 0, h = timeRegExpArr.length; k < h; k++) {
-          let t = timeRegExpArr[k]
-          let min = Number(String(t.match(/\[\d*/i)).slice(1)),
-            sec = Number(String(t.match(/\:\d*/i)).slice(1))
-          let time = min * 60 + sec
+          const t = timeRegExpArr[k]
+          const min = Number(String(t.match(/\[\d*/i)).slice(1))
+          // eslint-disable-next-line no-useless-escape
+          const sec = Number(String(t.match(/\:\d*/i)).slice(1))
+          const time = min * 60 + sec
           a.push(time)
           b.push(clause)
         }
       }
-      let audio = document.getElementById('myAudio')
-      let lyricContainer = document.getElementById('lyricContainer')
+      const audio = document.getElementById('myAudio')
+      const lyricContainer = document.getElementById('lyricContainer')
       audio.ontimeupdate = function(e) {
         for (let i = 0, l = a.length; i < l; i++) {
           if (this.currentTime > a[i]) {

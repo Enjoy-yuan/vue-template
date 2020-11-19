@@ -28,14 +28,6 @@ const routes = [
         component: () => import(/* webpackChunkName: "Home" */ '@/views/Home')
       },
       {
-        path: '/stock/beijingchaojia',
-        name: 'Beijingchaojia',
-        component: () =>
-          import(
-            /* webpackChunkName: "Beijingchaojia" */ '@/views/Stock/Beijingchaojia'
-          )
-      },
-      {
         path: '/echarts/bar',
         name: 'Bar',
         component: () =>
@@ -102,12 +94,6 @@ const routes = [
         name: 'Excel',
         component: () =>
           import(/* webpackChunkName: "Excel" */ '@/views/Example/Excel')
-      },
-      {
-        path: '/example/test',
-        name: 'ExampleTest',
-        component: () =>
-          import(/* webpackChunkName: "Test" */ '@/views/Example/Test')
       },
       {
         path: '/menu1/menu3/menu4',
