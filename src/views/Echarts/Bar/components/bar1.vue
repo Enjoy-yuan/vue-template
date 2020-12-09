@@ -35,8 +35,7 @@ export default {
       const initOption = {
         title: {
           text: '地区销量排行',
-          left: 20,
-          top: 20
+          left: 20
         },
         grid: {
           left: '4%',
@@ -50,14 +49,23 @@ export default {
           formatter: '{b} : {c}'
         },
         xAxis: {
-          type: 'category'
+          type: 'category',
+          axisTick: {
+            show: false // 不显示坐标轴刻度线
+          }
         },
         yAxis: {
+          show: false, // 不显示y轴
           type: 'value'
         },
         series: [
           {
-            type: 'bar'
+            type: 'bar',
+            // 在上方开启数值显示
+            label: {
+              show: true,
+              position: 'top'
+            }
           }
         ]
       }
@@ -129,6 +137,7 @@ export default {
             data: valueArr,
             itemStyle: {
               color: (arg) => {
+                // console.log(arg)
                 let index = 0
                 if (arg.value > 300) {
                   index = 0

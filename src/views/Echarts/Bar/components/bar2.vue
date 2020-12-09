@@ -39,8 +39,7 @@ export default {
       const initOption = {
         title: {
           text: '地区销量排行',
-          left: 20,
-          top: 20
+          left: 20
         },
         grid: {
           left: '4%',
