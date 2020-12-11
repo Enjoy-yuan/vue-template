@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div :style="{ height: echartsHeight }" ref="ref_echart"></div>
+    <div :style="{ height: echartsHeight }" ref="echart"></div>
   </div>
 </template>
 
@@ -31,36 +31,29 @@ export default {
   methods: {
     // 初始化
     initCharts() {
-      this.chartInstane = this.$echarts.init(this.$refs.ref_echart, 'macarons')
+      this.chartInstane = this.$echarts.init(this.$refs.echart, 'macarons')
       const initOption = {
-        title: {
-          text: '趋势分析',
-          left: 20,
-          textStyle: {
-            fontSize: 14
-          }
-        },
         tooltip: {
-          trigger: 'item',
-          formatter: '{b} : {c} ({d}%)'
+          show: true,
+          formatter: '{b0}: {c0}'
         },
         series: [
           {
-            type: 'pie',
+            name: '概念',
+            type: 'treemap',
+            breadcrumb: false, // 面包屑导航
+            roam: false, // 可拖拽漫游
+            nodeClick: false, // 可点击
+            // width: '100%', // 撑满宽度
+            itemStyle: {
+              normal: {
+                borderWidth: 1
+              }
+            },
             label: {
-              show: true,
-              position: 'inner',
-              formatter: '{d}%'
-            }
-          },
-          // 放置两个重合的pie图，同时在内部和外部设置label
-          {
-            type: 'pie',
-            label: {
-              show: true,
-              fontSize: 16,
-              position: 'outer',
-              formatter: '{b}：{c}'
+              normal: {
+                formatter: '{b0}: {c0}'
+              }
             }
           }
         ]
@@ -71,44 +64,24 @@ export default {
     getData() {
       this.allData = [
         {
-          name: '广东',
-          value: 230
+          name: 'nodeA',
+          value: 10
         },
         {
-          name: '福建',
-          value: 214
+          name: 'nodeB',
+          value: 20
         },
         {
-          name: '浙江',
-          value: 203
+          name: 'nodeC',
+          value: 30
         },
         {
-          name: '上海',
-          value: 310
+          name: 'nodeD',
+          value: 40
         },
         {
-          name: '北京',
-          value: 289
-        },
-        {
-          name: '江苏',
-          value: 207
-        },
-        {
-          name: '四川',
-          value: 189
-        },
-        {
-          name: '重庆',
-          value: 195
-        },
-        {
-          name: '陕西',
-          value: 160
-        },
-        {
-          name: '湖南',
-          value: 140
+          name: 'nodeE',
+          value: 50
         }
       ]
       this.updataChart()
@@ -117,9 +90,6 @@ export default {
     updataChart() {
       const dataOption = {
         series: [
-          {
-            data: this.allData
-          },
           {
             data: this.allData
           }

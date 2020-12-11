@@ -25,6 +25,7 @@
         <el-menu-item index="/echarts/line">{{ $t('line') }}</el-menu-item>
         <el-menu-item index="/echarts/pie">{{ $t('pie') }}</el-menu-item>
         <el-menu-item index="/echarts/map">{{ $t('map') }}</el-menu-item>
+        <el-menu-item index="/echarts/treeMap">{{ $t('treeMap') }}</el-menu-item>
       </el-submenu>
       <el-submenu index="/example">
         <template slot="title">

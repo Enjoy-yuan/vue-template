@@ -43,8 +43,8 @@ export default {
         },
         grid: {
           left: '4%',
-          top: '14%',
-          right: '4%',
+          top: '24%', // 调整顶部距离
+          right: '14%', // 调整右侧距离
           bottom: '4%',
           containLabel: true // 将底部label包括在内
         },
@@ -53,9 +53,11 @@ export default {
           formatter: '{b} : {c}'
         },
         xAxis: {
+          name: '（单位：h)', // 横轴单位
           type: 'category'
         },
         yAxis: {
+          name: '（单位：KW/h)', // 纵轴单位
           type: 'value'
         },
         series: [

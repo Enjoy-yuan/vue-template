@@ -13,6 +13,7 @@ export default {
   line: '折线图',
   pie: '饼图',
   map: '地图',
+  treeMap: '矩形树图',
 
   music: '音频可视化',
   car: '小车',
