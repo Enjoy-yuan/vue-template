@@ -6,11 +6,16 @@
 
 <script>
 export default {
+  props: ['pieData', 'title'],
   data() {
     return {
       chartInstane: null, // echart实例
-      allData: null, // 获取的数据
-      echartsHeight: '0' // 图表高度
+      echartsHeight: 0 // 图表高度
+    }
+  },
+  watch: {
+    pieData: function(pieData) {
+      this.updataChart(pieData)
     }
   },
   created() {
@@ -19,7 +24,6 @@ export default {
   },
   mounted() {
     this.initCharts()
-    this.getData()
     // 此写法避免多组件之间相互覆盖
     window.addEventListener('resize', this.resizeEcharts, false)
     this.resizeEcharts()
@@ -34,7 +38,6 @@ export default {
       this.chartInstane = this.$echarts.init(this.$refs.ref_echart, 'macarons')
       const initOption = {
         title: {
-          text: '趋势分析',
           left: 20,
           textStyle: {
             fontSize: 14
@@ -47,6 +50,7 @@ export default {
         series: [
           {
             type: 'pie',
+            radius: '45%', // 设置半径大小
             label: {
               show: true,
               position: 'inner',
@@ -56,6 +60,7 @@ export default {
           // 放置两个重合的pie图，同时在内部和外部设置label
           {
             type: 'pie',
+            radius: '45%',
             label: {
               show: true,
               fontSize: 16,
@@ -67,61 +72,18 @@ export default {
       }
       this.chartInstane.setOption(initOption)
     },
-    // 取值
-    getData() {
-      this.allData = [
-        {
-          name: '广东',
-          value: 230
-        },
-        {
-          name: '福建',
-          value: 214
-        },
-        {
-          name: '浙江',
-          value: 203
-        },
-        {
-          name: '上海',
-          value: 310
-        },
-        {
-          name: '北京',
-          value: 289
-        },
-        {
-          name: '江苏',
-          value: 207
-        },
-        {
-          name: '四川',
-          value: 189
-        },
-        {
-          name: '重庆',
-          value: 195
-        },
-        {
-          name: '陕西',
-          value: 160
-        },
-        {
-          name: '湖南',
-          value: 140
-        }
-      ]
-      this.updataChart()
-    },
     // 更新
-    updataChart() {
+    updataChart(pieData) {
       const dataOption = {
+        title: {
+          text: this.title
+        },
         series: [
           {
-            data: this.allData
+            data: pieData
           },
           {
-            data: this.allData
+            data: pieData
           }
         ]
       }

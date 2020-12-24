@@ -43,19 +43,48 @@ export default {
         // 鼠标滑动提示
         tooltip: {
           trigger: 'axis',
-          formatter: '{b} : {c}'
+          formatter: '{b} : {c}',
+          axisPointer: {
+            type: 'shadow' // 显示阴影
+          }
         },
         legend: {
-          left: 30,
           top: '3%',
           icon: 'circle'
         },
         xAxis: {
           type: 'category',
+          splitLine: {
+            show: false // 隐藏分割线
+          },
+          axisLabel: {
+            show: true,
+            textStyle: {
+              color: '#ccc' // 更改x轴文字颜色
+            }
+          },
+          axisLine: {
+            lineStyle: {
+              type: 'solid',
+              color: '#ccc' // x轴线的颜色
+            }
+          },
           boundaryGap: false // 最左边与y轴是否留有间隙，紧挨边缘
         },
         yAxis: {
           type: 'value',
+          axisTick: {
+            show: false // 不显示坐标轴刻度线
+          },
+          axisLabel: {
+            show: true,
+            textStyle: {
+              color: '#ccc' // 更改y轴文字颜色
+            }
+          },
+          axisLine: {
+            show: false // 隐藏y轴
+          },
           scale: true // y轴不从0开始
         }
       }
@@ -125,7 +154,7 @@ export default {
             smooth: true, // 设置平滑，主题自带
             // 线条样式
             lineStyle: {
-            //   color: 'green',
+              //   color: 'green',
               type: 'solid'
             },
             // 阴影区域填充

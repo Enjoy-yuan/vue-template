@@ -10,7 +10,7 @@ export default {
     return {
       chartInstane: null, // echart实例
       allData: null, // 获取的数据
-      echartsHeight: '0' // 图表高度
+      echartsHeight: 0 // 图表高度
     }
   },
   created() {

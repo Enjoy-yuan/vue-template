@@ -267,7 +267,21 @@ this.oContent.scrollTop
 
 - vue-router3.0 及以上版本，点击菜单可能报错，可更换为"^2.8.0"版本
 
-## 12.
+## 12.echarts上次数据的清空
+
+- 需要手动赋值，并给第二个参数设置为true，确保数据不合并
+
+```js
+// 无数据时手动给值
+if (barData.length === 0) {
+    seriesArr = {
+        data: [],
+        type: 'bar'
+    }
+}
+// 第二个参数设置为true，确保不合并前一次的数据
+this.chartInstane.setOption(dataOption, true)
+```
 
 ## 13.echarts 图表高度的自适应
 

@@ -6,14 +6,22 @@
 
 <script>
 export default {
+  props: ['barData', 'title'],
   data() {
     return {
       chartInstane: null, // echart实例
       allData: null, // 获取的数据
-      echartsHeight: '0', // 图表高度
+      echartsHeight: 0, // 图表高度
       startValue: 0, // 动画起始值
       endValue: 9, // 动画结束值
       timer: null // 定时器
+    }
+  },
+  watch: {
+    barData: function(barData) {
+      this.allData = barData
+      this.updataChart()
+      this.startInterval()
     }
   },
   created() {
@@ -22,7 +30,6 @@ export default {
   },
   mounted() {
     this.initCharts()
-    this.getData()
     // 此写法避免多组件之间相互覆盖
     window.addEventListener('resize', this.resizeEcharts, false)
     this.resizeEcharts()
@@ -38,12 +45,11 @@ export default {
       this.chartInstane = this.$echarts.init(this.$refs.echart, 'macarons')
       const initOption = {
         title: {
-          text: '地区销量排行',
           left: 20
         },
         grid: {
           left: '4%',
-          top: '24%', // 调整顶部距离
+          top: '18%', // 调整顶部距离
           right: '14%', // 调整右侧距离
           bottom: '4%',
           containLabel: true // 将底部label包括在内
@@ -74,19 +80,8 @@ export default {
         this.startInterval()
       })
     },
-    // 取值
-    getData() {
-      this.$axios.get(`${window.location.origin}/echarts/barData.json`).then((res) => {
-        this.allData = res.data
-        this.allData.sort((a, b) => b.value - a.value)
-        this.updataChart()
-        this.startInterval()
-      })
-    },
     // 更新
     updataChart() {
-      const colorArr1 = ['rgba(44,110,255,0.5)', 'rgba(22,242,217,0.5)', 'rgba(254,33,30,0.5)']
-      const colorArr2 = ['rgba(22,242,217,0.5)', 'rgba(254,33,30,0.5)', 'rgba(250,105,0,0.5)']
       const provinceArr = this.allData.map((item) => {
         return item.name
       })
@@ -94,6 +89,9 @@ export default {
         return item.value
       })
       const dataOption = {
+        title: {
+          text: this.title
+        },
         xAxis: {
           data: provinceArr
         },
@@ -104,29 +102,7 @@ export default {
         },
         series: [
           {
-            data: valueArr,
-            itemStyle: {
-              color: (arg) => {
-                let index = 0
-                if (arg.value > 300) {
-                  index = 0
-                } else if (arg.value > 200) {
-                  index = 1
-                } else {
-                  index = 2
-                }
-                return new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                  {
-                    offset: 0,
-                    color: colorArr1[index]
-                  },
-                  {
-                    offset: 1,
-                    color: colorArr2[index]
-                  }
-                ])
-              }
-            }
+            data: valueArr
           }
         ]
       }

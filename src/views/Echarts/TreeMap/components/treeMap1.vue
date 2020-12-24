@@ -37,6 +37,28 @@ export default {
           show: true,
           formatter: '{b0}: {c0}'
         },
+        visualMap: {
+          show: true,
+          min: 10,
+          max: 50,
+          inRange: {
+            color: ['#b71c1c', '#ffebee']
+          }
+          // 根据数值大小设置颜色
+          // pieces: [
+          //   {
+          //     gte: 23,
+          //     label: '>= 23',
+          //     color: 'green'
+          //   },
+          //   {
+          //     lt: 23,
+          //     gt: 0,
+          //     label: '< 23',
+          //     color: 'red'
+          //   }
+          // ]
+        },
         series: [
           {
             name: '概念',
@@ -52,7 +74,7 @@ export default {
             },
             label: {
               normal: {
-                formatter: '{b0}: {c0}'
+                formatter: '{b0}'
               }
             }
           }
