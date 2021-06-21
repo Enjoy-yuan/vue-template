@@ -11,10 +11,6 @@
         </div>
       </div>
     </div>
-    <div style="margin-top: 20px;">
-      <p>引入public文件夹中的图片</p>
-      <img style="width: 200px;" src="/404.png" alt="">
-    </div>
   </div>
 </template>
 

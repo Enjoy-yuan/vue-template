@@ -74,10 +74,24 @@ $--font-path: '~element-ui/lib/theme-chalk/fonts';
 // 设置默认宽度
 .el-input,
 .el-select {
-  width: 200px;
+  width: 140px;
 }
 
 // 设置tag标签背景色
 .el-tag.el-tag--info {
   background-color: #fff;
+}
+
+.el-tag.el-tag--success {
+  background-color: #67c23a;
+  a {
+    color: #fff;
+  }
+}
+
+.el-tag.el-tag--success .el-tag__close {
+  color: #fff;
+  &:hover {
+    background-color: #b4bccc;
+  }
 }

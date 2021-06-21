@@ -1,6 +1,6 @@
 <template>
   <div>
-    menu4
+    子菜单页面
   </div>
 </template>
 

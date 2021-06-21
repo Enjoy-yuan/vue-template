@@ -22,6 +22,8 @@ Vue.prototype.$echarts = echarts
 
 // 设置国际化
 Vue.use(ElementUI, {
+  size: 'small',
+  zIndex: 3000,
   i18n: (key, value) => i18n.t(key, value)
 })
 

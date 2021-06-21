@@ -79,7 +79,8 @@ export default {
           {
             name: '销量',
             data: this.allData.yData,
-            type: 'line'
+            type: 'line',
+            symbol: 'none' // 去掉折线小圆点
           }
         ]
       }

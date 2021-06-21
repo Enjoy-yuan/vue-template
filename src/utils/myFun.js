@@ -21,6 +21,24 @@ export function dataToTree(data) {
   }
 }
 
+// export function dataToTree(data, code = 'loopCode', parentCode = 'ploopCode') {
+//   let map = {}
+//   let treeData = []
+//   data.map((item) => {
+//       map[item[code]] = item
+//   })
+//   data.map((item) => {
+//       const parent = map[item[parentCode]]
+//       if (parent) {
+//           if (!Array.isArray(parent.children)) parent.children = []
+//           parent.children.push(item)
+//       } else {
+//           treeData.push(item)
+//       }
+//   })
+//   return treeData
+// }
+
 // 验证当前token是否在过期十分钟内，true则刷新token
 export function checkToken() {
   let tokenTime = getCookie('tokenTime')

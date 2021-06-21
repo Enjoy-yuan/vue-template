@@ -1,35 +1,35 @@
 <template>
-  <div class="content">
-    <div class="bg">
-      <img style="width: 100%;" src="@/assets/img/bg.png" alt="bg" />
+  <div class="login">
+    <div class="content">
+      <div class="content-right">
+        <div style="display: flex;width: 100%;">
+          <div class="login-box">
+            <div class="title">欢迎登录</div>
+            <div class="title-en">WELCOME</div>
+            <div class="form">
+              <el-form :model="formData" :rules="rules" ref="form" size="medium" style="width: 100%;">
+                <el-form-item prop="username">
+                  <el-input placeholder="用户名" v-model="formData.username"></el-input>
+                </el-form-item>
+                <el-form-item prop="password">
+                  <el-input
+                    @keyup.enter.native="login('formData')"
+                    placeholder="密码"
+                    type="password"
+                    v-model="formData.password"
+                  ></el-input>
+                </el-form-item>
+                <el-form-item>
+                  <el-button @click="login('form')" class="button" type="primary">登 录</el-button>
+                </el-form-item>
+              </el-form>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="login">
-      <div class="logo">
-        <img src="@/assets/img/logo.png" alt="logo" />
-      </div>
-      <div class="title">WELCOME</div>
-
-      <el-form ref="relForm" :model="formData" :rules="rules">
-        <el-form-item prop="username">
-          <el-input v-model="formData.username" suffix-icon="el-icon-user" placeholder="用户名"> </el-input>
-        </el-form-item>
-        <el-form-item prop="password">
-          <el-input
-            suffix-icon="el-icon-lock"
-            type="password"
-            v-model="formData.password"
-            @keyup.enter.native="login('relForm')"
-            placeholder="密码"
-          ></el-input>
-        </el-form-item>
-        <el-form-item>
-          <el-button type="primary" class="btn" @click="login('relForm')">登录</el-button>
-        </el-form-item>
-      </el-form>
-      <div class="info">
-        <span>用户名：user </span>
-        <span>密码：123456</span>
-      </div>
+    <div class="bottom">
+      Copyright © 2021 . All rights reserved. xxxx 版权所有
     </div>
   </div>
 </template>
@@ -56,7 +56,7 @@ export default {
       function(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            if (this.formData.username === 'user' && this.formData.password === '123456') {
+            if (this.formData.username === 'admin' && this.formData.password === '123456') {
               setCookie('username', this.formData.username)
               this.$router.push('/home')
               this.$message({
@@ -85,58 +85,141 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.content {
+.login {
+  background: url('../../assets/img/login-bg.gif') no-repeat;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
   display: flex;
-  justify-content: center;
-  .login {
-    .logo {
-      text-align: center;
-      img {
-        width: 50px;
-        border-radius: 50%;
-      }
-    }
-    .title {
-      text-align: center;
-      color: #555;
-      font-size: 25px;
-      line-height: 50px;
-      opacity: 0.2;
-      margin-bottom: 20px;
-    }
-    .btn {
-      margin-top: 30px;
-      width: 250px;
-      font-size: 16px;
-      letter-spacing: 6px;
-    }
-    .info {
-      color: #ccc;
-      span {
-        margin-right: 20px;
-      }
-    }
-    box-shadow: 0 1px 38px 0 rgba(13, 158, 221, 0.07);
-    background-color: #fff;
+  align-items: center;
+  .content {
+    display: flex;
+    width: 380px;
+    height: 420px;
     position: absolute;
+    right: 100px;
+    background-color: #29303d;
+    box-shadow: 0px 1px 32px 0px rgba(237, 44, 30, 0.3);
     border-radius: 10px;
-    top: 100px;
-    width: 350px;
-    padding: 50px;
-    padding-top: 30px;
-  }
-  ::v-deep {
-    .el-input {
-      width: 250px;
-    }
-    .el-input__inner {
+    .content-right {
       width: 100%;
-      border-top-width: 0px;
-      border-left-width: 0px;
-      border-right-width: 0px;
-      border-bottom-width: 1px;
-      border-radius: 0;
+      .login-box {
+        margin: 0 auto;
+        margin-top: 16%;
+        width: 260px;
+        .title-en {
+          font-size: 28px;
+          font-family: PingFang SC;
+          color: #ed2c1e;
+          opacity: 0.15;
+          border-bottom: 2px solid #ed2c1e;
+          width: 100%;
+          padding-bottom: 5px;
+          padding-left: 80px;
+          padding-top: 10px;
+          margin-bottom: 40px;
+        }
+        .title {
+          position: absolute;
+          color: #ed2c1e;
+          font-size: 30px;
+          min-width: 130px;
+        }
+        .form {
+          display: flex;
+          justify-content: center;
+          width: 100%;
+          ::v-deep {
+            .el-input__inner {
+              width: 100%;
+              border-top-width: 0px;
+              border-left-width: 0px;
+              border-right-width: 0px;
+              border-bottom-width: 0px;
+              border-radius: 0;
+            }
+          }
+          .password {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            span {
+              color: #069ad5;
+              cursor: pointer;
+            }
+            ::v-deep {
+              .el-checkbox__label {
+                font-size: 12px;
+                // color: #212121;
+              }
+            }
+          }
+          .button {
+            width: 100%;
+            height: 36px;
+            border-radius: 2px;
+            color: #fff;
+            border: none;
+            font-size: 16x;
+            margin-bottom: 10px;
+            margin-top: 30px;
+            background-color: #ed2c1e;
+          }
+          .login-text {
+            color: #212121;
+            height: 20px;
+            p {
+              position: absolute;
+              background-color: #fff;
+              height: 20px;
+              line-height: 20px;
+              margin-top: -10px;
+              width: 100px;
+              text-align: center;
+              margin-left: 70px;
+              font-size: 12px;
+            }
+            hr {
+              color: #dde2eb;
+            }
+          }
+          .other-login {
+            display: flex;
+            justify-content: space-evenly;
+            img {
+              cursor: pointer;
+            }
+          }
+        }
+      }
     }
   }
+}
+
+// 覆盖全局样式
+::v-deep {
+  .el-input {
+    // max-width: 500px;
+    width: 260px;
+  }
+  .el-input__inner {
+    background-color: #353d4b !important;
+    border: none !important;
+    color: #fff !important;
+  }
+  .el-input__inner:focus {
+    background-color: #353d4b !important;
+    border: none !important;
+    color: #fff !important;
+  }
+}
+.bottom {
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  bottom: 20px;
+  font-size: 14px;
+  color: #8f8f8f;
 }
 </style>

@@ -24,20 +24,20 @@
         <el-menu-item index="/echarts/bar">{{ $t('bar') }}</el-menu-item>
         <el-menu-item index="/echarts/line">{{ $t('line') }}</el-menu-item>
         <el-menu-item index="/echarts/pie">{{ $t('pie') }}</el-menu-item>
-        <el-menu-item index="/echarts/map">{{ $t('map') }}</el-menu-item>
-        <el-menu-item index="/echarts/treeMap">{{ $t('treeMap') }}</el-menu-item>
       </el-submenu>
       <el-submenu index="/example">
         <template slot="title">
           <i class="el-icon-menu"></i>
           <span slot="title">{{ $t('example') }}</span>
         </template>
-        <el-menu-item index="/example/table">{{ $t('tables') }}</el-menu-item>
-        <el-menu-item index="/example/echart">{{ $t('echarts') }}</el-menu-item>
+        <el-menu-item index="/example/tables">{{ $t('tables') }}</el-menu-item>
         <el-menu-item index="/example/clipboard">{{ $t('clipboard') }}</el-menu-item>
         <el-menu-item index="/example/moment">{{ $t('moment') }}</el-menu-item>
         <el-menu-item index="/example/tinymce">{{ $t('tinymce') }}</el-menu-item>
         <el-menu-item index="/example/backtop">{{ $t('backtop') }}</el-menu-item>
+        <el-menu-item index="/example/baiduMap">{{ $t('baiduMap') }}</el-menu-item>
+        <el-menu-item index="/example/QRcode">{{ $t('QRcode') }}</el-menu-item>
+        <el-menu-item index="/example/treeMenu">{{ $t('treeMenu') }}</el-menu-item>
       </el-submenu>
       <Menutree :data="treeData" :isCollapse="isCollapse"></Menutree>
     </el-menu>
@@ -57,8 +57,8 @@ export default {
   },
   created() {
     const menuData = [
-      { catalogEngName: 'menu', icon: 'el-icon-menu', rowId: 1, url: '/menu' },
-      { catalogEngName: 'menuChild', parentId: 1, rowId: 3, url: '/menu/menuChild' }
+      { catalogEngName: 'dynamicMenu', icon: 'el-icon-menu', rowId: 1, url: '/dynamicMenu' },
+      { catalogEngName: 'childMenu', parentId: 1, rowId: 2, url: '/dynamicMenu/childMenu' }
     ]
     this.treeData = dataToTree(menuData)
   },

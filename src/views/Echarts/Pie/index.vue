@@ -10,9 +10,6 @@
       <div class="pie-item item-left">
         <pie3></pie3>
       </div>
-      <div class="pie-item">
-        <pie4></pie4>
-      </div>
     </div>
   </div>
 </template>
@@ -21,13 +18,11 @@
 import pie1 from './components/pie1'
 import pie2 from './components/pie2'
 import pie3 from './components/pie3'
-import pie4 from './components/pie4'
 export default {
   components: {
     pie1,
     pie2,
-    pie3,
-    pie4
+    pie3
   },
   data() {
     return {

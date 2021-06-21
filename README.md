@@ -3,7 +3,7 @@
 - 代码格式化通过在项目根目录下新建.vscode 文件夹，在 setting.json 中设置
 - 安装 vscode 扩展 ESLint 和 Prettier
 - 不使用 typescript
-- command+shift+p：prettier创建文件
+- command+shift+p：prettier 创建文件
 
 ```
 ? Please pick a preset: Manually select features
@@ -23,8 +23,7 @@
 
 ## 3.项目功能
 
-- 登录
-- 自动刷新 token(已移除)
+- 双 token 登录
 - 多环境配置
 - 国际化
 - 动态菜单
@@ -37,10 +36,16 @@
 - 请求封装
 - 请求进度条
 - 按钮防抖
-- 文字复制
+- 剪切板文字复制
 - 时间格式化
 - 高度自适应
 - vuex 封装 promise 请求
+- Excel 导出
+- 链接生成二维码
+- canvas 转图片下载
+- 百度地图
+- Echarts图表
+- ESLint代码检测
 
 ## 4.package.json 依赖
 
@@ -54,7 +59,6 @@
 - 时间：moment
 - 剪切板：clipboard
 - 图表：echarts
-- mock 数据：mockjs(已移除)
 
 ## 5.环境配置
 
@@ -179,7 +183,7 @@ export default {
 </script>
 ```
 
-## 8.刷新 token 和访问 token 的处理(已移除)
+## 8.刷新 token 和访问 token 的处理
 
 - 设置 token 的过期时间是 1 小时，在过期时间的前十分钟内通过刷新 token 来重新获取访问 token
 - 重新获取访问 token 的请求，可以放在请求拦截器中，也可放在路由的前置钩子函数里面
@@ -267,17 +271,17 @@ this.oContent.scrollTop
 
 - vue-router3.0 及以上版本，点击菜单可能报错，可更换为"^2.8.0"版本
 
-## 12.echarts上次数据的清空
+## 12.echarts 上次数据的清空
 
-- 需要手动赋值，并给第二个参数设置为true，确保数据不合并
+- 需要手动赋值，并给第二个参数设置为 true，确保数据不合并
 
 ```js
 // 无数据时手动给值
 if (barData.length === 0) {
-    seriesArr = {
-        data: [],
-        type: 'bar'
-    }
+  seriesArr = {
+    data: [],
+    type: 'bar'
+  }
 }
 // 第二个参数设置为true，确保不合并前一次的数据
 this.chartInstane.setOption(dataOption, true)

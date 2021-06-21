@@ -3,6 +3,7 @@
     <el-scrollbar>
       <div style="display: flex;">
         <el-tag
+          size="medium"
           style="margin-right: 6px"
           v-for="tag in tags"
           :key="tag.name"

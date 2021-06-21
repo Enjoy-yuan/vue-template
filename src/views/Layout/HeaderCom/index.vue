@@ -29,8 +29,8 @@
           <span class="el-dropdown-link ">
             <img
               class="img"
-              src="https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif?imageView2/1/w/80/h/80"
-              alt=""
+              src="@img/avatar.gif"
+              alt="头像"
             />
           </span>
           <el-dropdown-menu slot="dropdown" style="margin-top:-10px;width: 160px;text-align:center;">

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="form">
-      <el-form ref="form" :rules="rules" :model="form" :inline="true" :hide-required-asterisk="true">
+      <el-form :model="form" :inline="true">
         <el-form-item prop="name">
           <el-input v-model="form.user" placeholder="审批人"></el-input>
         </el-form-item>
@@ -22,10 +22,16 @@
           ></el-date-picker>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="getTableData" icon="el-icon-search">查询</el-button>
-          <el-button type="primary" @click="resetForm" style="margin-left: 10px;" icon="el-icon-delete">重置</el-button>
+          <el-button type="primary" @click="getTableData" icon="el-icon-search">{{ $t('search') }}</el-button>
+          <el-button type="primary" @click="resetForm" style="margin-left: 10px;" icon="el-icon-delete">{{
+            $t('reset')
+          }}</el-button>
         </el-form-item>
       </el-form>
+      <div>
+        <el-button type="primary" icon="el-icon-download" @click="downloadExcelFront">导出Excel</el-button>
+        <!-- <el-button type="primary" icon="el-icon-download" @click="downloadExcelUrl">url导出Excel</el-button> -->
+      </div>
     </div>
     <div class="table" ref="table">
       <el-table :height="tableHeight" :data="tableData" border style="width: 100%">
@@ -34,12 +40,9 @@
             <span>{{ scope.$index + 1 + (currentPage - 1) * pageSize }}</span>
           </template></el-table-column
         >
-        <el-table-column prop="name" label="姓名" width="180"> </el-table-column>
-        <el-table-column prop="age" label="年龄" width="180"> </el-table-column>
-        <el-table-column prop="birthday" label="生日"> </el-table-column>
-        <el-table-column prop="city" label="地址"> </el-table-column>
-        <el-table-column prop="color" label="颜色"> </el-table-column>
-        <el-table-column label="操作" width="150">
+        <el-table-column prop="name" label="姓名"> </el-table-column>
+        <el-table-column prop="age" label="年龄"> </el-table-column>
+        <el-table-column label="操作">
           <template slot-scope="scope">
             <span @click="handleEdit(scope.row.id)" style="color:#67c23a;cursor:pointer;">
               修改
@@ -65,21 +68,18 @@
     </div>
 
     <div class="dialog">
-      <el-dialog v-el-drag-dialog title="收货地址" width="30%" center :visible.sync="dialogVisible">
-        <el-form :model="dialogForm">
-          <el-form-item label="活动名称" label-width="100px">
+      <el-dialog v-el-drag-dialog title="收货地址" width="30%" :visible.sync="dialogVisible">
+        <el-form :hide-required-asterisk="true" :model="dialogForm" ref="form" :rules="rules">
+          <el-form-item label="姓名" label-width="100px">
             <el-input v-model="dialogForm.name"></el-input>
           </el-form-item>
-          <el-form-item label="活动区域" label-width="100px">
-            <el-select v-model="dialogForm.region" placeholder="请选择活动区域">
-              <el-option label="区域一" value="shanghai"></el-option>
-              <el-option label="区域二" value="beijing"></el-option>
-            </el-select>
+          <el-form-item label="年龄" label-width="100px">
+            <el-input v-model="dialogForm.age"></el-input>
           </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
           <el-button @click="dialogVisible = false">取 消</el-button>
-          <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+          <el-button type="primary" @click="confirmDelete">确 定</el-button>
         </div>
       </el-dialog>
     </div>
@@ -87,7 +87,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+// import axios from 'axios'
 import { table } from '@/utils/mixins'
 import elDragDialog from '@/directive/el-drag-dialog'
 export default {
@@ -95,6 +95,17 @@ export default {
   directives: { elDragDialog },
   data() {
     return {
+      tableData: [
+        {
+          name: '111'
+        },
+        {
+          name: '222'
+        },
+        {
+          name: '333'
+        }
+      ], // 表格数据
       form: {}, // 表单数据
       dialogForm: {}, // 弹出框表单数据
       // 数据校验
@@ -129,22 +140,39 @@ export default {
     this.getTableData()
   },
   methods: {
-    // 获取表格数据
-    getTableData() {
-      // this.$refs.form.validate((valid) => {
-      //   if (valid) {
-      axios
-        .post('/mock/api/users', {
-          pageSize: this.pageSize,
-          currentPage: this.currentPage
+    downloadExcelFront() {
+      import('@/vendor/Export2Excel').then((excel) => {
+        const tHeader = ['姓名', '年龄']
+        const filterVal = ['name', 'age']
+        const data = this.formatJson(filterVal)
+        excel.export_json_to_excel({
+          header: tHeader,
+          data,
+          filename: '用户表'
         })
-        .then((res) => {
-          this.tableData = res.data.data
-          this.total = res.data.total
-        })
-      // }
-      // })
+        this.downloadLoading = false
+      })
     },
+    formatJson(filterVal) {
+      if (this.tableData.length === 0) {
+        this.$message.warning('表格数据为空')
+      } else {
+        return this.tableData.map((v) =>
+          filterVal.map((j) => {
+            return v[j]
+          })
+        )
+      }
+    },
+    downloadExcelUrl() {
+      const a = document.createElement('a')
+      const event = new MouseEvent('click')
+      // 替换未后端给的url地址
+      a.href = 'https://www.360yunxi.com/_next/static/images/login-bg-8e5ea703150c3deac9f3034b1663ab16.gif'
+      a.dispatchEvent(event)
+    },
+    // 获取表格数据
+    getTableData() {},
     // 编辑
     handleEdit() {
       this.dialogForm = {}
@@ -152,10 +180,19 @@ export default {
     },
     // 删除
     confirmDelete() {
-      // console.log(222)
+      this.$refs.form.validate((valid) => {
+        if (valid) {
+          this.dialogVisible = false
+        }
+      })
     }
   }
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.form {
+  display: flex;
+  justify-content: space-between;
+}
+</style>

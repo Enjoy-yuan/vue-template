@@ -3,9 +3,9 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 const routes = [
-  { path: '/', redirect: '/login' },
+  { path: '/', redirect: '/Login' },
   {
-    path: '/login',
+    path: '/Login',
     name: 'Login',
     component: () => import(/* webpackChunkName: "Login" */ '@/views/Login')
   },
@@ -15,7 +15,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "NotFound" */ '@/views/Error')
   },
   {
-    path: '/layout',
+    path: '/Layout',
     component: () => import(/* webpackChunkName: "Layout" */ '@/views/Layout'),
     meta: {
       requiresAuth: true
@@ -28,74 +28,64 @@ const routes = [
         component: () => import(/* webpackChunkName: "Home" */ '@/views/Home')
       },
       {
-        path: '/echarts/bar',
+        path: '/Echarts/Bar',
         name: 'Bar',
         component: () => import(/* webpackChunkName: "Bar" */ '@/views/Echarts/Bar')
       },
       {
-        path: '/echarts/line',
+        path: '/Echarts/Line',
         name: 'Line',
         component: () => import(/* webpackChunkName: "Line" */ '@/views/Echarts/Line')
       },
       {
-        path: '/echarts/pie',
+        path: '/Echarts/Pie',
         name: 'Pie',
         component: () => import(/* webpackChunkName: "Pie" */ '@/views/Echarts/Pie')
       },
       {
-        path: '/echarts/map',
-        name: 'Map',
-        component: () => import(/* webpackChunkName: "Map" */ '@/views/Echarts/Map')
+        path: '/Example/Tables',
+        name: 'Tables',
+        component: () => import(/* webpackChunkName: "Tables" */ '@/views/Example/Tables')
       },
       {
-        path: '/echarts/treeMap',
-        name: 'TreeMap',
-        component: () => import(/* webpackChunkName: "TreeMap" */ '@/views/Echarts/TreeMap')
-      },
-      {
-        path: '/example/table',
-        name: 'Table',
-        component: () => import(/* webpackChunkName: "Table" */ '@/views/Example/Table')
-      },
-      {
-        path: '/example/echart',
-        name: 'Echart',
-        component: () => import(/* webpackChunkName: "Echart" */ '@/views/Example/Echart')
-      },
-      {
-        path: '/example/clipboard',
+        path: '/Example/Clipboard',
         name: 'Clipboard',
         component: () => import(/* webpackChunkName: "Clipboard" */ '@/views/Example/Clipboard')
       },
       {
-        path: '/example/moment',
+        path: '/Example/Moment',
         name: 'Moment',
         component: () => import(/* webpackChunkName: "Moment" */ '@/views/Example/Moment')
       },
       {
-        path: '/example/tinymce',
+        path: '/Example/Tinymce',
         name: 'Tinymce',
         component: () => import(/* webpackChunkName: "Tinymce" */ '@/views/Example/Tinymce')
       },
       {
-        path: '/example/backtop',
+        path: '/Example/Backtop',
         name: 'Backtop',
         component: () => import(/* webpackChunkName: "Backtop" */ '@/views/Example/Backtop')
       },
       {
-        path: '/example/excel',
-        name: 'Excel',
-        component: () => import(/* webpackChunkName: "Excel" */ '@/views/Example/Excel')
+        path: '/Example/BaiduMap',
+        name: 'BaiduMap',
+        component: () => import(/* webpackChunkName: "BaiduMap" */ '@/views/Example/BaiduMap')
       },
       {
-        path: '/menu1/menu3/menu4',
-        name: 'Menu4',
-        component: () => import(/* webpackChunkName: "Menu4" */ '@/views/Menu/Menu1/Menu3/Menu4')
+        path: '/Example/QRcode',
+        name: 'QRcode',
+        component: () => import(/* webpackChunkName: "QRcode" */ '@/views/Example/QRcode')
       },
       {
-        path: '/Menu2',
-        name: 'Menu2',
-        component: () => import(/* webpackChunkName: "Menu2" */ '@/views/Menu/Menu2')
+        path: '/Example/TreeMenu',
+        name: 'TreeMenu',
+        component: () => import(/* webpackChunkName: "TreeMenu" */ '@/views/Example/TreeMenu')
+      },
+      {
+        path: '/DynamicMenu/ChildMenu',
+        name: 'ChildMenu',
+        component: () => import(/* webpackChunkName: "ChildMenu" */ '@/views/DynamicMenu/ChildMenu')
       }
     ]
   }
