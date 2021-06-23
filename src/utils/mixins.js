@@ -5,8 +5,8 @@ export const table = {
       tableData: [],
       tableHeight: 0, // 表格自适应的高度
       currentPage: 1, // 当前页
-      pageSizes: [15, 20, 30, 50], // 可选的分页
-      pageSize: 15, // 当前分页每页的数量
+      pageSizes: [10, 20, 30, 50], // 可选的分页
+      pageSize: 10, // 当前分页每页的数量
       total: 0 // 总数据量
     }
   },

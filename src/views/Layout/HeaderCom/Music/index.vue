@@ -1,7 +1,13 @@
 <template>
-  <div >
+  <div>
     <div style="margin-bottom:20px;text-align:center;">
-      <el-input style="width:80%;" v-model="inputSearch" placeholder="搜索歌曲/歌手" @keyup.enter.native="getSearch" @input="getSearch"></el-input>
+      <el-input
+        style="width:80%;"
+        v-model="inputSearch"
+        placeholder="搜索歌曲/歌手"
+        @keyup.enter.native="getSearch"
+        @input="getSearch"
+      ></el-input>
     </div>
     <div style="margin-left:10%;width:80%;">
       <ul>
@@ -14,7 +20,14 @@
         </li>
       </ul>
       <div style="text-align:center;margin-top:10px;">
-        <el-pagination background @current-change="handleCurrentChange" :current-page.sync="currentPage" :page-size="20" layout="total, pager" :total="100"></el-pagination>
+        <el-pagination
+          background
+          @current-change="handleCurrentChange"
+          :current-page.sync="currentPage"
+          :page-size="20"
+          layout="total, pager"
+          :total="100"
+        ></el-pagination>
       </div>
     </div>
     <div style="text-align:center;">
@@ -25,7 +38,7 @@
         <div style="color:#67c23a;font-size:20px;height:30px;" id="lyricContainer"></div>
       </div>
       <div style="text-align:center;">
-        <audio id="myAudio" style="width:80%;outline: none;" :src="mp3Url" autoplay loop="loop" controls="controls"></audio>
+        <audio id="myAudio" :src="mp3Url" autoplay loop="loop" controls="controls"></audio>
       </div>
     </div>
   </div>
@@ -36,10 +49,10 @@ import axios from 'axios'
 export default {
   data() {
     return {
-      inputSearch: '邓紫棋',
-      inputSearchData: '',
-      showLrc: false,
-      mp3Lrc: [],
+      inputSearch: '邓紫棋', // 搜索的文字
+      inputSearchData: '', // 搜索的结果
+      showLrc: false, // 是否显示歌词
+      mp3Lrc: [], // 歌词
       mp3Url: '',
       mp3Id: [],
       currentPage: 1
@@ -114,5 +127,10 @@ export default {
 <style lang="scss" scoped>
 .hover-color:hover {
   background-color: #67c23a;
+}
+#myAudio {
+  width: 90%;
+  height: 30px;
+  outline: none;
 }
 </style>

@@ -47,18 +47,10 @@
 - Echarts图表
 - ESLint代码检测
 
-## 4.package.json 依赖
+## 4.项目登录
 
-- 国际化：vue-i18n
-- 富文本：@tinymce/tinymce-vue
-- promise 请求：axios
-- pc 组件库：element-ui
-- cookie：js-cookie
-- 进度条：nprogress
-- 防抖：lodash
-- 时间：moment
-- 剪切板：clipboard
-- 图表：echarts
+- 用户名：admin
+- 密码：123456
 
 ## 5.环境配置
 
