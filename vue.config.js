@@ -10,6 +10,13 @@ module.exports = {
     config.resolve.alias.set('@img', resolve('src/assets/img'))
     config.resolve.alias.set('@three', resolve('src/views/Three'))
   },
+  lintOnSave: false,
+  devServer: {
+    overlay: {
+      warning: false,
+      errors: false
+    }
+  },
   configureWebpack: (config) => {
     // 配置CDN加速
     // config.externals = {

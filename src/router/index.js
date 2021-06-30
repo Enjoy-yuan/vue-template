@@ -104,6 +104,12 @@ const routes = [
           import(/* webpackChunkName: "Excel" */ '@/views/Example/Excel')
       },
       {
+        path: '/three/music',
+        name: 'music',
+        component: () =>
+          import(/* webpackChunkName: "music" */ '@/views/Three/Music')
+      },
+      {
         path: '/example/test',
         name: 'ExampleTest',
         component: () =>
