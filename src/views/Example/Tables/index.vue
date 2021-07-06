@@ -15,7 +15,6 @@
           <el-date-picker
             :end-placeholder="'开始时间'"
             :start-placeholder="'结束时间'"
-            :picker-options="pickerOptions"
             type="datetimerange"
             value-format="yyyy-MM-dd HH:mm:ss"
             v-model="form.time"
@@ -114,26 +113,6 @@ export default {
         region: [{ required: true, message: '活动区域不能为空', trigger: 'blur' }]
       },
       dialogVisible: false // 弹出框是否显示
-    }
-  },
-  computed: {
-    // 只能选择起始时间一个月内的时间
-    pickerOptions() {
-      const _this = this
-      return {
-        disabledDate(time) {
-          const times = 86400000 * 30
-          const curSelectTime = new Date(_this.minDate).getTime()
-          const before = curSelectTime - times
-          const after = curSelectTime + times
-          return time.getTime() > after || time.getTime() < before
-        },
-        onPick({ maxDate, minDate }) {
-          if (!maxDate) {
-            _this.minDate = minDate
-          }
-        }
-      }
     }
   },
   mounted() {
