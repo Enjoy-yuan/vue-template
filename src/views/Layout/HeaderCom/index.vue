@@ -27,14 +27,12 @@
       <div class="person flex">
         <el-dropdown class="drop-title">
           <span class="el-dropdown-link ">
-            <img
-              class="img"
-              src="@img/avatar.gif"
-              alt="头像"
-            />
+            <img class="img" src="@img/avatar.gif" alt="头像" />
           </span>
           <el-dropdown-menu slot="dropdown" style="margin-top:-10px;width: 160px;text-align:center;">
-            <el-dropdown-item><i class="el-icon-s-custom"></i> 个人资料</el-dropdown-item>
+            <a href="https://github.com/Enjoy-yuan/vue-template"
+              ><el-dropdown-item> <i class="el-icon-s-custom"></i>项目地址</el-dropdown-item>
+            </a>
             <el-dropdown-item>
               <span @click="loginOut">
                 <i class="el-icon-switch-button"></i>
@@ -82,7 +80,7 @@ export default {
         this.$i18n.locale = 'zh'
         setCookie('language', 'zh')
         this.language = '中文'
-      } else if ((language === 'en')) {
+      } else if (language === 'en') {
         this.$i18n.locale = 'en'
         setCookie('language', 'en')
         this.language = 'English'

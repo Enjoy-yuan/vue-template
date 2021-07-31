@@ -1,6 +1,6 @@
 <template>
   <div>
-    <editor :init="tinyConfig" api-key="9mboa5v1x3toie3p283b6vpepkq6u4010h1ezk5pi3wgujsh" v-model="content"> </editor>
+    <editor :init="tinyConfig" api-key="hpau92an9lkt06esdzb6voapyi4doon1b44hou31adx7ozim" v-model="content"> </editor>
     {{ content }}
   </div>
 </template>
