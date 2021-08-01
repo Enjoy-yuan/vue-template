@@ -9,7 +9,9 @@
             <div class="form">
               <el-form :model="formData" :rules="rules" ref="form" size="medium" style="width: 100%;">
                 <el-form-item prop="username">
-                  <el-input placeholder="用户名" v-model="formData.username"></el-input>
+                  <el-input placeholder="用户名" v-model="formData.username">
+                    <i slot="prefix" class="el-input__icon el-icon-user"></i>
+                  </el-input>
                 </el-form-item>
                 <el-form-item prop="password">
                   <el-input
@@ -17,6 +19,9 @@
                     placeholder="密码"
                     type="password"
                     v-model="formData.password"
+                    show-password
+                  >
+                    <i slot="prefix" class="el-input__icon el-icon-lock"></i
                   ></el-input>
                 </el-form-item>
                 <el-form-item>
@@ -45,8 +50,8 @@ export default {
         password: [{ required: true, message: '密码不能为空', trigger: 'blur' }]
       },
       formData: {
-        username: '',
-        password: ''
+        username: 'admin',
+        password: '123456'
       }
     }
   },
