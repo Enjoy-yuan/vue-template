@@ -2,12 +2,12 @@
   <div class="login">
     <div class="content">
       <div class="content-right">
-        <div style="display: flex;width: 100%;">
+        <div style="display: flex; width: 100%">
           <div class="login-box">
             <div class="title">欢迎登录</div>
             <div class="title-en">WELCOME</div>
             <div class="form">
-              <el-form :model="formData" :rules="rules" ref="form" size="medium" style="width: 100%;">
+              <el-form :model="formData" :rules="rules" ref="form" size="medium" style="width: 100%">
                 <el-form-item prop="username">
                   <el-input placeholder="用户名" v-model="formData.username">
                     <i slot="prefix" class="el-input__icon el-icon-user"></i>
@@ -33,14 +33,12 @@
         </div>
       </div>
     </div>
-    <div class="bottom">
-      Copyright © 2021 . All rights reserved. xxxx 版权所有
-    </div>
+    <div class="bottom">Copyright © 2021 . All rights reserved. xxxx 版权所有</div>
   </div>
 </template>
 
 <script>
-import { setCookie } from '@/utils/cookie'
+import { setCookie, removeCookie } from '@/utils/cookie'
 import throttle from 'lodash/throttle'
 export default {
   data() {
@@ -55,10 +53,15 @@ export default {
       }
     }
   },
+  mounted() {
+    removeCookie('token')
+    removeCookie('tags')
+    removeCookie('username')
+  },
   methods: {
     // 登陆，防抖
     login: throttle(
-      function(formName) {
+      function (formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
             if (this.formData.username === 'admin' && this.formData.password === '123456') {
