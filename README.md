@@ -36,7 +36,3 @@
 - ESLint 代码检测
 - gzip 压缩
 - cdn 加速
-
-## 4.双 token 校验
-
-- 

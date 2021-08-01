@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div id="allmap" :style="{ height: echartsHeight}"></div>
+    <div id="allmap" :style="{ height: echartsHeight }"></div>
   </div>
 </template>
 
@@ -35,14 +35,14 @@ export default {
   },
   methods: {
     resizeHeight() {
-      this.echartsHeight = document.body.offsetHeight - 130 + 'px'
+      this.echartsHeight = (document.body.offsetHeight - 175) / 2 + 'px'
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-#allmap{
+#allmap {
   width: 100%;
 }
 </style>

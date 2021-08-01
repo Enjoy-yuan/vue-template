@@ -146,7 +146,7 @@ export default {
     downloadExcelUrl() {
       const a = document.createElement('a')
       const event = new MouseEvent('click')
-      // 替换未后端给的url地址
+      // 替换为后端给的url地址
       a.href = 'https://www.360yunxi.com/_next/static/images/login-bg-8e5ea703150c3deac9f3034b1663ab16.gif'
       a.dispatchEvent(event)
     },

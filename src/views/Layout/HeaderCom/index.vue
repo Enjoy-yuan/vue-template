@@ -98,7 +98,8 @@ export default {
     loginOut() {
       removeCookie('token')
       removeCookie('tags')
-      sessionStorage.clear()
+      removeCookie('username')
+      // sessionStorage.clear()
       this.$router.push('/login')
     }
   }
