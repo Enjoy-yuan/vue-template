@@ -37,3 +37,12 @@
 - gzip 压缩
 - cdn 加速
 
+## 4.addRoutes 动态路由
+
+- 从后端获取的动态菜单需转成树状结构，通过递归组件生成多层级路由菜单
+- 用变量保存所有动态路由，与后端返回的动态菜单中 url 对比筛选，通过 addRoutes 添加
+
+## 5.双 token 校验
+
+- 登录成功之后保存 refresh_token 和 access_token，以及它们的过期时间
+- 在过期时间前一段时间，调用接口通过 refresh_token 重新获取 refresh_token 和 access_token
