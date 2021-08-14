@@ -33,6 +33,9 @@
             <a href="https://github.com/Enjoy-yuan/vue-template"
               ><el-dropdown-item> <i class="el-icon-s-custom"></i>项目地址</el-dropdown-item>
             </a>
+            <a href="http://116.62.124.208:8081/"
+              ><el-dropdown-item> <i class="el-icon-s-platform"></i>react项目</el-dropdown-item>
+            </a>
             <el-dropdown-item>
               <span @click="loginOut">
                 <i class="el-icon-switch-button"></i>
