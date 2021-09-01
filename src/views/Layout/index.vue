@@ -7,7 +7,7 @@
         <Tags ref="tags"></Tags>
         <div class="router">
           <transition name="fade-transform" mode="out-in">
-            <keep-alive exclude="tinymce">
+            <keep-alive>
               <router-view />
             </keep-alive>
           </transition>
