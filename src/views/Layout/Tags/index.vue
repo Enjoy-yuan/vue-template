@@ -5,8 +5,8 @@
         <el-tag
           size="medium"
           style="margin-right: 6px"
-          v-for="tag in tags"
-          :key="tag.name"
+          v-for="(tag, index) in tags"
+          :key="index"
           closable
           :type="tag.type"
           @close="handleClose(tag)"
@@ -94,8 +94,9 @@ export default {
         this.tags.map((item) => {
           item.type = 'info'
         })
+        const temp = key.split('/').pop()
         this.tags.push({
-          name: key.split('/').pop(),
+          name: temp.slice(0, 1).toUpperCase() + temp.slice(1),
           type: 'success',
           url: key
         })

@@ -1,29 +1,30 @@
 export default {
   // 菜单静态路由
-  home: 'home',
+  Home: 'Home',
 
   // echarts图表
-  echarts: 'echarts',
-  bar: 'bar',
-  line: 'line',
-  pie: 'pie',
+  Echarts: 'Echarts',
+  Bar: 'Bar',
+  Line: 'Line',
+  Pie: 'Pie',
 
   // example示例
-  example: 'example',
-  tables: 'tables',
-  clipboard: 'clipboard',
-  moment: 'moment',
-  tinymce: 'tinymce',
-  backtop: 'backtop',
-  baiduMap: 'baiduMap',
+  Example: 'Example',
+  Tables: 'Tables',
+  Clipboard: 'Clipboard',
+  Moment: 'Moment',
+  Tinymce: 'Tinymce',
+  Backtop: 'Backtop',
+  BaiduMap: 'BaiduMap',
   QRcode: 'QRcode',
-  treeMenu: 'treeMenu',
+  TreeMenu: 'TreeMenu',
 
   // 菜单动态路由
-  dynamicMenu: 'dynamicMenu',
-  childMenu: 'childMenu',
+  DynamicMenu: 'DynamicMenu',
+  UserMenu: 'UserMenu',
+  AdminMenu: 'AdminMenu',
 
   // 页面内容
-  search: 'search',
-  reset: 'reset'
+  Search: 'Search',
+  Reset: 'Reset'
 }

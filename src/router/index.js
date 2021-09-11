@@ -2,17 +2,17 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
-const routes = [
+export const routes = [
   { path: '/', redirect: '/Login' },
   {
     path: '/Login',
     name: 'Login',
-    component: () => import(/* webpackChunkName: "Login" */ '@/views/Login')
+    component: () => import(/* webpackChunkName: "login" */ '@/views/Login')
   },
   {
     path: '*',
     name: 'NotFound',
-    component: () => import(/* webpackChunkName: "NotFound" */ '@/views/Error')
+    component: () => import(/* webpackChunkName: "NotFound" */ '@/views/NotFount')
   },
   {
     path: '/Layout',
@@ -81,19 +81,13 @@ const routes = [
         path: '/Example/TreeMenu',
         name: 'TreeMenu',
         component: () => import(/* webpackChunkName: "TreeMenu" */ '@/views/Example/TreeMenu')
-      },
-      {
-        path: '/DynamicMenu/ChildMenu',
-        name: 'ChildMenu',
-        component: () => import(/* webpackChunkName: "ChildMenu" */ '@/views/DynamicMenu/ChildMenu')
       }
     ]
   }
 ]
-const router = new VueRouter({
+
+export const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
 })
-
-export default router

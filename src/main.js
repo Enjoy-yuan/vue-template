@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from '@/App.vue'
-import router from '@/router'
+import { routes, router } from '@/router'
 import store from '@/store'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
@@ -15,10 +15,27 @@ import '@/assets/icon/iconfont'
 // 全局引入echarts主题
 import 'echarts/theme/macarons.js'
 // import  'echarts/theme/chalk.js'
+import { getCookie } from '@/utils/cookie'
+
+// 自定义组件
+import Button from 'yc-vue-common/Button'
+// import { getCookie } from '@/utils/cookie.js'
+Vue.use(Button)
 
 Vue.prototype.$api = api
 Vue.prototype.$axios = axios
 Vue.prototype.$echarts = echarts
+
+if (getCookie('menuData')) {
+  JSON.parse(getCookie('menuData')).map((item) => {
+    routes[routes.length - 1].children.push({
+      path: item.path,
+      name: item.name,
+      component: () => import('@/views' + item.path)
+    })
+  })
+  router.addRoutes(routes)
+}
 
 // 设置国际化
 Vue.use(ElementUI, {
@@ -33,5 +50,5 @@ new Vue({
   router,
   store,
   i18n,
-  render: h => h(App)
+  render: (h) => h(App)
 }).$mount('#app')

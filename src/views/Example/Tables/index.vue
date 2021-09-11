@@ -21,9 +21,9 @@
           ></el-date-picker>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="getTableData" icon="el-icon-search">{{ $t('search') }}</el-button>
+          <el-button type="primary" @click="getTableData" icon="el-icon-search">{{ $t('Search') }}</el-button>
           <el-button type="primary" @click="resetForm" style="margin-left: 10px;" icon="el-icon-delete">{{
-            $t('reset')
+            $t('Reset')
           }}</el-button>
         </el-form-item>
       </el-form>

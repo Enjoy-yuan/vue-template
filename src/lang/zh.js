@@ -1,35 +1,30 @@
 export default {
   // 菜单静态路由
-  home: '首页',
+  Home: '首页',
 
   // echarts图表
-  echarts: '图表',
-  bar: '柱状图',
-  line: '折线图',
-  pie: '饼图',
+  Echarts: '图表',
+  Bar: '柱状图',
+  Line: '折线图',
+  Pie: '饼图',
 
   // example示例
-  example: '示例',
-  tables: '表格',
-  clipboard: '剪贴板',
-  moment: '时间格式化',
-  tinymce: '富文本编辑器',
-  backtop: '返回顶部',
-  baiduMap: '百度地图',
+  Example: '示例',
+  Tables: '表格',
+  Clipboard: '剪贴板',
+  Moment: '时间格式化',
+  Tinymce: '富文本编辑器',
+  Backtop: '返回顶部',
+  BaiduMap: '百度地图',
   QRcode: '生成二维码',
-  treeMenu: '树形菜单',
+  TreeMenu: '树形菜单',
 
   // 菜单动态路由
-  dynamicMenu: '动态菜单',
-  childMenu: '子菜单',
+  DynamicMenu: '动态菜单',
+  UserMenu: '普通角色菜单',
+  AdminMenu: '管理员角色菜单',
 
   // 页面内容
-  search: '搜索',
-  reset: '重置',
-
-  // three.js
-  music: '音频可视化',
-  car: '小车',
-  feature: '演示',
-  sprit: '精灵'
+  Search: '搜索',
+  Reset: '重置'
 }

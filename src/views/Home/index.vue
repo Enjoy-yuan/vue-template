@@ -1,6 +1,7 @@
 <template>
   <div>
     首页
+    <yc-button type="primary">234234</yc-button>
     <el-button type="text" @click="open">点击打开 Message Box</el-button>
     <child :fn="(ref) => (this.childRef = ref)" @emitFn="emitFn" :res="777"></child>
   </div>

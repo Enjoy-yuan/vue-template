@@ -39,6 +39,7 @@
 
 <script>
 import { setCookie, removeCookie } from '@/utils/cookie'
+import { routes } from '@/router'
 import throttle from 'lodash/throttle'
 export default {
   data() {
@@ -61,11 +62,31 @@ export default {
   methods: {
     // 登陆，防抖
     login: throttle(
-      function (formName) {
+      function(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            if (this.formData.username === 'admin' && this.formData.password === '123456') {
+            if (
+              this.formData.username === 'admin' ||
+              (this.formData.username === 'user' && this.formData.password === '123456')
+            ) {
               setCookie('username', this.formData.username)
+              // 根据用户获取的后端动态路由数据
+              const menuData = [
+                { name: 'DynamicMenu', icon: 'el-icon-menu', rowId: 1, path: '/DynamicMenu' },
+                { name: 'UserMenu', parentId: 1, rowId: 2, path: '/DynamicMenu/UserMenu' }
+              ]
+              if (this.formData.username === 'admin') {
+                menuData.push({ name: 'AdminMenu', parentId: 1, rowId: 3, path: '/DynamicMenu/AdminMenu' })
+              }
+              setCookie('menuData', menuData)
+              menuData.map((item) => {
+                routes[routes.length - 1].children.push({
+                  path: item.path,
+                  name: item.name,
+                  component: () => import('@/views' + item.path)
+                })
+              })
+              this.$router.addRoutes(routes)
               this.$router.push('/home')
               this.$message({
                 type: 'success',

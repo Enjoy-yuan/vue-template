@@ -1,6 +1,6 @@
 <template>
   <div>
-    子菜单页面
+    普通角色user页面，登录用户名：user
   </div>
 </template>
 
