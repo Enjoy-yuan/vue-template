@@ -1,6 +1,6 @@
 <template>
   <div>
-    管理员角色admin页面，登录用户名：admin
+    管理员角色，登录用户名：admin
   </div>
 </template>
 

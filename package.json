@@ -27,7 +27,7 @@
     "vuedraggable": "^2.24.1",
     "vuex": "^3.4.0",
     "xlsx": "^0.17.0",
-    "yc-vue-common": "^0.0.2"
+    "yc-vue-common": "^0.0.4"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.9",
@@ -45,7 +45,7 @@
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-vue": "^6.2.2",
     "mockjs": "^1.1.0",
-    "sass": "^1.26.5",
+    "sass": "~1.26.5",
     "sass-loader": "^8.0.2",
     "script-loader": "^0.7.2",
     "vue-template-compiler": "^2.6.11"

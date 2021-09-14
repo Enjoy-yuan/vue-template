@@ -39,6 +39,13 @@
         <el-menu-item index="/example/QRcode">{{ $t('QRcode') }}</el-menu-item>
         <el-menu-item index="/example/treeMenu">{{ $t('TreeMenu') }}</el-menu-item>
       </el-submenu>
+      <el-submenu index="/customComponents">
+        <template slot="title">
+          <i class="el-icon-menu"></i>
+          <span slot="title">{{ $t('CustomComponents') }}</span>
+        </template>
+        <el-menu-item index="/customComponents/button">{{ $t('Button') }}</el-menu-item>
+      </el-submenu>
       <Menutree :data="treeData" :isCollapse="isCollapse"></Menutree>
     </el-menu>
   </div>

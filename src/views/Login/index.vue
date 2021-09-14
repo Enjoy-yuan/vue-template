@@ -42,6 +42,7 @@ import { setCookie, removeCookie } from '@/utils/cookie'
 import { routes } from '@/router'
 import throttle from 'lodash/throttle'
 export default {
+  name: 'Login',
   data() {
     return {
       rules: {
@@ -58,6 +59,7 @@ export default {
     removeCookie('token')
     removeCookie('tags')
     removeCookie('username')
+    removeCookie('menuData')
   },
   methods: {
     // 登陆，防抖
@@ -74,6 +76,8 @@ export default {
               const menuData = [
                 { name: 'DynamicMenu', icon: 'el-icon-menu', rowId: 1, path: '/DynamicMenu' },
                 { name: 'UserMenu', parentId: 1, rowId: 2, path: '/DynamicMenu/UserMenu' }
+                // { name: 'DynamicMenu2', icon: 'el-icon-menu', rowId: 8, path: '/DynamicMenu2' },
+                // { name: 'UserMenu2', parentId: 8, rowId: 5, path: '/DynamicMenu2/UserMenu' }
               ]
               if (this.formData.username === 'admin') {
                 menuData.push({ name: 'AdminMenu', parentId: 1, rowId: 3, path: '/DynamicMenu/AdminMenu' })

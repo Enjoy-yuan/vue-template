@@ -1,6 +1,6 @@
 <template>
   <div>
-    普通角色user页面，登录用户名：user
+    普通角色，登录用户名：user
   </div>
 </template>
 

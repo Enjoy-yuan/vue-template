@@ -11,20 +11,8 @@
             <el-option label="区域二" value="beijing"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item prop="time">
-          <el-date-picker
-            :end-placeholder="'开始时间'"
-            :start-placeholder="'结束时间'"
-            type="datetimerange"
-            value-format="yyyy-MM-dd HH:mm:ss"
-            v-model="form.time"
-          ></el-date-picker>
-        </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="getTableData" icon="el-icon-search">{{ $t('Search') }}</el-button>
-          <el-button type="primary" @click="resetForm" style="margin-left: 10px;" icon="el-icon-delete">{{
-            $t('Reset')
-          }}</el-button>
         </el-form-item>
       </el-form>
       <div>
@@ -65,7 +53,6 @@
       >
       </el-pagination>
     </div>
-
     <div class="dialog">
       <el-dialog v-el-drag-dialog title="收货地址" width="30%" :visible.sync="dialogVisible">
         <el-form :hide-required-asterisk="true" :model="dialogForm" ref="form" :rules="rules">
@@ -86,14 +73,16 @@
 </template>
 
 <script>
-// import axios from 'axios'
-import { table } from '@/utils/mixins'
 import elDragDialog from '@/directive/el-drag-dialog'
 export default {
-  mixins: [table],
   directives: { elDragDialog },
   data() {
     return {
+      tableHeight: 0, // 表格自适应的高度
+      currentPage: 1, // 当前页
+      pageSizes: [10, 20, 30, 50], // 可选的分页
+      pageSize: 10, // 当前分页每页的数量
+      total: 0, // 总数据量
       tableData: [
         {
           name: '111'
@@ -115,10 +104,15 @@ export default {
       dialogVisible: false // 弹出框是否显示
     }
   },
-  mounted() {
+  created() {
+    window.addEventListener('resize', this.resizeHeight, false)
+    this.resizeHeight()
     this.getTableData()
   },
   methods: {
+    resizeHeight() {
+      this.tableHeight = document.body.offsetHeight - 220 + 'px'
+    },
     downloadExcelFront() {
       import('@/vendor/Export2Excel').then((excel) => {
         const tHeader = ['姓名', '年龄']
@@ -164,6 +158,24 @@ export default {
           this.dialogVisible = false
         }
       })
+    },
+    // 删除分类
+    handleDelete(id) {
+      this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      })
+        .then(() => {
+          this.confirmDelete()
+        })
+        .catch(() => {
+          this.$message({
+            type: 'info',
+            showClose: true,
+            message: '已取消删除'
+          })
+        })
     }
   }
 }

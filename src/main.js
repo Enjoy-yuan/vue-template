@@ -17,9 +17,8 @@ import 'echarts/theme/macarons.js'
 // import  'echarts/theme/chalk.js'
 import { getCookie } from '@/utils/cookie'
 
-// 自定义组件
-import Button from 'yc-vue-common/Button'
-// import { getCookie } from '@/utils/cookie.js'
+// 调用npm自定义组件
+import Button from 'yc-vue-common/components/Button'
 Vue.use(Button)
 
 Vue.prototype.$api = api

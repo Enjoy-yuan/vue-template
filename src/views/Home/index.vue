@@ -1,69 +1,42 @@
 <template>
   <div>
-    首页
-    <yc-button type="primary">234234</yc-button>
-    <el-button type="text" @click="open">点击打开 Message Box</el-button>
-    <child :fn="(ref) => (this.childRef = ref)" @emitFn="emitFn" :res="777"></child>
+    <el-table :data="tableData" style="width: 100%">
+      <el-table-column prop="date" label="日期" width="180"> </el-table-column>
+      <el-table-column prop="name" label="姓名" width="180"> </el-table-column>
+      <el-table-column prop="address" label="地址"> </el-table-column>
+    </el-table>
   </div>
 </template>
 
 <script>
-import child from './child.vue'
 export default {
-  components: { child },
   data() {
     return {
-      childRef: '',
-      subList: [
+      tableData: [
         {
-          deliveryState: '未交付',
-          pointCode: 888
+          date: '2016-05-02',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1518 弄'
         },
         {
-          deliveryState: '交付',
-          pointCode: 777
+          date: '2016-05-04',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1517 弄'
+        },
+        {
+          date: '2016-05-01',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1519 弄'
+        },
+        {
+          date: '2016-05-03',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1516 弄'
         }
       ]
-    }
-  },
-  mounted() {
-    console.log(this.childRef)
-    // setTimeout(() => {
-    //   console.log(this.childRef)
-    // }, 1000)
-  },
-  methods: {
-    emitFn(msg) {
-      console.log(msg)
-    },
-    open() {
-      this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        type: 'warning'
-      })
-        .then(() => {
-          const list = this.subList.filter((i) => {
-            return i.deliveryState === '未交付'
-          })
-          const data = list.map((i) => {
-            return i.pointCode
-          })
-          console.log(data)
-          return null
-        })
-        .catch(() => {
-          this.$message({
-            type: 'info',
-            message: '已取消删除'
-          })
-        })
-    },
-    fn(msg) {
-      console.log(msg)
     }
   }
 }
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped></style>

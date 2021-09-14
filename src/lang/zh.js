@@ -26,5 +26,9 @@ export default {
 
   // 页面内容
   Search: '搜索',
-  Reset: '重置'
+  Reset: '重置',
+
+  // 自定义组件
+  CustomComponents: '自定义组件',
+  Button: '按钮'
 }

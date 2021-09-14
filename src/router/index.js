@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 export const routes = [
-  { path: '/', redirect: '/Login' },
+  { path: '/', redirect: '/login' },
   {
     path: '/Login',
     name: 'Login',
@@ -81,6 +81,11 @@ export const routes = [
         path: '/Example/TreeMenu',
         name: 'TreeMenu',
         component: () => import(/* webpackChunkName: "TreeMenu" */ '@/views/Example/TreeMenu')
+      },
+      {
+        path: '/CustomComponents/Button',
+        name: 'Button',
+        component: () => import(/* webpackChunkName: "Button" */ '@/views/CustomComponents/Button')
       }
     ]
   }
