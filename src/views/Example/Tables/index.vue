@@ -85,13 +85,16 @@ export default {
       total: 0, // 总数据量
       tableData: [
         {
-          name: '111'
+          name: '111',
+          age: 18
         },
         {
-          name: '222'
+          name: '222',
+          age: 18
         },
         {
-          name: '333'
+          name: '333',
+          age: 18
         }
       ], // 表格数据
       form: {}, // 表单数据
