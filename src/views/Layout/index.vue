@@ -6,11 +6,12 @@
         <HeaderCom @changeSlidebarState="changeSlidebarState"></HeaderCom>
         <Tags ref="tags"></Tags>
         <div class="router">
-          <transition name="fade-transform" mode="out-in">
-            <keep-alive>
-              <router-view />
-            </keep-alive>
-          </transition>
+          <!-- 使用qiankun必须去掉transition -->
+          <!-- <transition name="fade-transform" mode="out-in"> -->
+          <keep-alive>
+            <router-view />
+          </keep-alive>
+          <!-- </transition> -->
         </div>
       </div>
     </div>

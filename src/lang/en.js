@@ -30,5 +30,11 @@ export default {
 
   // 自定义组件
   CustomComponents: 'CustomComponents',
-  Button: 'Button'
+  Button: 'Button',
+
+  // 微前端
+  Micro: 'Micro',
+  About: 'About',
+  Vue2: 'Vue2',
+  Vue3: 'Vue3'
 }

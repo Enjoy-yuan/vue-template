@@ -12,12 +12,12 @@ module.exports = {
   },
   configureWebpack: (config) => {
     // 配置CDN加速
-    config.externals = {
-      vue: 'Vue',
-      'vue-router': 'VueRouter',
-      axios: 'axios',
-      'element-ui': 'ELEMENT'
-    }
+    // config.externals = {
+    //   vue: 'Vue',
+    //   'vue-router': 'VueRouter',
+    //   axios: 'axios',
+    //   'element-ui': 'ELEMENT'
+    // }
     // 生产环境才生效
     if (process.env.NODE_ENV === 'production') {
       // 配置gzip压缩
@@ -35,6 +35,7 @@ module.exports = {
   },
 
   devServer: {
+    port: 9000,
     // 设置跨域代理
     proxy: {
       '/api': {

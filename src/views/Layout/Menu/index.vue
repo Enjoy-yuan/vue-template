@@ -46,6 +46,20 @@
         </template>
         <el-menu-item index="/customComponents/button">{{ $t('Button') }}</el-menu-item>
       </el-submenu>
+      <el-submenu index="/Micro">
+        <template slot="title">
+          <i class="el-icon-menu"></i>
+          <span slot="title">{{ $t('Micro') }}</span>
+        </template>
+        <el-submenu index="/Micro">
+          <template slot="title">
+            <span slot="title">Vue2</span>
+          </template>
+          <el-menu-item index="/Micro/Vue2/Home">{{ $t('Home') }}</el-menu-item>
+          <el-menu-item index="/Micro/Vue2/About">{{ $t('About') }}</el-menu-item>
+        </el-submenu>
+        <el-menu-item index="/Micro/Vue3">Vue3</el-menu-item>
+      </el-submenu>
       <Menutree :data="treeData" :isCollapse="isCollapse"></Menutree>
     </el-menu>
   </div>

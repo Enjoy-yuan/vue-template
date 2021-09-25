@@ -86,6 +86,21 @@ export const routes = [
         path: '/CustomComponents/Button',
         name: 'Button',
         component: () => import(/* webpackChunkName: "Button" */ '@/views/CustomComponents/Button')
+      },
+      {
+        path: '/Micro/Vue2/Home',
+        name: 'MicroVue2Home',
+        component: () => import(/* webpackChunkName: "Vue2" */ '@/views/Micro')
+      },
+      {
+        path: '/Micro/Vue2/About',
+        name: 'MicroVue2About',
+        component: () => import(/* webpackChunkName: "MicroVue2About" */ '@/views/Micro')
+      },
+      {
+        path: '/Micro/Vue3',
+        name: 'MicroVue3',
+        component: () => import(/* webpackChunkName: "MicroVue3" */ '@/views/Micro')
       }
     ]
   }
