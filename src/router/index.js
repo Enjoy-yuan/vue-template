@@ -87,20 +87,11 @@ export const routes = [
         name: 'Button',
         component: () => import(/* webpackChunkName: "Button" */ '@/views/CustomComponents/Button')
       },
+      // 微前端应用统一挂载
       {
-        path: '/Micro/Vue2/Home',
-        name: 'MicroVue2Home',
+        path: '/Micro/*',
+        name: 'Micro',
         component: () => import(/* webpackChunkName: "Vue2" */ '@/views/Micro')
-      },
-      {
-        path: '/Micro/Vue2/About',
-        name: 'MicroVue2About',
-        component: () => import(/* webpackChunkName: "MicroVue2About" */ '@/views/Micro')
-      },
-      {
-        path: '/Micro/Vue3',
-        name: 'MicroVue3',
-        component: () => import(/* webpackChunkName: "MicroVue3" */ '@/views/Micro')
       }
     ]
   }

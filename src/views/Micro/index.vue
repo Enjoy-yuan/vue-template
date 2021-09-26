@@ -49,8 +49,14 @@ export default {
     // 注册子应用
     registerMicroApps(apps)
 
-    // 启动
+    // if (!window.qiankunStarted) {
+    //   window.qiankunStarted = true
+    //   // 启动
+    //   console.log(99999)
+    //   start()
+    // }
     start()
+    // console.log(88888)
   }
 }
 </script>
