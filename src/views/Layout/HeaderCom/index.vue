@@ -31,9 +31,15 @@
           </span>
           <el-dropdown-menu slot="dropdown" style="margin-top:-10px;width: 160px;text-align:center;">
             <a href="https://github.com/Enjoy-yuan/vue-template"
-              ><el-dropdown-item> <i class="el-icon-s-custom"></i>项目地址</el-dropdown-item>
+              ><el-dropdown-item> <i class="el-icon-s-custom"></i>仓库地址</el-dropdown-item>
             </a>
-            <a href="http://116.62.124.208:8081/"
+            <a href="https://vue2.yuanchengjs.cn/"
+              ><el-dropdown-item> <i class="el-icon-s-platform"></i>微前端vue2项目</el-dropdown-item>
+            </a>
+            <a href="https://vue3.yuanchengjs.cn/"
+              ><el-dropdown-item> <i class="el-icon-s-platform"></i>微前端vue3项目</el-dropdown-item>
+            </a>
+            <a href="https://react.yuanchengjs.cn/"
               ><el-dropdown-item> <i class="el-icon-s-platform"></i>react项目</el-dropdown-item>
             </a>
             <el-dropdown-item>
