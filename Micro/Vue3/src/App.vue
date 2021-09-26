@@ -1,6 +1,6 @@
 <template>
   <div>
-    我是子应用subapp-vue3
+    <h1>This is an vue3 apply</h1>
   </div>
 </template>
 

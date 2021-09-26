@@ -34,13 +34,10 @@
               ><el-dropdown-item> <i class="el-icon-s-custom"></i>仓库地址</el-dropdown-item>
             </a>
             <a href="https://vue2.yuanchengjs.cn/"
-              ><el-dropdown-item> <i class="el-icon-s-platform"></i>微前端vue2项目</el-dropdown-item>
+              ><el-dropdown-item> <i class="el-icon-s-platform"></i>vue2项目</el-dropdown-item>
             </a>
             <a href="https://vue3.yuanchengjs.cn/"
-              ><el-dropdown-item> <i class="el-icon-s-platform"></i>微前端vue3项目</el-dropdown-item>
-            </a>
-            <a href="https://react.yuanchengjs.cn/"
-              ><el-dropdown-item> <i class="el-icon-s-platform"></i>react项目</el-dropdown-item>
+              ><el-dropdown-item> <i class="el-icon-s-platform"></i>vue3项目</el-dropdown-item>
             </a>
             <el-dropdown-item>
               <span @click="loginOut">
@@ -53,7 +50,7 @@
       </div>
     </div>
     <el-dialog title="歌曲播放" width="60%" center :visible.sync="dialogVisible">
-      <Music></Music>
+      <Music />
     </el-dialog>
   </div>
 </template>
