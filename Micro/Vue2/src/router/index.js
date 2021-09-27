@@ -20,7 +20,7 @@ const routes = [
 
 const router = new VueRouter({
   mode: 'history',
-  base: window.__POWERED_BY_QIANKUN__ ? '/Micro/Vue2' : '/',
+  base: window.__POWERED_BY_QIANKUN__ ? '/micro/vue2' : '/',
   // base: process.env.BASE_URL,
   routes
 })

@@ -91,7 +91,7 @@ export const routes = [
       {
         path: '/Micro/*',
         name: 'Micro',
-        component: () => import(/* webpackChunkName: "Vue2" */ '@/views/Micro')
+        component: () => import(/* webpackChunkName: "Micro" */ '@/views/Micro')
       }
     ]
   }
